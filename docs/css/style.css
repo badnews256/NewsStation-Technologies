@@ -261,5 +261,47 @@ transform:translateX(-100%);
     to {
         opacity: 1;
     }
+}/* ==========================
+   Standby Screen
+========================== */
+
+#standby-screen {
+
+    position: fixed;
+    inset: 0;
+
+    background: black;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 9999;
+
 }
+
+#standby-led{
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:gold;
+
+    box-shadow:0 0 20px gold;
+
+}
+
+#standby-text{
+
+    color:gold;
+
+    margin-top:20px;
+
+    font-size:22px;
+
 }
