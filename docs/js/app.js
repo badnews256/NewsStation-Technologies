@@ -1,26 +1,10 @@
-function updateClock() {
 
-    const now = new Date();
 
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
 
-    const date = now.toLocaleDateString(undefined, options);
 
-    const time = now.toLocaleTimeString();
 
-    document.getElementById("datetime").innerHTML =
-        date + "<br>" + time;
 
-}
 
-setInterval(updateClock, 1000);
-
-updateClock();
 // Load ticker text
 function loadTicker() {
 
@@ -48,6 +32,7 @@ setInterval(loadTicker, 60000);
 // ==========================
 
 window.addEventListener("load", function () {
+startClock();
 
     const bootScreen = document.getElementById("boot-screen");
     const desktop = document.getElementById("desktop");
