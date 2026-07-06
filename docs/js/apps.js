@@ -49,13 +49,27 @@ console.log(content);
 
         <p>24/7 Music Streaming</p>
 
-        <button>▶ Listen Live</button>
+        <a href="#" class="radio-button">
+    ▶ Listen on News Station Radio
+</a>
 
         <hr>
 
-        <h3>⭐ Featured Mixes</h3>
+        <h3>⭐ Featured Mix</h3>
 
-        <p>By DJ Bad News</p>
+<div class="featured-mix">
+
+    <img src="covers/featured-mix.jpg" class="mix-cover">
+
+    <h2>Summer Sessions Vol. 3</h2>
+
+    <p>Mixed by DJ Bad News</p>
+
+    <a href="#" class="radio-button">
+        ▶ Play Featured Mix
+    </a>
+
+</div>
 
         <hr>
 

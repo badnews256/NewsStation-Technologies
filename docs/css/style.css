@@ -334,7 +334,7 @@ transform:translateX(-100%);
 
     z-index: 9999;
 
-    overflow: hidden;
+    overflow: auto;
 
 }
 
@@ -595,5 +595,39 @@ transform:translateX(-100%);
     transform: translateY(-5px);
 
     box-shadow: 0 0 20px gold;
+
+}/* ===== NS Radio Button ===== */
+
+.radio-button {
+
+    display: inline-block;
+
+    margin: 15px 0;
+
+    padding: 14px 28px;
+
+    background: gold;
+
+    color: black;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+
+    box-shadow: 0 0 15px rgba(255,215,0,.4);
+
+}
+
+.radio-button:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0 0 25px gold;
 
 }
