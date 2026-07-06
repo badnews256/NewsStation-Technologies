@@ -65,8 +65,12 @@ console.log(content);
 
 </div>
 
-<a href="#" class="radio-button">
+<a href="http://badnews.vside-radio.com:9289"
+   target="_blank"
+   class="radio-button">
+
     ▶ Listen on News Station Radio
+
 </a>
 
         <hr>
