@@ -27,7 +27,7 @@ function updateClock() {
 
     const time = now.toLocaleTimeString();
 
-    const clock = document.getElementById("datetime");
+    const clock = document.getElementById("newsos-clock");
 
     if (!clock) return;
 

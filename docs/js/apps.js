@@ -36,14 +36,35 @@ console.log(content);
 
         case "media":
 
-            title.textContent = "🎵 MEDIA";
+    title.textContent = "🎙 NS RADIO";
 
-            content.innerHTML = `
-                <h2>Media Center</h2>
-                <p>Coming Soon</p>
-            `;
+    content.innerHTML = `
+        <h2>🎙 NS Radio</h2>
 
-            break;
+        <p>The Sound of the Grid</p>
+
+        <hr>
+
+        <h3>🟢 AutoDJ Online</h3>
+
+        <p>24/7 Music Streaming</p>
+
+        <button>▶ Listen Live</button>
+
+        <hr>
+
+        <h3>⭐ Featured Mixes</h3>
+
+        <p>By DJ Bad News</p>
+
+        <hr>
+
+        <h3>🎧 Community Mixes</h3>
+
+        <p>Discover DJs from across the Grid.</p>
+    `;
+
+    break;
 
         case "news":
 

@@ -61,22 +61,60 @@
 
 </div>
 
+<div id="welcome-panel">
+
+    <div id="newsos-clock">
+        --:--:--
+    </div>
+
+    <h2>Welcome to NewsOS</h2>
+
+    <p>Inform. Entertain. Celebrate. Connect.</p>
+
+</div>
+
+<div id="status-panel">
+
+    <div class="status-card">
+        🎙 <strong>NS Radio</strong><br>
+        Offline
+    </div>
+
+    <div class="status-card">
+        🚨 <strong>Grid Watch</strong><br>
+        No Alerts
+    </div>
+
+    <div class="status-card">
+        🎉 <strong>The Lineup</strong><br>
+        No Featured Event
+    </div>
+
+    <div class="status-card">
+        🌟 <strong>NS Spotlight</strong><br>
+        Coming Soon
+    </div>
+
+</div>
+
 <div id="dashboard">
 
+
+
 <div class="tile" onclick="openApp('tv')">
-    📺<br>TV
+    📺<br>NSTV ONE
 </div>
 
 <div class="tile" onclick="openApp('media')">
-    🎵<br>MEDIA
+    🎙<br>NEWS STATION RADIO
 </div>
 
 <div class="tile" onclick="openApp('news')">
-    📰<br>NEWS
+    🚨<br>GRID WATCH
 </div>
 
 <div class="tile" onclick="openApp('events')">
-    📅<br>EVENTS
+    🎉<br>THE LINEUP
 </div>
 
 <div class="tile" onclick="openApp('browser')">
@@ -140,5 +178,10 @@ Loading...
 <script src="js/apps.js"></script>
 <script src="js/tv.js"></script>
 <script src="js/power.js"></script>
+
+<script>
+    startClock();
+</script>
+
 </body>
 </html>
