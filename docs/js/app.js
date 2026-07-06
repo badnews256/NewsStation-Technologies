@@ -67,13 +67,15 @@ startClock();
             bootScreen.style.transition = "opacity 0.8s";
             bootScreen.style.opacity = "0";
 
-            setTimeout(() => {
+           setTimeout(() => {
 
-                bootScreen.style.display = "none";
-                desktop.style.display = "block";
-                desktop.style.opacity = "1";
+    bootScreen.style.display = "none";
+    desktop.style.display = "block";
+    desktop.style.opacity = "1";
 
-            }, 800);
+    checkUser();
+
+}, 800);
 
         }
 

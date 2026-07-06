@@ -664,4 +664,172 @@ transform:translateX(-100%);
 
     box-shadow: 0 0 20px rgba(255,215,0,.35);
 
+}/* ==========================
+   NewsOS Mini Player
+========================== */
+
+#mini-player {
+
+    position: fixed;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    width: 220px;
+
+    background: #1b1b1b;
+
+    border: 2px solid gold;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    color: white;
+
+    box-shadow: 0 0 20px rgba(255,215,0,.30);
+
+    z-index: 99999;
+
+}
+
+#mini-title {
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+}
+
+#mini-status {
+
+    margin-bottom: 15px;
+
+    color: #7CFC00;
+
+}
+
+#mini-toggle {
+
+    width: 100%;
+
+    padding: 10px;
+
+    background: gold;
+
+    color: black;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+#mini-toggle:hover {
+
+    transform: scale(1.03);
+
+}/* =====================================
+   Welcome Screen
+===================================== */
+
+#welcome-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+}#welcome-box{
+
+    width:420px;
+
+    background:#111;
+
+    border:3px solid gold;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 0 35px rgba(255,215,0,.35);
+
+}#welcome-box h1{
+
+    color:gold;
+
+    margin-bottom:15px;
+
+}
+
+#welcome-box p{
+
+    color:white;
+
+    margin-bottom:25px;
+
+}#welcome-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    font-size:18px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    border-radius:8px;
+
+    box-sizing:border-box;
+
+}#welcome-box button{
+
+    width:100%;
+
+    padding:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    background:gold;
+
+    color:black;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#welcome-box button:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 15px gold;
+
 }

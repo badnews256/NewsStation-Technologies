@@ -7,13 +7,16 @@ NewsOS Audio Manager
 let radioPlayer = null;
 
 let radioPlaying = false;
+
 function createRadioPlayer() {
 
-   radioPlayer = new Audio("http://badnews.vside-radio.com:9289/;");
+    radioPlayer = new Audio("http://badnews.vside-radio.com:9289/;");
 
     radioPlayer.volume = 0.5;
 
-}function playRadio() {
+}
+
+function playRadio() {
 
     if (!radioPlayer) {
 
@@ -24,5 +27,9 @@ function createRadioPlayer() {
     radioPlayer.play();
 
     radioPlaying = true;
+
+    document.getElementById("mini-status").innerHTML = "🟢 Playing";
+
+    document.getElementById("mini-toggle").innerHTML = "⏸ Pause";
 
 }
