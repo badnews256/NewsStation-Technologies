@@ -12,7 +12,9 @@ async function loadTVServices() {
         const services = await response.json();
 
         let html = `
-            <h2>📺 Streaming Services</h2>
+            <div class="section-title">
+    📺 Streaming Services
+</div>
             <div class="card-grid">
         `;
 
@@ -20,15 +22,19 @@ async function loadTVServices() {
 
             html += `
                 <div class="news-card"
-                     onclick="window.open('${service.url}', '_blank')">
+     onclick="window.open('${service.url}', '_blank')">
 
-                    <img src="${service.logo}" alt="${service.name}">
+<img src="${service.logo}" alt="${service.name}">   
 
-                    <h3>${service.name}</h3>
+    <h3>${service.name}</h3>
 
-                    <p>${service.description}</p>
+    <p>${service.description}</p>
 
-                </div>
+    <button class="launch-btn">
+        ▶ Launch Service
+    </button>
+
+</div>
             `;
 
         });
