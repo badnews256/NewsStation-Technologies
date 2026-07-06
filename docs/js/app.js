@@ -38,10 +38,21 @@ startClock();
     const desktop = document.getElementById("desktop");
     const progress = document.getElementById("boot-progress");
     const bootText = document.getElementById("boot-text");
+    const bootUser = document.getElementById("boot-user");
+    const greetingScreen = document.getElementById("greeting-screen");
+    const greetingMessage = document.getElementById("greeting-message");
 
-const bootUser = document.getElementById("boot-user");
+bootUser.innerHTML =
+    getGreeting() +
+    "<br><strong>" + getUsername() + "</strong>" +
+    "<br><span>Welcome Home.</span>";
 
-bootUser.textContent = "Welcome back, " + getUsername();
+    greetingMessage.innerHTML =
+    getGreeting() +
+    "<br><strong>" + getUsername() + "</strong>" +
+    "<br><span>Welcome Home.</span>";
+
+    console.log(bootUser.innerHTML);
 
     const messages = [
 
@@ -72,18 +83,34 @@ bootUser.textContent = "Welcome back, " + getUsername();
 
             clearInterval(boot);
 
+            
+
             bootScreen.style.transition = "opacity 0.8s";
-            bootScreen.style.opacity = "0";
+            
+
+            bootUser.style.opacity = "1";
 
            setTimeout(() => {
 
+            bootScreen.style.opacity = "0";
+
     bootScreen.style.display = "none";
-    desktop.style.display = "block";
+    greetingScreen.style.display = "flex";
     desktop.style.opacity = "1";
 
     checkUser();
 
-}, 800);
+    setTimeout(() => {
+
+    greetingScreen.style.display = "none";
+
+    desktop.style.display = "block";
+
+    desktop.style.opacity = "1";
+
+}, 3000);
+
+}, 2500);
 
         }
 

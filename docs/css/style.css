@@ -833,3 +833,60 @@ transform:translateX(-100%);
     box-shadow:0 0 15px gold;
 
 }
+
+#boot-user {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+
+}
+#boot-user strong {
+
+    display: block;
+
+   font-size: 30px !important;
+
+    margin-top: 8px;
+
+}
+
+#boot-user span {
+
+    display: block;
+
+    margin-top: 12px;
+
+ }   
+#greeting-screen {
+
+    display: none;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: black;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+}
+#greeting-box {
+
+    text-align: center;
+
+}
