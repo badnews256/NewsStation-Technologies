@@ -31,4 +31,8 @@ screen.style.display = "flex";
 
     document.getElementById("welcome-screen").style.display = "none";
 
+}function getUsername() {
+
+    return localStorage.getItem("newsosUser") || "Guest";
+
 }

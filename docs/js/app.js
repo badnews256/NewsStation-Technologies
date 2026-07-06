@@ -39,6 +39,10 @@ startClock();
     const progress = document.getElementById("boot-progress");
     const bootText = document.getElementById("boot-text");
 
+const bootUser = document.getElementById("boot-user");
+
+bootUser.textContent = "Welcome back, " + getUsername();
+
     const messages = [
         "Initializing Hardware...",
         "Loading NewsOS Core...",
