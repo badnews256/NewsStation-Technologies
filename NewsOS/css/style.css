@@ -136,4 +136,74 @@ transform:translateX(-100%);
 
 }
 
+}/* =====================================
+   NewsOS Card System
+===================================== */
+
+.card-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.news-card{
+
+    background:#181818;
+
+    border:2px solid gold;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 0 10px rgba(255,215,0,.15);
+
+}
+
+.news-card:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:0 0 25px gold;
+
+}
+
+.news-card img{
+
+    width:140px;
+
+    height:80px;
+
+    object-fit:contain;
+
+    margin-bottom:15px;
+
+}
+
+.news-card h3{
+
+    color:gold;
+
+    margin:10px 0;
+
+}
+
+.news-card p{
+
+    color:white;
+
+    font-size:15px;
+
 }

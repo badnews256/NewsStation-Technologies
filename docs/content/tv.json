@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Tubi",
+        "logo": "logos/tubi.png",
+        "description": "Free Movies & TV",
+        "category": "Movies",
+        "featured": true,
+        "url": "https://tubitv.com"
+    },
+    {
+        "name": "Pluto TV",
+        "logo": "logos/pluto.png",
+        "description": "Live Television",
+        "category": "Live TV",
+        "featured": true,
+        "url": "https://pluto.tv"
+    },
+    {
+        "name": "Plex",
+        "logo": "logos/plex.png",
+        "description": "Movies & Shows",
+        "category": "Movies",
+        "featured": false,
+        "url": "https://watch.plex.tv"
+    },
+    {
+        "name": "YouTube",
+        "logo": "logos/youtube.png",
+        "description": "Videos & Live Streams",
+        "category": "Video",
+        "featured": true,
+        "url": "https://youtube.com"
+    }
+]

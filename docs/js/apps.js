@@ -17,29 +17,20 @@ console.log(title);
 console.log(content);
     switch (appName) {
 
-        case "tv":
 
-            title.textContent = "📺 TV";
+           case "tv":
 
-            content.innerHTML = `
-    <h2>📺 TV</h2>
+    title.textContent = "📺 TV";
 
-    <p>Select a channel to begin watching.</p>
+    content.innerHTML = "<h2>Loading TV...</h2>";
 
-    <br>
+    loadTVServices().then(html => {
 
-    <button onclick="playChannel('news')">📰 News</button>
+        content.innerHTML = html;
 
-    <button onclick="playChannel('music')">🎵 Music</button>
+    });
 
-    <button onclick="playChannel('movies')">🎬 Movies</button>
-
-    <button onclick="playChannel('sports')">🏈 Sports</button>
-
-    <button onclick="playChannel('kids')">🧸 Kids</button>
-
-    <button onclick="playChannel('favorites')">⭐ Favorites</button>
-`;
+    break;
 
             break;
 
