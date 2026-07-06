@@ -45,11 +45,27 @@ console.log(content);
 
         <hr>
 
-        <h3>🟢 AutoDJ Online</h3>
+       <div class="broadcast-status">
 
-        <p>24/7 Music Streaming</p>
+    <h2>📡 NOW BROADCASTING</h2>
 
-        <a href="#" class="radio-button">
+    <h3>🟢 AUTO DJ</h3>
+
+    <p>The Sound of the Grid</p>
+
+</div>
+
+<div class="now-playing">
+
+    <h3>🎵 NOW PLAYING</h3>
+
+    <p><strong>Artist:</strong> DJ Bad News</p>
+
+    <p><strong>Track:</strong> AutoDJ Playlist</p>
+
+</div>
+
+<a href="#" class="radio-button">
     ▶ Listen on News Station Radio
 </a>
 
