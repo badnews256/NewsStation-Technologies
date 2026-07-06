@@ -44,12 +44,16 @@ const bootUser = document.getElementById("boot-user");
 bootUser.textContent = "Welcome back, " + getUsername();
 
     const messages = [
-        "Initializing Hardware...",
-        "Loading NewsOS Core...",
-        "Connecting Services...",
-        "Loading Dashboard...",
-        "System Ready..."
-    ];
+
+    "Powering NSTV One...",
+
+    "Initializing Hardware...",
+
+    "Starting Media Engine...",
+
+    "Connecting you to the Grid..."
+
+];
 
     let percent = 0;
     let messageIndex = 0;
