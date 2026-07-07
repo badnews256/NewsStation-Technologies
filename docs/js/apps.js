@@ -73,19 +73,37 @@ console.log(content);
 
         <hr>
 
-        <h3>⭐ Featured Mix</h3>
+<h3>⭐ Featured Mix</h3>
 
-<div class="featured-mix">
+<div class="content-row">
+
+    <div class="content-card featured-mix">
+
+        <img src="covers/featured-mix.jpg" class="mix-cover">
+
+        <h2>Summer Sessions Vol. 3</h2>
+
+        <p>Mixed by DJ Bad News</p>
+
+        <a href="#" class="radio-button">
+            ▶ Play Featured Mix
+        </a>
+
+    </div>
+
+    <div class="content-card featured-mix">
 
     <img src="covers/featured-mix.jpg" class="mix-cover">
 
-    <h2>Summer Sessions Vol. 3</h2>
+    <h2>Late Night Vibes</h2>
 
     <p>Mixed by DJ Bad News</p>
 
     <a href="#" class="radio-button">
-        ▶ Play Featured Mix
+        ▶ Play Mix
     </a>
+
+</div>
 
 </div>
 
