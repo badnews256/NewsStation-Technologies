@@ -968,3 +968,192 @@ transform:translateX(-100%);
     padding: 10px 0;
 
 }
+/* ===================================
+   Leroy Assistant
+=================================== */
+
+#leroy-widget {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 150px;
+
+    width: 340px;
+
+    background: #1b1b1b;
+
+    border: 2px solid gold;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    opacity: 0;
+
+    transform: translateX(50px);
+
+    transition: opacity .6s ease, transform .6s ease;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow: 0 0 25px rgba(255,215,0,.30);
+
+    z-index: 99999;
+
+}
+#leroy-avatar {
+
+    font-size: 40px;
+
+    flex-shrink: 0;
+
+}
+#leroy-text {
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    color: #f2f2f2;
+
+}
+
+#leroy-text strong {
+
+    display: block;
+
+    color: gold;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+
+}
+#leroy-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255,215,0,.35);
+
+}
+#leroy-name {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: gold;
+
+}
+/* Leroy Divider */
+
+.leroy-divider {
+
+    height: 1px;
+
+    background: rgba(255,215,0,.35);
+
+    margin: 14px 0;
+
+}
+
+/* Leroy Message */
+
+#leroy-message {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+/* Leroy Title */
+
+#leroy-title {
+
+    color: gold;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+/* Leroy Body */
+
+#leroy-body {
+
+    color: #f2f2f2;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+/* ==========================
+   Good News Headlines
+========================== */
+
+#good-news-headlines {
+
+    margin-top: 18px;
+
+}
+
+#good-news-headlines h4 {
+
+    color: gold;
+
+    font-size: 17px;
+
+    margin-bottom: 10px;
+
+}
+
+#good-news-headlines ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+#good-news-headlines li {
+
+    padding: 6px 0;
+
+    color: #f2f2f2;
+
+    font-size: 15px;
+
+    border-bottom: 1px solid rgba(255,215,0,.12);
+
+}
+
+#good-news-headlines li:last-child {
+
+    border-bottom: none;
+
+}

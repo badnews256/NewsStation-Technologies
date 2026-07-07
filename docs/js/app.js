@@ -81,39 +81,162 @@ bootUser.innerHTML =
 
         if (percent >= 100) {
 
-            clearInterval(boot);
+    clearInterval(boot);
 
-            
+    bootScreen.style.transition = "opacity 0.8s";
+    bootUser.style.opacity = "1";
 
-            bootScreen.style.transition = "opacity 0.8s";
-            
-
-            bootUser.style.opacity = "1";
-
-           setTimeout(() => {
-
-            bootScreen.style.opacity = "0";
-
-    bootScreen.style.display = "none";
-    greetingScreen.style.display = "flex";
-    desktop.style.opacity = "1";
-
-    checkUser();
-
+    // Fade out boot screen
     setTimeout(() => {
 
-    greetingScreen.style.display = "none";
+        bootScreen.style.opacity = "0";
 
-    desktop.style.display = "block";
+        setTimeout(() => {
 
-    desktop.style.opacity = "1";
+            // Hide boot screen
+            bootScreen.style.display = "none";
 
-}, 3000);
+            // Show greeting
+            greetingScreen.style.display = "flex";
 
-}, 2500);
+            // Personalized greeting
+            checkUser();
+
+            // Keep greeting visible for 3 seconds
+            setTimeout(() => {
+
+                greetingScreen.style.display = "none";
+
+                // Show desktop
+                desktop.style.display = "block";
+                desktop.style.opacity = "1";
+
+                // Animate Good News after desktop loads
+                setTimeout(() => {
+
+                    const goodNews = document.getElementById("leroy-widget");
+
+                    if (goodNews) {
+
+                    goodNews.style.opacity = "1";
+                    goodNews.style.transform = "translateX(0)";
+
+                const edition = getCurrentEdition();
+
+                const heading = document.getElementById("good-news-heading");
+
+                if (heading) {
+
+                heading.textContent = edition.heading;
+
+}
+
+typeGoodNewsMessage(
+    edition.title,
+    edition.body
+);
+
+}
+
+                }, 1500);
+
+            }, 3000);
+
+        }, 800);
+
+    }, 2500);
 
         }
 
     }, 100);
 
 });
+function typeGoodNewsMessage(title, body) {
+
+    const titleElement = document.getElementById("leroy-title");
+    const bodyElement = document.getElementById("leroy-body");
+
+    if (!titleElement || !bodyElement) return;
+
+    titleElement.textContent = "";
+    bodyElement.textContent = "";
+
+    let titleIndex = 0;
+
+    function typeTitle() {
+
+        if (titleIndex < title.length) {
+
+            titleElement.textContent += title.charAt(titleIndex);
+
+            titleIndex++;
+
+            setTimeout(typeTitle, 35);
+
+        } else {
+
+            typeBody();
+
+        }
+
+    }
+
+    let bodyIndex = 0;
+
+    function typeBody() {
+
+        if (bodyIndex < body.length) {
+
+            bodyElement.textContent += body.charAt(bodyIndex);
+
+            bodyIndex++;
+
+            setTimeout(typeBody, 20);
+
+        }
+
+    }
+
+    typeTitle();
+
+}
+const editions = [
+
+    {
+        heading: "☀️ Morning Edition",
+        title: "👋 Good Morning.",
+        body: "Bad News, it's great to see you again."
+    },
+
+    {
+        heading: "📰 Today's Headlines",
+        title: "✨ Welcome Home.",
+        body: "Here's what's happening across News Station today."
+    },
+
+    {
+        heading: "🎙 Radio Bulletin",
+        title: "NS Radio",
+        body: "The station is currently offline."
+    }
+
+];
+function getCurrentEdition() {
+
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+
+        return editions[0];
+
+    }
+
+    if (hour < 18) {
+
+        return editions[1];
+
+    }
+
+    return editions[2];
+
+}
