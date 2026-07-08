@@ -32,7 +32,97 @@ console.log(content);
 
     break;
 
-            break;
+      case "movies":
+
+    title.textContent = "🎬 News Station Cinema";
+
+    content.innerHTML = `
+
+        <h2>🎬 News Station Cinema</h2>
+
+        <p>Your entertainment starts here.</p>
+
+        <hr>
+
+        <div class="hero-banner">
+
+            <img src="covers/featured-movie.jpg" class="hero-image">
+
+            <div class="hero-overlay">
+
+                <h2>🎬 Now Premiering</h2>
+
+                <p>Coming Soon</p>
+
+                <button class="radio-button">
+
+                    ▶ Watch Trailer
+
+                </button>
+
+            </div>
+
+        </div>
+
+<h3 class="shelf-title">
+    🍿 Continue Watching
+</h3>
+
+<div class="content-row">
+
+<div class="content-card">
+
+    <img src="covers/featured-movie.jpg" class="poster-image">
+
+    <div class="card-info">
+
+        <h3>News Station Originals</h3>
+
+        <p>🎭 Documentary</p>
+
+        <p>📅 Coming Soon</p>
+
+    </div>
+
+</div>
+
+   <div class="content-card">
+
+    <img src="covers/featured-movie.jpg" class="poster-image">
+
+    <div class="card-info">
+
+        <h3>Friday Night Feature</h3>
+
+        <p>🎭 Action</p>
+
+        <p>📅 Coming Soon</p>
+
+    </div>
+
+</div>
+
+  <div class="content-card">
+
+    <img src="covers/featured-movie.jpg" class="poster-image">
+
+    <div class="card-info">
+
+        <h3>Community Spotlight</h3>
+
+        <p>🎭 Drama</p>
+
+        <p>📅 Coming Soon</p>
+
+    </div>
+
+</div>
+
+</div>
+
+    `;
+
+    break;  
 
         case "media":
 
@@ -79,7 +169,7 @@ console.log(content);
 
     <div class="content-card featured-mix">
 
-        <img src="covers/featured-mix.jpg" class="mix-cover">
+        <img src="covers/featured-mix.jpg" class="album-cover">
 
         <h2>Summer Sessions Vol. 3</h2>
 
@@ -93,7 +183,7 @@ console.log(content);
 
     <div class="content-card featured-mix">
 
-    <img src="covers/featured-mix.jpg" class="mix-cover">
+    <img src="covers/featured-mix.jpg" class="album-cover">
 
     <h2>Late Night Vibes</h2>
 
