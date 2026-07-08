@@ -114,7 +114,7 @@ bootUser.innerHTML =
                 // Animate Good News after desktop loads
                 setTimeout(() => {
 
-                    const goodNews = document.getElementById("leroy-widget");
+                    const goodNews = document.getElementById("good-news-widget");
 
                     if (goodNews) {
 
