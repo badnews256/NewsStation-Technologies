@@ -5,6 +5,12 @@ NewsOS Application Manager
 */
 
 function openApp(appName) {
+    const goodNewsWidget = document.getElementById("good-news-widget");
+
+if (goodNewsWidget) {
+    goodNewsWidget.style.opacity = "0";
+    goodNewsWidget.style.transform = "translateX(420px)";
+}
 console.log("openApp called:", appName);
     const windowBox = document.getElementById("app-window");
     const title = document.getElementById("app-title");
@@ -241,14 +247,44 @@ console.log(content);
 
         case "settings":
 
-            title.textContent = "⚙️ SETTINGS";
+    title.textContent = "⚙️ SETTINGS";
 
-            content.innerHTML = `
-                <h2>Settings</h2>
-                <p>Coming Soon</p>
-            `;
+    content.innerHTML = `
 
-            break;
+        <h2>⚙️ Settings</h2>
+
+        <p>Customize your NewsOS experience.</p>
+
+        <hr>
+
+        <h3>📰 About NewsOS</h3>
+
+        <div class="settings-card">
+
+            <h2>Entertainment Meets Community</h2>
+
+            <p>
+                NewsOS is a smart entertainment and community platform
+                designed exclusively for Second Life.
+            </p>
+
+            <hr>
+
+            <h3>Version</h3>
+
+            <p><strong>1.0</strong> — Foundation</p>
+
+            <hr>
+
+            <h3>Built By</h3>
+
+            <p>News Station Technologies</p>
+
+        </div>
+
+    `;
+
+    break;
 
         default:
 
@@ -262,6 +298,13 @@ console.log(content);
 function closeApp() {
 
     document.getElementById("app-window").style.display = "none";
+
+    const goodNewsWidget = document.getElementById("good-news-widget");
+
+    if (goodNewsWidget) {
+        goodNewsWidget.style.opacity = "1";
+        goodNewsWidget.style.transform = "translateX(0)";
+    }
 
 }
 

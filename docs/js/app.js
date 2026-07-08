@@ -43,14 +43,15 @@ startClock();
     const greetingMessage = document.getElementById("greeting-message");
 
 bootUser.innerHTML =
-    getGreeting() +
-    "<br><strong>" + getUsername() + "</strong>" +
-    "<br><span>Welcome Home.</span>";
+    "<strong>NEWSOS</strong>" +
+    "<br><span>Entertainment Meets Community</span>";
 
-    greetingMessage.innerHTML =
-    getGreeting() +
-    "<br><strong>" + getUsername() + "</strong>" +
-    "<br><span>Welcome Home.</span>";
+   greetingMessage.innerHTML =
+    "<span class='greeting-time'>" + getGreeting() + ",</span>" +
+    "<br>" +
+    "<span class='greeting-name'>" + getUsername() + "</span>" +
+    "<br>" +
+    "<span class='greeting-home'>Welcome Home.</span>";
 
     console.log(bootUser.innerHTML);
 

@@ -71,6 +71,37 @@ transition:.3s;
 background:gold;
 
 color:black;
+.hero-tile {
+
+    width: 320px;
+
+    height: 220px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #141414;
+
+}
+
+.hero-tile:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 0 35px rgba(255,215,0,.45);
+
+}
 
 }
 
@@ -527,6 +558,39 @@ transform:translateX(-100%);
     margin-bottom: 40px;
 
 }
+#dashboard-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+}
+
+#dashboard-spacer {
+
+    flex: 1;
+
+}
+
+#newsos-clock {
+
+    flex: 1;
+
+    text-align: right;
+
+    font-size: 20px;
+
+    color: #dddddd;
+
+    line-height: 1.4;
+
+}
 
 #welcome-panel h2 {
 
@@ -876,6 +940,69 @@ transform:translateX(-100%);
 #greeting-box {
 
     text-align: center;
+
+    max-width: 700px;
+
+    padding: 40px;
+
+    animation: fadeGreeting .8s ease;
+
+}
+#newsos-title {
+
+    font-size: 64px;
+
+    color: gold;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 10px;
+
+    text-shadow: 0 0 20px rgba(255,215,0,.35);
+
+}
+
+#newsos-tagline {
+
+    font-size: 22px;
+
+    color: #dddddd;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+
+}
+
+#greeting-message {
+
+    font-size: 34px;
+
+    line-height: 1.7;
+
+    color: white;
+
+    margin-top: 30px;
+
+}
+
+@keyframes fadeGreeting {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
 
 }
 /* =================================
@@ -1284,5 +1411,101 @@ transform:translateX(-100%);
     margin-bottom: 15px;
 
     box-shadow: 0 0 20px rgba(255,215,0,.35);
+
+}
+/* =================================
+   NewsOS Settings
+================================= */
+
+.settings-card {
+
+    background: #151515;
+
+    border: 2px solid gold;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    margin-top: 25px;
+
+    box-shadow: 0 0 20px rgba(255,215,0,.25);
+
+}
+
+.settings-card h2 {
+
+    color: gold;
+
+    margin-bottom: 10px;
+
+}
+
+.settings-card h3 {
+
+    color: gold;
+
+    margin-top: 20px;
+
+    margin-bottom: 8px;
+
+}
+
+.settings-card p {
+
+    color: #ddd;
+
+    line-height: 1.6;
+
+}
+/* =================================
+   NewsOS Greeting Typography
+================================= */
+
+.greeting-time {
+
+    display: block;
+
+    font-size: 32px;
+
+    color: #d9d9d9;
+
+    font-weight: 300;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+}
+
+.greeting-name {
+
+    display: block;
+
+    font-size: 56px;
+
+    font-weight: 700;
+
+    color: white;
+
+    letter-spacing: 1px;
+
+    text-shadow: 0 0 18px rgba(255,255,255,.15);
+
+    margin-bottom: 18px;
+
+}
+
+.greeting-home {
+
+    display: block;
+
+    font-size: 24px;
+
+    color: #bbbbbb;
+
+    font-weight: 300;
+
+    letter-spacing: 1px;
 
 }
