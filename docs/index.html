@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body style="visibility:hidden;">
 
 
 
@@ -73,11 +73,7 @@
 
     
 
-<div id="header">
 
-    <h1>NEWS STATION TECHNOLOGIES</h1>
-
-</div>
 
 <div id="welcome-panel">
 
@@ -96,6 +92,14 @@
     <p id="dashboard-tagline">
         Entertainment Meets Community
     </p>
+
+    <div id="powered-by">
+
+        <span>Powered by</span>
+
+        <h3>NEWS STATION TECHNOLOGIES</h3>
+
+    </div>
 
 </div>
 
@@ -124,53 +128,60 @@
 </div>
 
 <div id="dashboard">
+    
+    <h2 class="section-title">FEATURED</h2>
 
-    <div id="hero-section">
+  <div class="hero-label">
 
-        <div class="tile hero-tile" onclick="openApp('tv')">
+    <span class="live-badge">● LIVE</span>
 
-            📺<br>NSTV ONE
+    <h2>NSTV ONE</h2>
 
-        </div>
+    <p>Live TV • News • Entertainment</p>
 
-        <div class="tile hero-tile" onclick="openApp('movies')">
+    <button class="watch-now-btn">
+        ▶ WATCH NOW
+    </button>
 
-            🎬<br>NEWS STATION CINEMA
+</div>
 
-        </div>
+    </div>
+
+    <div class="tile hero-tile" onclick="openApp('movies')">
+
+        🎬<br>NEWS STATION CINEMA
 
     </div>
 
 </div>
 
-    <div class="icon-image">
-        🎬
+<h2 class="section-title">QUICK APPS</h2>
+
+
+</div>
+
+    <div id="quick-apps">
+
+    <div class="tile" onclick="openApp('media')">
+        🎙<br>NEWS STATION RADIO
     </div>
 
-    <div class="icon-title">
-        MOVIES
+    <div class="tile" onclick="openApp('news')">
+        🚨<br>GRID WATCH
     </div>
 
-</div>
+    <div class="tile" onclick="openApp('events')">
+        🎉<br>THE LINEUP
+    </div>
 
-<div class="tile" onclick="openApp('media')">
-    🎙<br>NEWS STATION RADIO
-</div>
+    <div class="tile" onclick="openApp('browser')">
+        🌐<br>BROWSER
+    </div>
 
-<div class="tile" onclick="openApp('news')">
-    🚨<br>GRID WATCH
-</div>
+    <div class="tile" onclick="openApp('settings')">
+        ⚙️<br>SETTINGS
+    </div>
 
-<div class="tile" onclick="openApp('events')">
-    🎉<br>THE LINEUP
-</div>
-
-<div class="tile" onclick="openApp('browser')">
-    🌐<br>BROWSER
-</div>
-
-<div class="tile" onclick="openApp('settings')">
-    ⚙️<br>SETTINGS
 </div>
 
 </div>
@@ -259,7 +270,6 @@ Loading...
     startClock();
 </script>
 
-</script>
 
 <div id="good-news-widget">
 

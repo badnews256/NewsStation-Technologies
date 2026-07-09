@@ -31,10 +31,11 @@ setInterval(loadTicker, 60000);
 // Boot Animation
 // ==========================
 
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
 startClock();
 
     const bootScreen = document.getElementById("boot-screen");
+    document.body.style.visibility = "visible";
     const desktop = document.getElementById("desktop");
     const progress = document.getElementById("boot-progress");
     const bootText = document.getElementById("boot-text");
@@ -95,10 +96,11 @@ bootUser.innerHTML =
         setTimeout(() => {
 
             // Hide boot screen
-            bootScreen.style.display = "none";
-
-            // Show greeting
+            // Show greeting FIRST
             greetingScreen.style.display = "flex";
+
+            // Then hide boot screen
+            bootScreen.style.display = "none";
 
             // Personalized greeting
             checkUser();

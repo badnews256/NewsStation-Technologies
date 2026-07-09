@@ -38,15 +38,19 @@ margin-top:10px;
 
 #dashboard{
 
-display:grid;
+display:flex;
 
-grid-template-columns:repeat(2,250px);
+flex-direction:column;
 
-justify-content:center;
+width:100%;
 
-gap:30px;
+max-width:1400px;
+
+margin:0 auto;
 
 padding:50px;
+
+box-sizing:border-box;
 
 }
 
@@ -250,6 +254,8 @@ transform:translateX(-100%);
     align-items: center;
     z-index: 10000;
     font-family: Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 0.8s ease;
 }
 
 #boot-screen h1 {
@@ -558,6 +564,40 @@ transform:translateX(-100%);
     margin-bottom: 40px;
 
 }
+#powered-by{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    opacity:.65;
+
+}
+
+#powered-by span{
+
+    display:block;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+#powered-by h3{
+
+    margin-top:4px;
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
+    font-weight:500;
+
+}
+
 #dashboard-header {
 
     display: flex;
@@ -1507,5 +1547,108 @@ transform:translateX(-100%);
     font-weight: 300;
 
     letter-spacing: 1px;
+
+}
+/* =========================================
+   Hero Section
+========================================= */
+
+#hero-section{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+
+    width:100%;
+
+    margin:20px 0 40px;
+
+}
+.hero-tile{
+
+    min-height:260px;
+
+    width:100%;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+    padding:30px;
+
+    box-sizing:border-box;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.hero-tile:hover{
+
+    transform:translateY(-6px) scale(1.02);
+
+}
+/* =========================================
+   NSTV ONE Hero Card
+========================================= */
+
+.tv-hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #1b1b1b,
+        #111,
+        #000
+    );
+
+    border:1px solid rgba(255,215,0,.20);
+
+    box-shadow:
+        0 0 25px rgba(255,215,0,.08);
+
+}
+
+.hero-label{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:left;
+
+    padding:25px;
+
+}
+
+.hero-label h2{
+
+    margin:0;
+
+    font-size:34px;
+
+    letter-spacing:2px;
+
+}
+
+.hero-label p{
+
+    margin-top:8px;
+
+    opacity:.8;
+
+    font-size:15px;
 
 }
