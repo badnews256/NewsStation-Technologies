@@ -32,7 +32,7 @@ setInterval(loadTicker, 60000);
 // ==========================
 
 document.addEventListener("DOMContentLoaded", function () {
-startClock();
+    startClock();
 
     const bootScreen = document.getElementById("boot-screen");
     document.body.style.visibility = "visible";
@@ -44,38 +44,38 @@ startClock();
     const greetingScreen = document.getElementById("greeting-screen");
     const greetingMessage = document.getElementById("greeting-message");
     // Force initial screen state
-bootScreen.style.display = "flex";
-bootScreen.style.opacity = "1";
+    bootScreen.style.display = "flex";
+    bootScreen.style.opacity = "1";
 
-greetingScreen.style.display = "none";
+    greetingScreen.style.display = "none";
 
-desktop.style.display = "none";
-desktop.style.opacity = "0";
+    desktop.style.display = "none";
+    desktop.style.opacity = "0";
 
-bootUser.innerHTML =
-    "<strong>NEWSOS</strong>" +
-    "<br><span>Entertainment Meets Community</span>";
+    bootUser.innerHTML =
+        "<strong>NEWSOS</strong>" +
+        "<br><span>Entertainment Meets Community</span>";
 
-   greetingMessage.innerHTML =
-    "<span class='greeting-time'>" + getGreeting() + ",</span>" +
-    "<br>" +
-    "<span class='greeting-name'>" + getUsername() + "</span>" +
-    "<br>" +
-    "<span class='greeting-home'>Welcome Home.</span>";
+    greetingMessage.innerHTML =
+        "<span class='greeting-time'>" + getGreeting() + ",</span>" +
+        "<br>" +
+        "<span class='greeting-name'>" + getUsername() + "</span>" +
+        "<br>" +
+        "<span class='greeting-home'>Welcome Home.</span>";
 
     console.log(bootUser.innerHTML);
 
     const messages = [
 
-    "Powering NSTV One...",
+        "Powering NSTV One...",
 
-    "Initializing Hardware...",
+        "Initializing Hardware...",
 
-    "Starting Media Engine...",
+        "Starting Media Engine...",
 
-    "Connecting you to the Grid..."
+        "Connecting you to the Grid..."
 
-];
+    ];
 
     let percent = 0;
     let messageIndex = 0;
@@ -92,73 +92,78 @@ bootUser.innerHTML =
 
         if (percent >= 100) {
 
-    clearInterval(boot);
+            clearInterval(boot);
 
-    bootScreen.style.transition = "opacity 0.8s";
-    bootUser.style.opacity = "1";
+            bootScreen.style.transition = "opacity 0.8s";
+            bootUser.style.opacity = "1";
 
-    // Fade out boot screen
-    setTimeout(() => {
-
-        bootScreen.style.opacity = "0";
-
-        setTimeout(() => {
-
-            // Hide boot screen
-            // Show greeting FIRST
-            greetingScreen.style.display = "flex";
-
-            // Then hide boot screen
-            bootScreen.style.display = "none";
-
-            // Personalized greeting
-            checkUser();
-
-            // Keep greeting visible for 3 seconds
+            // Fade out boot screen
             setTimeout(() => {
 
-                greetingScreen.style.display = "none";
+                bootScreen.style.opacity = "0";
 
-                // Show desktop
-                console.log("SHOWING DESKTOP");
-                desktop.style.display = "block";
-                console.log("AFTER SHOW:", getComputedStyle(desktop).display);
-                desktop.style.opacity = "1";
-
-                // Animate Good News after desktop loads
                 setTimeout(() => {
 
-                    const goodNews = document.getElementById("good-news-widget");
+                    // Hide boot screen
+                    // Show greeting FIRST
+                    greetingScreen.style.display = "flex";
 
-                    if (goodNews) {
+                    // Then hide boot screen
+                    bootScreen.style.display = "none";
 
-                    goodNews.style.opacity = "1";
-                    goodNews.style.transform = "translateX(0)";
+                    // Personalized greeting
+                    checkUser();
 
-                const edition = getCurrentEdition();
+                    // Keep greeting visible for 3 seconds
+                    setTimeout(() => {
 
-                const heading = document.getElementById("good-news-heading");
+                        greetingScreen.style.display = "none";
 
-                if (heading) {
+                        // Show desktop
+                        console.log("SHOWING DESKTOP");
+                        desktop.style.display = "block";
+                        console.log("AFTER SHOW:", getComputedStyle(desktop).display);
+                        desktop.style.opacity = "1";
+                        const miniPlayer = document.getElementById("mini-player");
 
-                heading.textContent = edition.heading;
+                        if (miniPlayer) {
+                            miniPlayer.style.display = "block";
+                        }
 
-}
+                        // Animate Good News after desktop loads
+                        setTimeout(() => {
 
-typeGoodNewsMessage(
-    edition.title,
-    edition.body
-);
+                            const goodNews = document.getElementById("good-news-widget");
 
-}
+                            if (goodNews) {
 
-                }, 1500);
+                                goodNews.style.opacity = "1";
+                                goodNews.style.transform = "translateX(0)";
 
-            }, 3000);
+                                const edition = getCurrentEdition();
 
-        }, 800);
+                                const heading = document.getElementById("good-news-heading");
 
-    }, 2500);
+                                if (heading) {
+
+                                    heading.textContent = edition.heading;
+
+                                }
+
+                                typeGoodNewsMessage(
+                                    edition.title,
+                                    edition.body
+                                );
+
+                            }
+
+                        }, 1500);
+
+                    }, 3000);
+
+                }, 800);
+
+            }, 2500);
 
         }
 
