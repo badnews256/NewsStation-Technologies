@@ -1,177 +1,182 @@
-body{
+body {
 
-background:#0b0b0b;
+    background: #0b0b0b;
 
-color:white;
+    color: white;
 
-font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-margin:0;
-
-}
-
-#header{
-
-text-align:center;
-
-padding:30px;
-
-border-bottom:3px solid gold;
+    margin: 0;
 
 }
 
-#header h1{
+#header {
 
-color:gold;
+    text-align: center;
 
-margin:0;
+    padding: 30px;
 
-font-size:42px;
-
-}
-
-#header h2{
-
-margin-top:10px;
+    border-bottom: 3px solid gold;
 
 }
 
-#dashboard{
+#header h1 {
 
-display:flex;
+    color: gold;
 
-flex-direction:column;
+    margin: 0;
 
-width:100%;
-
-max-width:1400px;
-
-margin:0 auto;
-
-padding:50px;
-
-box-sizing:border-box;
+    font-size: 42px;
 
 }
 
-.tile{
+#header h2 {
 
-border:2px solid gold;
-
-padding:40px;
-
-text-align:center;
-
-font-size:30px;
-
-cursor:pointer;
-
-transition:.3s;
+    margin-top: 10px;
 
 }
 
-.tile:hover{
-
-background:gold;
-
-color:black;
-.hero-tile {
-
-    width: 320px;
-
-    height: 220px;
+#dashboard {
 
     display: flex;
 
-    justify-content: center;
-
-    align-items: center;
-
     flex-direction: column;
 
-    border-radius: 18px;
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+}
+
+.tile {
+
+    border: 2px solid gold;
+
+    padding: 40px;
+
+    text-align: center;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.tile:hover {
+
+    background: gold;
+
+    color: black;
+
+    .hero-tile {
+
+        width: 320px;
+
+        height: 220px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        flex-direction: column;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        position: relative;
+
+        background: #141414;
+
+    }
+
+    .hero-tile:hover {
+
+        transform: translateY(-8px);
+
+        box-shadow: 0 0 35px rgba(255, 215, 0, .45);
+
+    }
+
+}
+
+#status {
+
+    border-top: 3px solid gold;
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+#status {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px 40px;
+
+    border-top: 2px solid gold;
+
+    font-size: 18px;
+
+}
+
+#ticker {
 
     overflow: hidden;
 
-    position: relative;
+    border-top: 2px solid gold;
 
-    background: #141414;
+    padding: 12px;
 
-}
-
-.hero-tile:hover {
-
-    transform: translateY(-8px);
-
-    box-shadow: 0 0 35px rgba(255,215,0,.45);
+    white-space: nowrap;
 
 }
 
-}
+#tickerText {
 
-#status{
+    display: inline-block;
 
-border-top:3px solid gold;
+    padding-left: 100%;
 
-padding:20px;
+    animation: ticker 25s linear infinite;
 
-text-align:center;
+    color: gold;
 
-}#status{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:15px 40px;
-
-border-top:2px solid gold;
-
-font-size:18px;
+    font-weight: bold;
 
 }
 
-#ticker{
+@keyframes ticker {
 
-overflow:hidden;
+    0% {
 
-border-top:2px solid gold;
+        transform: translateX(0);
 
-padding:12px;
+    }
 
-white-space:nowrap;
+    100% {
 
-}
+        transform: translateX(-100%);
 
-#tickerText{
-
-display:inline-block;
-
-padding-left:100%;
-
-animation:ticker 25s linear infinite;
-
-color:gold;
-
-font-weight:bold;
+    }
 
 }
 
-@keyframes ticker{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(-100%);
-
-}
-
-}/* ===========================
+/* ===========================
    News Ticker
 =========================== */
 
@@ -205,7 +210,9 @@ transform:translateX(-100%);
     to {
         transform: translateX(-100%);
     }
-}/* ===========================
+}
+
+/* ===========================
    NSTV News Ticker
 =========================== */
 
@@ -239,7 +246,9 @@ transform:translateX(-100%);
     to {
         transform: translateX(-100%);
     }
-}/* ===========================
+}
+
+/* ===========================
    Boot Screen
 =========================== */
 
@@ -295,10 +304,13 @@ transform:translateX(-100%);
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
-}/* ==========================
+}
+
+/* ==========================
    Standby Screen
 ========================== */
 
@@ -320,26 +332,26 @@ transform:translateX(-100%);
 
 }
 
-#standby-led{
+#standby-led {
 
-    width:18px;
-    height:18px;
+    width: 18px;
+    height: 18px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:gold;
+    background: gold;
 
-    box-shadow:0 0 20px gold;
+    box-shadow: 0 0 20px gold;
 
 }
 
-#standby-text{
+#standby-text {
 
-    color:gold;
+    color: gold;
 
-    margin-top:20px;
+    margin-top: 20px;
 
-    font-size:22px;
+    font-size: 22px;
 
 }
 
@@ -365,7 +377,7 @@ transform:translateX(-100%);
 
     border-radius: 15px;
 
-    box-shadow: 0 0 30px rgba(255,215,0,.4);
+    box-shadow: 0 0 30px rgba(255, 215, 0, .4);
 
     display: none;
 
@@ -427,7 +439,9 @@ transform:translateX(-100%);
 
     height: calc(100% - 55px);
 
-}/* =====================================
+}
+
+/* =====================================
    NewsOS Card System
 ===================================== */
 
@@ -459,7 +473,7 @@ transform:translateX(-100%);
 
     transition: all .25s ease;
 
-    box-shadow: 0 0 10px rgba(255,215,0,.15);
+    box-shadow: 0 0 10px rgba(255, 215, 0, .15);
 
 }
 
@@ -471,21 +485,21 @@ transform:translateX(-100%);
 
 }
 
-.news-card img{
+.news-card img {
 
-    width:170px;
+    width: 170px;
 
-    height:90px;
+    height: 90px;
 
-    object-fit:contain;
+    object-fit: contain;
 
-    background:white;
+    background: white;
 
-    padding:12px;
+    padding: 12px;
 
-    border-radius:12px;
+    border-radius: 12px;
 
-    margin-bottom:20px;
+    margin-bottom: 20px;
 
 }
 
@@ -505,55 +519,61 @@ transform:translateX(-100%);
 
     margin: 0;
 
-}/* =====================================
+}
+
+/* =====================================
    NewsOS Section Titles
 ===================================== */
 
-.section-title{
+.section-title {
 
-    color:gold;
+    color: gold;
 
-    font-size:32px;
+    font-size: 32px;
 
-    font-weight:bold;
+    font-weight: bold;
 
-    margin-bottom:25px;
+    margin-bottom: 25px;
 
-    border-bottom:2px solid gold;
+    border-bottom: 2px solid gold;
 
-    padding-bottom:10px;
-
-}.launch-btn{
-
-    margin-top:15px;
-
-    width:100%;
-
-    padding:10px;
-
-    background:#111;
-
-    color:gold;
-
-    border:2px solid gold;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:bold;
-
-    transition:0.25s;
+    padding-bottom: 10px;
 
 }
 
-.launch-btn:hover{
+.launch-btn {
 
-    background:gold;
+    margin-top: 15px;
 
-    color:black;
+    width: 100%;
 
-}/* Welcome Panel */
+    padding: 10px;
+
+    background: #111;
+
+    color: gold;
+
+    border: 2px solid gold;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+
+}
+
+.launch-btn:hover {
+
+    background: gold;
+
+    color: black;
+
+}
+
+/* Welcome Panel */
 
 #welcome-panel {
 
@@ -564,37 +584,38 @@ transform:translateX(-100%);
     margin-bottom: 40px;
 
 }
-#powered-by{
 
-    margin-top:15px;
+#powered-by {
 
-    text-align:center;
+    margin-top: 15px;
 
-    opacity:.65;
+    text-align: center;
 
-}
-
-#powered-by span{
-
-    display:block;
-
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
+    opacity: .65;
 
 }
 
-#powered-by h3{
+#powered-by span {
 
-    margin-top:4px;
+    display: block;
 
-    font-size:15px;
+    font-size: 12px;
 
-    letter-spacing:3px;
+    letter-spacing: 2px;
 
-    font-weight:500;
+    text-transform: uppercase;
+
+}
+
+#powered-by h3 {
+
+    margin-top: 4px;
+
+    font-size: 15px;
+
+    letter-spacing: 3px;
+
+    font-weight: 500;
 
 }
 
@@ -650,7 +671,9 @@ transform:translateX(-100%);
 
     letter-spacing: 1px;
 
-}/* ===== NewsOS Status Panel ===== */
+}
+
+/* ===== NewsOS Status Panel ===== */
 
 #status-panel {
 
@@ -700,7 +723,9 @@ transform:translateX(-100%);
 
     box-shadow: 0 0 20px gold;
 
-}/* ===== NS Radio Button ===== */
+}
+
+/* ===== NS Radio Button ===== */
 
 .radio-button {
 
@@ -724,7 +749,7 @@ transform:translateX(-100%);
 
     transition: 0.3s;
 
-    box-shadow: 0 0 15px rgba(255,215,0,.4);
+    box-shadow: 0 0 15px rgba(255, 215, 0, .4);
 
 }
 
@@ -734,7 +759,9 @@ transform:translateX(-100%);
 
     box-shadow: 0 0 25px gold;
 
-}/* ===== Featured Mix ===== */
+}
+
+/* ===== Featured Mix ===== */
 
 /* ===== Featured Mix ===== */
 
@@ -754,9 +781,11 @@ transform:translateX(-100%);
 
     transition: transform .4s ease;
 
-    box-shadow: 0 0 20px rgba(255,215,0,.35);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .35);
 
-}/* ==========================
+}
+
+/* ==========================
    NewsOS Mini Player
 ========================== */
 
@@ -780,7 +809,7 @@ transform:translateX(-100%);
 
     color: white;
 
-    box-shadow: 0 0 20px rgba(255,215,0,.30);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .30);
 
     z-index: 99999;
 
@@ -828,101 +857,111 @@ transform:translateX(-100%);
 
     transform: scale(1.03);
 
-}/* =====================================
+}
+
+/* =====================================
    Welcome Screen
 ===================================== */
 
-#welcome-screen{
+#welcome-screen {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    background:#000;
+    background: #000;
 
-    display:none;
+    display: none;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    z-index:999999;
-
-}#welcome-box{
-
-    width:420px;
-
-    background:#111;
-
-    border:3px solid gold;
-
-    border-radius:15px;
-
-    padding:40px;
-
-    text-align:center;
-
-    box-shadow:0 0 35px rgba(255,215,0,.35);
-
-}#welcome-box h1{
-
-    color:gold;
-
-    margin-bottom:15px;
+    z-index: 999999;
 
 }
 
-#welcome-box p{
+#welcome-box {
 
-    color:white;
+    width: 420px;
 
-    margin-bottom:25px;
+    background: #111;
 
-}#welcome-box input{
+    border: 3px solid gold;
 
-    width:100%;
+    border-radius: 15px;
 
-    padding:12px;
+    padding: 40px;
 
-    font-size:18px;
+    text-align: center;
 
-    margin-bottom:20px;
-
-    border:none;
-
-    border-radius:8px;
-
-    box-sizing:border-box;
-
-}#welcome-box button{
-
-    width:100%;
-
-    padding:12px;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    background:gold;
-
-    color:black;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    transition:.2s;
+    box-shadow: 0 0 35px rgba(255, 215, 0, .35);
 
 }
 
-#welcome-box button:hover{
+#welcome-box h1 {
 
-    transform:scale(1.03);
+    color: gold;
 
-    box-shadow:0 0 15px gold;
+    margin-bottom: 15px;
+
+}
+
+#welcome-box p {
+
+    color: white;
+
+    margin-bottom: 25px;
+
+}
+
+#welcome-box input {
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+}
+
+#welcome-box button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    background: gold;
+
+    color: black;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+#welcome-box button:hover {
+
+    transform: scale(1.03);
+
+    box-shadow: 0 0 15px gold;
 
 }
 
@@ -937,11 +976,12 @@ transform:translateX(-100%);
     transition: opacity 1s ease;
 
 }
+
 #boot-user strong {
 
     display: block;
 
-   font-size: 30px !important;
+    font-size: 30px !important;
 
     margin-top: 8px;
 
@@ -953,7 +993,8 @@ transform:translateX(-100%);
 
     margin-top: 12px;
 
- }   
+}
+
 #greeting-screen {
 
     display: none;
@@ -977,6 +1018,7 @@ transform:translateX(-100%);
     flex-direction: column;
 
 }
+
 #greeting-box {
 
     text-align: center;
@@ -988,6 +1030,7 @@ transform:translateX(-100%);
     animation: fadeGreeting .8s ease;
 
 }
+
 #newsos-title {
 
     font-size: 64px;
@@ -998,7 +1041,7 @@ transform:translateX(-100%);
 
     margin-bottom: 10px;
 
-    text-shadow: 0 0 20px rgba(255,215,0,.35);
+    text-shadow: 0 0 20px rgba(255, 215, 0, .35);
 
 }
 
@@ -1045,6 +1088,7 @@ transform:translateX(-100%);
     }
 
 }
+
 /* =================================
    NewsOS Content Card
 ================================= */
@@ -1065,11 +1109,12 @@ transform:translateX(-100%);
 
     overflow: hidden;
 
-    box-shadow: 0 0 20px rgba(255,215,0,.25);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .25);
 
     transition: all .3s ease;
 
 }
+
 .content-card:hover {
 
     transform: translateY(-8px) scale(1.04);
@@ -1077,8 +1122,8 @@ transform:translateX(-100%);
     border-color: #FFD700;
 
     box-shadow:
-        0 0 35px rgba(255,215,0,.65),
-        0 12px 30px rgba(0,0,0,.45);
+        0 0 35px rgba(255, 215, 0, .65),
+        0 12px 30px rgba(0, 0, 0, .45);
 
     cursor: pointer;
 
@@ -1088,7 +1133,7 @@ transform:translateX(-100%);
 
     transform: translateY(-8px) scale(1.02);
 
-    box-shadow: 0 0 35px rgba(255,215,0,.45);
+    box-shadow: 0 0 35px rgba(255, 215, 0, .45);
 
 }
 
@@ -1111,6 +1156,7 @@ transform:translateX(-100%);
     display: block;
 
 }
+
 .content-card h3 {
 
     margin: 12px;
@@ -1122,6 +1168,7 @@ transform:translateX(-100%);
     text-align: center;
 
 }
+
 .content-card p {
 
     margin: 0 12px 16px;
@@ -1133,6 +1180,7 @@ transform:translateX(-100%);
     text-align: center;
 
 }
+
 /* ==========================
    NewsOS Content Shelf
 ========================== */
@@ -1152,6 +1200,7 @@ transform:translateX(-100%);
     padding: 10px 0;
 
 }
+
 /* ===================================
    Leroy Assistant
 =================================== */
@@ -1190,11 +1239,12 @@ transform:translateX(-100%);
 
     gap: 15px;
 
-    box-shadow: 0 0 25px rgba(255,215,0,.30);
+    box-shadow: 0 0 25px rgba(255, 215, 0, .30);
 
     z-index: 99999;
 
 }
+
 #leroy-avatar {
 
     font-size: 40px;
@@ -1202,6 +1252,7 @@ transform:translateX(-100%);
     flex-shrink: 0;
 
 }
+
 #leroy-text {
 
     font-size: 16px;
@@ -1223,6 +1274,7 @@ transform:translateX(-100%);
     margin-bottom: 8px;
 
 }
+
 #leroy-header {
 
     display: flex;
@@ -1235,9 +1287,10 @@ transform:translateX(-100%);
 
     padding-bottom: 10px;
 
-    border-bottom: 1px solid rgba(255,215,0,.35);
+    border-bottom: 1px solid rgba(255, 215, 0, .35);
 
 }
+
 #leroy-name {
 
     font-size: 20px;
@@ -1247,13 +1300,14 @@ transform:translateX(-100%);
     color: gold;
 
 }
+
 /* Leroy Divider */
 
 .leroy-divider {
 
     height: 1px;
 
-    background: rgba(255,215,0,.35);
+    background: rgba(255, 215, 0, .35);
 
     margin: 14px 0;
 
@@ -1294,6 +1348,7 @@ transform:translateX(-100%);
     line-height: 1.6;
 
 }
+
 /* ==========================
    Good News Headlines
 ========================== */
@@ -1332,7 +1387,7 @@ transform:translateX(-100%);
 
     font-size: 15px;
 
-    border-bottom: 1px solid rgba(255,215,0,.12);
+    border-bottom: 1px solid rgba(255, 215, 0, .12);
 
 }
 
@@ -1341,6 +1396,7 @@ transform:translateX(-100%);
     border-bottom: none;
 
 }
+
 /* =======================================
    News Station Cinema
 ======================================= */
@@ -1361,7 +1417,7 @@ transform:translateX(-100%);
 
     border: 2px solid gold;
 
-    box-shadow: 0 0 25px rgba(255,215,0,.25);
+    box-shadow: 0 0 25px rgba(255, 215, 0, .25);
 
 }
 
@@ -1385,10 +1441,8 @@ transform:translateX(-100%);
 
     padding: 30px;
 
-    background: linear-gradient(
-        transparent,
-        rgba(0,0,0,.92)
-    );
+    background: linear-gradient(transparent,
+            rgba(0, 0, 0, .92));
 
 }
 
@@ -1409,6 +1463,7 @@ transform:translateX(-100%);
     margin-bottom: 20px;
 
 }
+
 .card-info {
 
     padding: 15px;
@@ -1436,6 +1491,7 @@ transform:translateX(-100%);
     font-size: 14px;
 
 }
+
 /* =================================
    NewsOS Radio Album Cover
 ================================= */
@@ -1450,9 +1506,10 @@ transform:translateX(-100%);
 
     margin-bottom: 15px;
 
-    box-shadow: 0 0 20px rgba(255,215,0,.35);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .35);
 
 }
+
 /* =================================
    NewsOS Settings
 ================================= */
@@ -1469,7 +1526,7 @@ transform:translateX(-100%);
 
     margin-top: 25px;
 
-    box-shadow: 0 0 20px rgba(255,215,0,.25);
+    box-shadow: 0 0 20px rgba(255, 215, 0, .25);
 
 }
 
@@ -1498,6 +1555,7 @@ transform:translateX(-100%);
     line-height: 1.6;
 
 }
+
 /* =================================
    NewsOS Greeting Typography
 ================================= */
@@ -1530,7 +1588,7 @@ transform:translateX(-100%);
 
     letter-spacing: 1px;
 
-    text-shadow: 0 0 18px rgba(255,255,255,.15);
+    text-shadow: 0 0 18px rgba(255, 255, 255, .15);
 
     margin-bottom: 18px;
 
@@ -1549,196 +1607,260 @@ transform:translateX(-100%);
     letter-spacing: 1px;
 
 }
+
 /* =========================================
    Hero Section
 ========================================= */
 
-#hero-section{
+#hero-section {
 
-    display:grid;
+    display: grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap:30px;
+    gap: 30px;
 
-    width:100%;
+    width: 100%;
 
-    margin:20px 0 40px;
-
-}
-.hero-tile{
-
-    min-height:260px;
-
-    width:100%;
-
-    border-radius:18px;
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    align-items:flex-start;
-
-    flex-direction:column;
-
-    padding:30px;
-
-    box-sizing:border-box;
-
-    cursor:pointer;
-
-    transition:.3s;
+    margin: 20px 0 40px;
 
 }
 
-.hero-tile:hover{
+.hero-tile {
 
-    transform:translateY(-6px) scale(1.02);
+    min-height: 260px;
+
+    width: 100%;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition: .3s;
 
 }
+
+.hero-tile:hover {
+
+    transform: translateY(-6px) scale(1.02);
+
+}
+
 /* =========================================
    NSTV ONE Hero Card
 ========================================= */
 
-.tv-hero{
+.tv-hero {
 
-    position:relative;
+    position: relative;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    background:linear-gradient(
-        135deg,
-        #1b1b1b,
-        #111,
-        #000
-    );
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, .92) 10%,
+            rgba(0, 0, 0, .60) 55%,
+            rgba(0, 0, 0, .20) 100%),
+        url("../covers/featured-tv.png");
 
-    border:1px solid rgba(255,215,0,.20);
+    background-size: cover;
 
-    box-shadow:
-        0 0 25px rgba(255,215,0,.08);
+    background-position: center;
 
-}
+    background-repeat: no-repeat;
 
-.hero-label{
+    }
 
-    position:relative;
+    .hero-label {
 
-    z-index:2;
+        position: relative;
 
-    text-align:left;
+        z-index: 2;
 
-    padding:25px;
+        text-align: left;
 
-}
+        padding: 25px;
 
-.hero-label h2{
+    }
 
-    margin:0;
+    .hero-label h2 {
 
-    font-size:34px;
+        margin: 0;
 
-    letter-spacing:2px;
+        font-size: 34px;
 
-}
+        letter-spacing: 2px;
 
-.hero-label p{
+    }
 
-    margin-top:8px;
+    .hero-label p {
 
-    opacity:.8;
+        margin-top: 8px;
 
-    font-size:15px;
+        opacity: .8;
 
-}
-/* =========================================
+        font-size: 15px;
+
+    }
+
+    /* =========================================
    HERO CARD
 ========================================= */
 
-.hero-label{
+    .hero-label {
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
 
-    height:100%;
-    padding:30px;
+        height: 100%;
+        padding: 30px;
 
-    gap:15px;
+        gap: 15px;
 
-}
+    }
 
-.live-badge{
+    .live-badge {
 
-    background:#d60000;
-    color:white;
+        background: #d60000;
+        color: white;
 
-    padding:6px 14px;
+        padding: 6px 14px;
 
-    border-radius:20px;
+        border-radius: 20px;
 
-    font-size:12px;
+        font-size: 12px;
 
-    font-weight:bold;
+        font-weight: bold;
 
-    letter-spacing:1px;
+        letter-spacing: 1px;
 
-    text-transform:uppercase;
+        text-transform: uppercase;
 
-    box-shadow:0 0 15px rgba(255,0,0,.45);
+        box-shadow: 0 0 15px rgba(255, 0, 0, .45);
 
-}
+    }
 
-.hero-label h2{
+    .hero-label h2 {
 
-    margin:0;
+        margin: 0;
 
-    font-size:42px;
+        font-size: 42px;
 
-    color:white;
+        color: white;
 
-}
+    }
 
-.hero-label p{
+    .hero-label p {
 
-    margin:0;
+        margin: 0;
 
-    font-size:18px;
+        font-size: 18px;
 
-    color:#d4d4d4;
+        color: #d4d4d4;
 
-}
+    }
 
-.watch-now-btn{
+    .watch-now-btn {
 
-    margin-top:10px;
+        margin-top: 10px;
 
-    padding:14px 28px;
+        padding: 14px 28px;
 
-    background:gold;
+        background: gold;
 
-    color:black;
+        color: black;
 
-    border:none;
+        border: none;
 
-    border-radius:8px;
+        border-radius: 8px;
 
-    font-size:16px;
+        font-size: 16px;
 
-    font-weight:bold;
+        font-weight: bold;
 
-    cursor:pointer;
+        cursor: pointer;
 
-    transition:.25s;
+        transition: .25s;
 
-}
+    }
 
-.watch-now-btn:hover{
+    .watch-now-btn:hover {
 
-    transform:translateY(-2px);
+        transform: translateY(-2px);
 
-    box-shadow:0 0 20px gold;
+        box-shadow: 0 0 20px gold;
 
-}
+    }
+
+    /* =========================================
+   HERO OVERLAY
+========================================= */
+
+    .tv-hero {
+
+        position: relative;
+
+        overflow: hidden;
+
+        background:
+            linear-gradient(90deg,
+                rgba(0, 0, 0, .85) 15%,
+                rgba(0, 0, 0, .55) 55%,
+                rgba(0, 0, 0, .25) 100%);
+
+    }
+
+    .hero-overlay {
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+            radial-gradient(circle at top left,
+                rgba(255, 215, 0, .10),
+                transparent 45%);
+
+        pointer-events: none;
+
+    }
+
+    /* =========================================
+   HERO BUTTONS
+========================================= */
+
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .info-btn {
+        background: rgba(255, 255, 255, .15);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, .25);
+        border-radius: 10px;
+        padding: 14px 22px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .info-btn:hover {
+        background: rgba(255, 255, 255, .25);
+        transform: translateY(-2px);
+    }
