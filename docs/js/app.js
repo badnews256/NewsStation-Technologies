@@ -37,11 +37,20 @@ startClock();
     const bootScreen = document.getElementById("boot-screen");
     document.body.style.visibility = "visible";
     const desktop = document.getElementById("desktop");
+    console.log("INIT:", getComputedStyle(desktop).display);
     const progress = document.getElementById("boot-progress");
     const bootText = document.getElementById("boot-text");
     const bootUser = document.getElementById("boot-user");
     const greetingScreen = document.getElementById("greeting-screen");
     const greetingMessage = document.getElementById("greeting-message");
+    // Force initial screen state
+bootScreen.style.display = "flex";
+bootScreen.style.opacity = "1";
+
+greetingScreen.style.display = "none";
+
+desktop.style.display = "none";
+desktop.style.opacity = "0";
 
 bootUser.innerHTML =
     "<strong>NEWSOS</strong>" +
@@ -111,7 +120,9 @@ bootUser.innerHTML =
                 greetingScreen.style.display = "none";
 
                 // Show desktop
+                console.log("SHOWING DESKTOP");
                 desktop.style.display = "block";
+                console.log("AFTER SHOW:", getComputedStyle(desktop).display);
                 desktop.style.opacity = "1";
 
                 // Animate Good News after desktop loads
