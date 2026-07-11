@@ -4,4 +4,18 @@ NewsOS Home Manager
 =========================================
 */
 
-console.log("Home Manager Loaded");
+const HomeManager = {
+
+    init() {
+
+        console.log("Home Manager Initialized");
+
+    }
+
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    HomeManager.init();
+
+});
