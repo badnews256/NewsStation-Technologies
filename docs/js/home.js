@@ -8,6 +8,22 @@ const HomeManager = {
 
     isReady: false,
 
+    defaultHero: {
+
+        badge: "● LIVE",
+
+        title: "NSTV ONE",
+
+        description: "Live TV • News • Entertainment"
+
+    },
+
+    heroCards: [],
+
+    currentHeroIndex: 0,
+
+    carouselTimer: null,
+
     sections: {
 
         hero: null,
@@ -28,33 +44,84 @@ const HomeManager = {
 
         this.cacheElements();
 
+        this.heroCards.push(
+            this.defaultHero,
+            {
+                badge: "🎬 FEATURED",
+                title: "News Station Cinema",
+                description: "Watch featured movies and shows."
+            }
+        );
+
+        this.loadDefaultHero();
+
+        this.startCarousel();
+
         this.isReady = true;
 
         console.log("Home Manager Ready");
 
     },
 
-   cacheElements() {
+    cacheElements() {
 
-    this.sections.hero = {
+        this.sections.hero = {
 
-        container: document.getElementById("hero-section"),
+            container: document.getElementById("hero-section"),
 
-        badge: document.getElementById("hero-badge"),
+            badge: document.getElementById("hero-badge"),
 
-        title: document.getElementById("hero-title"),
+            title: document.getElementById("hero-title"),
 
-        description: document.getElementById("hero-description"),
+            description: document.getElementById("hero-description"),
 
-        primaryButton: document.getElementById("hero-primary-btn"),
+            primaryButton: document.getElementById("hero-primary-btn"),
 
-        secondaryButton: document.getElementById("hero-secondary-btn")
+            secondaryButton: document.getElementById("hero-secondary-btn")
 
-    };
+        };
 
-    this.sections.quickApps = document.getElementById("quick-apps");
+        this.sections.quickApps = document.getElementById("quick-apps");
 
         console.log("Home sections registered.");
+
+    },
+
+    updateHero(data) {
+
+        if (!this.sections.hero || !data) return;
+
+        if (data.badge !== undefined)
+            this.sections.hero.badge.textContent = data.badge;
+
+        if (data.title !== undefined)
+            this.sections.hero.title.textContent = data.title;
+
+        if (data.description !== undefined)
+            this.sections.hero.description.textContent = data.description;
+
+    },
+    loadDefaultHero() {
+
+        this.updateHero(this.heroCards[this.currentHeroIndex]);
+
+    },
+
+    nextHero() {
+
+        this.currentHeroIndex =
+            (this.currentHeroIndex + 1) % this.heroCards.length;
+        this.loadDefaultHero();
+
+    },
+
+    startCarousel() {
+
+        this.carouselTimer = setInterval(() => {
+
+            this.nextHero();
+
+        }, 15000);
 
     }
 
