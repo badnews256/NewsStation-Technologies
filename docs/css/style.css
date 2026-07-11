@@ -1850,3 +1850,9 @@ body {
         background: rgba(255, 255, 255, .25);
         transform: translateY(-2px);
     }
+
+    #boot-bar {
+
+    display: none;
+
+}

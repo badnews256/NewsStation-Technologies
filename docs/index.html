@@ -3,13 +3,13 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NewsOS Home</title>
+    <title>NewsOS Home</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -17,350 +17,346 @@
 
 
 
-<div id="boot-screen">
+    <div id="boot-screen">
 
-    <h1>NEWS STATION TECHNOLOGIES</h1>
+        <h1>NEWS STATION TECHNOLOGIES</h1>
 
-    <h2>NSTV One</h2>
+        <h2>NSTV One</h2>
 
-    <p>Powered by NewsOS</p>
+        <p>Powered by NewsOS</p>
+        <div id="boot-scan-line"></div>
+        <div id="boot-text">
+            Initializing Hardware...
+        </div>
 
-    <div id="boot-text">
-        Initializing Hardware...
-    </div>
+        <p id="boot-user"></p>
 
-    <p id="boot-user"></p>
+        <div id="boot-bar">
 
-   <div id="boot-bar">
+            <div id="boot-progress"></div>
 
-    <div id="boot-progress"></div>
+        </div>
 
-</div>
+    </div> <!-- closes boot-screen -->
 
-</div>   <!-- closes boot-screen -->
+    <div id="greeting-screen">
 
-<div id="greeting-screen">
+        <div id="greeting-box">
 
-    <div id="greeting-box">
+            <h1 id="newsos-title">NEWSOS</h1>
 
-        <h1 id="newsos-title">NEWSOS</h1>
+            <p id="newsos-tagline">
+                Entertainment Meets Community
+            </p>
 
-        <p id="newsos-tagline">
-            Entertainment Meets Community
-        </p>
+            <hr>
 
-        <hr>
+            <p id="greeting-message"></p>
 
-        <p id="greeting-message"></p>
-
-    </div>
-
-</div>
-
-<div id="standby-screen">
-
-    <div id="standby-led"></div>
-
-    <div id="standby-text">
-        Standby
-    </div>
-
-</div>
-
-
-
-<div id="desktop">
-
-
-
-<div id="welcome-panel">
-
-    <div id="dashboard-header">
-
-        <div id="dashboard-spacer"></div>
-
-        <div id="newsos-clock">
-            --:--:--
         </div>
 
     </div>
 
-    <h1 id="dashboard-title">NEWSOS</h1>
+    <div id="standby-screen">
 
-    <p id="dashboard-tagline">
-        Entertainment Meets Community
-    </p>
+        <div id="standby-led"></div>
 
-    <div id="powered-by">
-
-        <span>Powered by</span>
-
-        <h3>NEWS STATION TECHNOLOGIES</h3>
+        <div id="standby-text">
+            Standby
+        </div>
 
     </div>
 
-</div>
 
-<div id="status-panel">
 
-    <div class="status-card">
-        🎙 <strong>NS Radio</strong><br>
-        Offline
+    <div id="desktop">
+
+
+
+        <div id="welcome-panel">
+
+            <div id="dashboard-header">
+
+                <div id="dashboard-spacer"></div>
+
+                <div id="newsos-clock">
+                    --:--:--
+                </div>
+
+            </div>
+
+            <h1 id="dashboard-title">NEWSOS</h1>
+
+            <p id="dashboard-tagline">
+                Entertainment Meets Community
+            </p>
+
+            <div id="powered-by">
+
+                <span>Powered by</span>
+
+                <h3>NEWS STATION TECHNOLOGIES</h3>
+
+            </div>
+
+        </div>
+
+        <div id="status-panel">
+
+            <div class="status-card">
+                🎙 <strong>NS Radio</strong><br>
+                Offline
+            </div>
+
+            <div class="status-card">
+                🚨 <strong>Grid Watch</strong><br>
+                No Alerts
+            </div>
+
+            <div class="status-card">
+                🎉 <strong>The Lineup</strong><br>
+                No Featured Event
+            </div>
+
+            <div class="status-card">
+                🌟 <strong>NS Spotlight</strong><br>
+                Coming Soon
+            </div>
+
+        </div>
+
+        <div id="dashboard">
+
+            <h2 class="section-title">FEATURED</h2>
+
+            <div id="hero-section">
+
+                <div class="tile hero-tile tv-hero" onclick="openApp('tv')">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-label">
+
+                        <span id="hero-badge" class="live-badge">● LIVE</span>
+
+                        <h2 id="hero-title">NSTV ONE</h2>
+
+                        <p id="hero-description">Live TV • News • Entertainment</p>
+
+                        <div class="hero-buttons">
+
+                            <button id="hero-primary-btn" class="watch-now-btn">
+                                ▶ WATCH NOW
+                            </button>
+
+                            <button id="hero-secondary-btn" class="info-btn">
+                                ⓘ MORE INFO
+                            </button>
+
+
+
+                        </div>
+
+                        <div class="hero-navigation">
+
+                            <button id="hero-prev-btn" aria-label="Previous Hero">
+                                ◀
+                            </button>
+
+                            <button id="hero-next-btn" aria-label="Next Hero">
+                                ▶
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tile hero-tile" onclick="openApp('movies')">
+
+                    🎬<br>NEWS STATION CINEMA
+
+                </div>
+
+            </div>
+
+            <h2 class="section-title">QUICK APPS</h2>
+
+
+        </div>
+
+        <div id="quick-apps">
+
+            <div class="tile" onclick="openApp('media')">
+                🎙<br>NEWS STATION RADIO
+            </div>
+
+            <div class="tile" onclick="openApp('news')">
+                🚨<br>GRID WATCH
+            </div>
+
+            <div class="tile" onclick="openApp('events')">
+                🎉<br>THE LINEUP
+            </div>
+
+            <div class="tile" onclick="openApp('browser')">
+                🌐<br>BROWSER
+            </div>
+
+            <div class="tile" onclick="openApp('settings')">
+                ⚙️<br>SETTINGS
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="status-card">
-        🚨 <strong>Grid Watch</strong><br>
-        No Alerts
-    </div>
+    <div id="status">
 
-    <div class="status-card">
-        🎉 <strong>The Lineup</strong><br>
-        No Featured Event
-    </div>
+        <div id="online">
+            🟢 ONLINE
+        </div>
 
-    <div class="status-card">
-        🌟 <strong>NS Spotlight</strong><br>
-        Coming Soon
-    </div>
-
-</div>
-
-<div id="dashboard">
-    
-    <h2 class="section-title">FEATURED</h2>
-
-    <div id="hero-section">
-
-   <div class="tile hero-tile tv-hero" onclick="openApp('tv')">
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-label">
-
-        <span id="hero-badge" class="live-badge">● LIVE</span>
-
-        <h2 id="hero-title">NSTV ONE</h2>
-
-        <p id="hero-description">Live TV • News • Entertainment</p>
-
-        <div class="hero-buttons">
-
-            <button id="hero-primary-btn" class="watch-now-btn">
-                ▶ WATCH NOW
-            </button>
-
-            <button id="hero-secondary-btn" class="info-btn">
-                ⓘ MORE INFO
-            </button>
-
-        
+        <div id="datetime">
+            Loading...
+        </div>
 
     </div>
 
-<div class="hero-navigation">
-
-    <button id="hero-prev-btn" aria-label="Previous Hero">
-        ◀
-    </button>
-
-    <button id="hero-next-btn" aria-label="Next Hero">
-        ▶
-    </button>
-
-</div>
-
-</div>
-
+    <div id="ticker-container">
+        <div id="ticker">
+            Loading News...
+        </div>
     </div>
-
-    <div class="tile hero-tile" onclick="openApp('movies')">
-
-        🎬<br>NEWS STATION CINEMA
-
     </div>
-
-</div>
-
-<h2 class="section-title">QUICK APPS</h2>
-
-
-</div>
-
-    <div id="quick-apps">
-
-    <div class="tile" onclick="openApp('media')">
-        🎙<br>NEWS STATION RADIO
-    </div>
-
-    <div class="tile" onclick="openApp('news')">
-        🚨<br>GRID WATCH
-    </div>
-
-    <div class="tile" onclick="openApp('events')">
-        🎉<br>THE LINEUP
-    </div>
-
-    <div class="tile" onclick="openApp('browser')">
-        🌐<br>BROWSER
-    </div>
-
-    <div class="tile" onclick="openApp('settings')">
-        ⚙️<br>SETTINGS
-    </div>
-
-</div>
-
-</div>
-
-<div id="status">
-
-<div id="online">
-🟢 ONLINE
-</div>
-
-<div id="datetime">
-Loading...
-</div>
-
-</div>
-
-<div id="ticker-container">
-    <div id="ticker">
-        Loading News...
-    </div>
-</div>
-</div>
-<!-- ==========================
+    <!-- ==========================
      NewsOS Application Window
 =========================== -->
 
-<div id="app-window">
+    <div id="app-window">
 
-    <div id="app-header">
+        <div id="app-header">
 
-        <span id="app-title">
-            Application
-        </span>
+            <span id="app-title">
+                Application
+            </span>
 
-        <button id="close-app" onclick="closeApp()">
-            ✕
-        </button>
+            <button id="close-app" onclick="closeApp()">
+                ✕
+            </button>
 
-    </div>
-
-    <div id="app-content">
-
-    </div>
-
-</div>
-
-<!-- Welcome Modal -->
-
-<div id="welcome-screen">
-
-    <div id="welcome-box">
-
-        <h1>Welcome to NewsOS</h1>
-
-        <p>Let's personalize your experience.</p>
-
-        <input
-            type="text"
-            id="username-input"
-            placeholder="Enter Display Name"
-        >
-
-        <button onclick="saveUsername()">
-
-            Continue
-
-        </button>
-
-    </div>
-
-</div>
-
-<script src="js/config.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/clock.js"></script>
-<script src="js/audio.js"></script>
-<script src="js/user.js"></script>
-<script src="js/ticker.js"></script>
-<script src="js/power.js"></script>
-<script src="js/app.js"></script>
-<script src="js/apps.js"></script>
-<script src="js/home.js"></script>
-<script src="js/tv.js"></script>
-
-
-<script>
-    startClock();
-</script>
-
-
-<div id="good-news-widget">
-
-    <div id="good-news-header">
-
-        <div id="good-news-avatar">
-            
         </div>
 
-        <div id="good-news-name">
-    📰 Good News
-</div>
+        <div id="app-content">
+
+        </div>
 
     </div>
 
-    <div id="good-news-message">
+    <!-- Welcome Modal -->
 
-    <div id="good-news-title">
-        👋 Welcome Home.
-    </div>
+    <div id="welcome-screen">
 
-    <div id="good-news-body">
-        Bad News, it's great to see you again.
-    </div>
+        <div id="welcome-box">
 
-    <div class="good-news-divider"></div>
+            <h1>Welcome to NewsOS</h1>
 
-    <div id="good-news-headlines">
+            <p>Let's personalize your experience.</p>
 
-        <h4>📰 Today's Headlines</h4>
+            <input type="text" id="username-input" placeholder="Enter Display Name">
 
-        <ul>
+            <button onclick="saveUsername()">
 
-            <li>🎙 NS Radio is currently offline</li>
+                Continue
 
-            <li>🎧 Featured Mix: Summer Sessions Vol. 3</li>
+            </button>
 
-            <li>📅 No upcoming events</li>
-
-        </ul>
+        </div>
 
     </div>
 
-</div>
-</div>
+    <script src="js/config.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/ticker.js"></script>
+    <script src="js/power.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/apps.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/tv.js"></script>
 
-<div id="mini-player">
 
-    <div id="mini-title">
-        🎙 NS Radio
+    <script>
+        startClock();
+    </script>
+
+
+    <div id="good-news-widget">
+
+        <div id="good-news-header">
+
+            <div id="good-news-avatar">
+
+            </div>
+
+            <div id="good-news-name">
+                📰 Good News
+            </div>
+
+        </div>
+
+        <div id="good-news-message">
+
+            <div id="good-news-title">
+                👋 Welcome Home.
+            </div>
+
+            <div id="good-news-body">
+                Bad News, it's great to see you again.
+            </div>
+
+            <div class="good-news-divider"></div>
+
+            <div id="good-news-headlines">
+
+                <h4>📰 Today's Headlines</h4>
+
+                <ul>
+
+                    <li>🎙 NS Radio is currently offline</li>
+
+                    <li>🎧 Featured Mix: Summer Sessions Vol. 3</li>
+
+                    <li>📅 No upcoming events</li>
+
+                </ul>
+
+            </div>
+
+        </div>
     </div>
 
-    <div id="mini-status">
-        ⏸ Stopped
+    <div id="mini-player">
+
+        <div id="mini-title">
+            🎙 NS Radio
+        </div>
+
+        <div id="mini-status">
+            ⏸ Stopped
+        </div>
+
+        <button id="mini-toggle" onclick="playRadio()">
+
+            ▶ Play
+
+        </button>
+
     </div>
-
-    <button id="mini-toggle"
-            onclick="playRadio()">
-
-        ▶ Play
-
-    </button>
-
-</div>
 
 </body>
+
 </html>
