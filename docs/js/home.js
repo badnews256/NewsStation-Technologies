@@ -51,9 +51,11 @@ const HomeManager = {
 
                 title: "Featured Event",
 
-                description: "Join tonight's featured News Station event."
+                description: "Discover featured mixes from talented DJs across Second Life."
 
             }
+
+            
         );
 
         this.loadDefaultHero();
