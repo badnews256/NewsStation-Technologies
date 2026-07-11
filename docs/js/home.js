@@ -47,9 +47,12 @@ const HomeManager = {
         this.heroCards.push(
             this.defaultHero,
             {
-                badge: "🎬 FEATURED",
-                title: "News Station Cinema",
-                description: "Watch featured movies and shows."
+                badge: "🎉 TONIGHT",
+
+                title: "Featured Event",
+
+                description: "Join tonight's featured News Station event."
+
             }
         );
 
