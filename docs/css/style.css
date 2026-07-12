@@ -1856,3 +1856,24 @@ body {
     display: none;
 
 }
+
+#boot-scan-line {
+
+    width: 420px;
+
+    height: 2px;
+
+    margin: 22px auto;
+
+    background: linear-gradient(
+        90deg,
+        rgba(255,215,0,0.15),
+        #FFD700,
+        rgba(255,215,0,0.15)
+    );
+
+    box-shadow:
+        0 0 6px #FFD700,
+        0 0 14px rgba(255,215,0,.45);
+
+}
