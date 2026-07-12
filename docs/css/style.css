@@ -1861,19 +1861,17 @@ body {
 
     width: 420px;
 
-    height: 2px;
+    height: 1px;
 
     margin: 22px auto;
 
-    background: linear-gradient(
-        90deg,
-        rgba(255,215,0,0.15),
-        #FFD700,
-        rgba(255,215,0,0.15)
-    );
+    background: rgba(255, 215, 0, 0.35);
 
     box-shadow:
-        0 0 6px #FFD700,
-        0 0 14px rgba(255,215,0,.45);
+        0 0 2px rgba(255,215,0,.35);
+
+    position: relative;
+
+    overflow: hidden;
 
 }
