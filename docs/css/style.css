@@ -1951,4 +1951,34 @@ body {
 
     opacity: 0;
 
+    animation: bootBurstReveal .45s ease-out forwards;
+
+}
+
+@keyframes bootBurstReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform: translateY(-50%) scale(0);
+
+    }
+
+    40% {
+
+        opacity: 1;
+
+        transform: translateY(-50%) scale(1.2);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform: translateY(-50%) scale(3);
+
+    }
+
 }
