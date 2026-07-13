@@ -34,14 +34,28 @@ const PowerManager = {
 
     desktop() {
 
-        document.getElementById("boot-screen").style.display = "none";
-        document.getElementById("standby-screen").style.display = "none";
-        document.getElementById("desktop").style.display = "block";
+    document.getElementById("boot-screen").style.display = "none";
+    document.getElementById("standby-screen").style.display = "none";
+    document.getElementById("desktop").style.display = "block";
 
-        this.state = "desktop";
+    this.state = "desktop";
 
-        console.log("Desktop Loaded");
+    console.log("Desktop Loaded");
+
+},
+
+togglePower() {
+
+    if (this.state === "standby") {
+
+        this.boot();
+
+    } else {
+
+        this.standby();
 
     }
+
+}
 
 };
