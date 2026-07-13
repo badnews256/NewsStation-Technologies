@@ -2101,3 +2101,56 @@ body {
         0 0 12px rgba(255,215,0,.60);
 
 }
+
+#tv-power-button {
+
+    position: fixed;
+
+    bottom: 24px;
+
+    right: 24px;
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 1px solid rgba(255,215,0,.45);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.85);
+
+    color: #FFD700;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+    box-shadow:
+        0 0 10px rgba(255,215,0,.20);
+
+    z-index: 100000;
+
+}
+
+#tv-power-button:hover {
+
+    transform: scale(1.08);
+
+    border-color: #FFD700;
+
+    box-shadow:
+        0 0 16px rgba(255,215,0,.55);
+
+}
