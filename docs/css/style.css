@@ -2075,3 +2075,27 @@ body {
     z-index: 1;
 
 }
+
+#tv-standby-led {
+
+    position: absolute;
+
+    bottom: 18px;
+
+    right: 18px;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #FFD700;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 6px #FFD700,
+        0 0 12px rgba(255,215,0,.60);
+
+}
