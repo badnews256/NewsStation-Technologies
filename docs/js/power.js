@@ -17,6 +17,7 @@ const PowerManager = {
         this.state = "boot";
 
         console.log("Booting NewsOS");
+        startBootSequence();
 
     },
 

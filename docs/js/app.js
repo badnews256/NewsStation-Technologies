@@ -31,7 +31,7 @@ setInterval(loadTicker, 60000);
 // Boot Animation
 // ==========================
 
-document.addEventListener("DOMContentLoaded", function () {
+function startBootSequence() {
     startClock();
 
     const bootScreen = document.getElementById("boot-screen");
@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         desktop.style.display = "block";
                         console.log("AFTER SHOW:", getComputedStyle(desktop).display);
                         desktop.style.opacity = "1";
+                        PowerManager.desktop();
                         const miniPlayer = document.getElementById("mini-player");
 
                         if (miniPlayer) {
@@ -169,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }, 100);
 
-});
+}
 function typeGoodNewsMessage(title, body) {
 
     const titleElement = document.getElementById("leroy-title");
@@ -259,3 +260,33 @@ function getCurrentEdition() {
     return editions[2];
 
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    const tvPowerButton = document.getElementById("tv-power-button");
+
+    if (tvPowerButton) {
+
+        console.log("TV power button found.");
+
+        tvPowerButton.addEventListener("click", () => {
+
+            console.log("Power button clicked.");
+
+            PowerManager.togglePower();
+
+        });
+
+    } else {
+
+        console.error("TV power button NOT found.");
+
+    }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    startBootSequence();
+
+});
