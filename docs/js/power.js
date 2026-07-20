@@ -6,7 +6,7 @@ NewsOS Power Manager
 
 const PowerManager = {
 
-    state: "boot",
+    state: "desktop",
 
     boot() {
 
