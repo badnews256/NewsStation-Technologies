@@ -38,6 +38,15 @@ function openApp(appName) {
 
             break;
 
+        // ======================================================
+        // News Station Cinema
+        // Future Home:
+        // cinema.js
+        // cinema-player.js
+        // cinema-library.js
+        // cinema-ui.js
+        // ======================================================i li
+
         case "movies":
 
             title.textContent = "🎬 News Station Cinema";
@@ -46,9 +55,25 @@ function openApp(appName) {
 
         <h2>🎬 News Station Cinema</h2>
 
-        <p>Your entertainment starts here.</p>
+        <div class="cinema-header">
 
-        <hr>
+    <button class="cinema-tab active" disabled>
+    Featured
+</button>
+
+    <button class="cinema-tab">Movies</button>
+
+    <button class="cinema-tab">TV Shows</button>
+
+    <button class="cinema-tab">My List</button>
+
+</div>
+
+        <p class="cinema-tagline">
+    Movies • TV Shows • Entertainment
+</p>
+
+        <div class="cinema-divider"></div>
 
         <div class="hero-banner">
 
@@ -56,25 +81,56 @@ function openApp(appName) {
 
             <div class="hero-overlay">
 
-                <h2>🎬 Now Premiering</h2>
+                <h2 id="featured-title">🎬 Now Premiering</h2>
 
-                <p>Coming Soon</p>
+<p id="featured-tagline">Coming Soon</p>
+
+            <button
+    id="watch-now-btn"
+    class="cinema-watch-btn"
+    type="button">
+
+    ▶ WATCH NOW
+
+</button>
 
             </div>
 
-            <iframe
-    width="100%"
-    height="500"
-    src="https://www.youtube.com/embed/lL_Q0VtrTxU"
-    title="News Station Cinema"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-</iframe>
+            <div class="featured-movie-info">
+
+    <h3 id="featured-movie-title">Labyrinth</h3>
+
+    <p id="featured-movie-meta">
+        Fantasy • Adventure • 1986 • PG
+    </p>
+
+</div>
+
+      <div class="movie-details">
+
+    <p id="movie-description">
+        A young girl embarks on a magical journey through a mysterious labyrinth to rescue her baby brother.
+    </p>
+
+</div>
+
+           <div id="movie-player-container">
+
+    <iframe
+        width="100%"
+        height="500"
+        src="https://www.youtube.com/embed/lL_Q0VtrTxU"
+        title="News Station Cinema"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
 
         </div>
 
-<h3 class="shelf-title">
+<h3 class="shelf-title">🎬 Featured Collection</h3>
     🍿 Continue Watching
 </h3>
 
