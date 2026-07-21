@@ -38,14 +38,31 @@ function openApp(appName) {
 
             break;
 
-        // ======================================================
-        // News Station Cinema
-        // Future Home:
+        // =====================================================
+        // NEWS STATION CINEMA
+        // Architecture:
+        //
+        // apps.js
+        //   └── Launches Cinema only
+        //
         // cinema.js
-        // cinema-player.js
-        // cinema-library.js
-        // cinema-ui.js
-        // ======================================================i li
+        //   └── Builds the Cinema application
+        //
+        // player.js
+        //   └── Handles movie playback
+        //
+        // library.js
+        //   └── Movie library & shelves
+        //
+        // metadata.js
+        //   └── Movie information
+        //
+        // collections.js
+        //   └── Featured collections
+        //
+        // ui.js
+        //   └── Animations & interface
+        // =====================================================
 
         case "movies":
 
