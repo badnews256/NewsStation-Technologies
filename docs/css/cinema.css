@@ -1,0 +1,48 @@
+/* =======================================================
+   NEWS STATION CINEMA
+   Premium Streaming UI
+======================================================= */
+
+.cinema-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin: 20px 0;
+
+}
+
+.cinema-nav-item {
+
+    background: none;
+
+    border: none;
+
+    color: #9c9c9c;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.cinema-nav-item:hover {
+
+    color: #ffd700;
+
+}
+
+.cinema-nav-item.active {
+
+    color: #ffd700;
+
+    border-bottom: 3px solid #ffd700;
+
+}

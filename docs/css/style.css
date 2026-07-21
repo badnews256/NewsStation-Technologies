@@ -332,13 +332,13 @@ body {
 
     position: fixed;
 
-    top: 8%;
+    top: 1.5%;
 
-    left: 10%;
+    left: 1.5%;
 
-    width: 80%;
+    width: 97%;
 
-    height: 80%;
+    height: 97%;
 
     background: #111;
 
@@ -1653,88 +1653,88 @@ body {
 
     transition: transform .6s ease;
 
-    }
+}
 
-    .tv-hero:hover {
+.tv-hero:hover {
 
     transform: scale(1.02);
 
 }
 
-    .hero-label {
+.hero-label {
 
-        position: relative;
+    position: relative;
 
-        z-index: 2;
+    z-index: 2;
 
-        text-align: left;
+    text-align: left;
 
-        padding: 25px;
+    padding: 25px;
 
-    }
+}
 
-    .hero-label h2 {
+.hero-label h2 {
 
-        margin: 0;
+    margin: 0;
 
-        font-size: 34px;
+    font-size: 34px;
 
-        letter-spacing: 2px;
+    letter-spacing: 2px;
 
-    }
+}
 
-    .hero-label p {
+.hero-label p {
 
-        margin-top: 8px;
+    margin-top: 8px;
 
-        opacity: .8;
+    opacity: .8;
 
-        font-size: 15px;
+    font-size: 15px;
 
-    }
+}
 
-    /* =========================================
+/* =========================================
    HERO CARD
 ========================================= */
 
-    .hero-label {
+.hero-label {
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
-        height: 100%;
-        padding: 30px;
+    height: 100%;
+    padding: 30px;
 
-        gap: 15px;
+    gap: 15px;
 
-    }
+}
 
-    .live-badge {
+.live-badge {
 
-        background: #d60000;
-        color: white;
+    background: #d60000;
+    color: white;
 
-        padding: 6px 14px;
+    padding: 6px 14px;
 
-        border-radius: 20px;
+    border-radius: 20px;
 
-        font-size: 12px;
+    font-size: 12px;
 
-        font-weight: bold;
+    font-weight: bold;
 
-        letter-spacing: 1px;
+    letter-spacing: 1px;
 
-        text-transform: uppercase;
+    text-transform: uppercase;
 
-        box-shadow: 0 0 15px rgba(255, 0, 0, .45);
+    box-shadow: 0 0 15px rgba(255, 0, 0, .45);
 
-        animation: livePulse 2s infinite;
+    animation: livePulse 2s infinite;
 
-    }
+}
 
-    @keyframes livePulse {
+@keyframes livePulse {
 
     0% {
         transform: scale(1);
@@ -1753,107 +1753,107 @@ body {
 
 }
 
-    .hero-label h2 {
+.hero-label h2 {
 
-        margin: 0;
+    margin: 0;
 
-        font-size: 42px;
+    font-size: 42px;
 
-        color: white;
+    color: white;
 
-    }
+}
 
-    .hero-label p {
+.hero-label p {
 
-        margin: 0;
+    margin: 0;
 
-        font-size: 18px;
+    font-size: 18px;
 
-        color: #d4d4d4;
+    color: #d4d4d4;
 
-    }
+}
 
-    .watch-now-btn {
+.watch-now-btn {
 
-        margin-top: 10px;
+    margin-top: 10px;
 
-        padding: 14px 28px;
+    padding: 14px 28px;
 
-        background: gold;
+    background: gold;
 
-        color: black;
+    color: black;
 
-        border: none;
+    border: none;
 
-        border-radius: 8px;
+    border-radius: 8px;
 
-        font-size: 16px;
+    font-size: 16px;
 
-        font-weight: bold;
+    font-weight: bold;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        transition: .25s;
+    transition: .25s;
 
-    }
+}
 
-    .watch-now-btn:hover {
+.watch-now-btn:hover {
 
     transform: translateY(-3px);
 
-    box-shadow: 0 8px 22px rgba(255,215,0,.45);
+    box-shadow: 0 8px 22px rgba(255, 215, 0, .45);
 
     filter: brightness(1.08);
 
 }
 
-    /* =========================================
+/* =========================================
    HERO OVERLAY
 ========================================= */
 
 
-    .hero-overlay {
+.hero-overlay {
 
-        position: absolute;
+    position: absolute;
 
-        inset: 0;
+    inset: 0;
 
-        background:
-            radial-gradient(circle at top left,
-                rgba(255, 215, 0, .10),
-                transparent 45%);
+    background:
+        radial-gradient(circle at top left,
+            rgba(255, 215, 0, .10),
+            transparent 45%);
 
-        pointer-events: none;
+    pointer-events: none;
 
-    }
+}
 
-    /* =========================================
+/* =========================================
    HERO BUTTONS
 ========================================= */
 
-    .hero-buttons {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-    }
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-    .info-btn {
-        background: rgba(255, 255, 255, .15);
-        color: white;
-        border: 2px solid rgba(255, 255, 255, .25);
-        border-radius: 10px;
-        padding: 14px 22px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: .3s;
-    }
+.info-btn {
+    background: rgba(255, 255, 255, .15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, .25);
+    border-radius: 10px;
+    padding: 14px 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
 
-    .info-btn:hover {
-        background: rgba(255, 255, 255, .25);
-        transform: translateY(-2px);
-    }
+.info-btn:hover {
+    background: rgba(255, 255, 255, .25);
+    transform: translateY(-2px);
+}
 
-    #boot-bar {
+#boot-bar {
 
     display: none;
 
@@ -1870,7 +1870,7 @@ body {
     background: rgba(255, 215, 0, 0.35);
 
     box-shadow:
-        0 0 2px rgba(255,215,0,.35);
+        0 0 2px rgba(255, 215, 0, .35);
 
     position: relative;
 
@@ -1894,21 +1894,19 @@ body {
 
     border-radius: 999px;
 
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0),
-        #FFD700,
-        #FFF4B0,
-        #FFD700,
-        rgba(255,255,255,0)
-    );
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0),
+            #FFD700,
+            #FFF4B0,
+            #FFD700,
+            rgba(255, 255, 255, 0));
 
     box-shadow:
         0 0 8px #FFD700,
-        0 0 18px rgba(255,215,0,.75),
-        0 0 28px rgba(255,215,0,.45);
+        0 0 18px rgba(255, 215, 0, .75),
+        0 0 28px rgba(255, 215, 0, .45);
 
-        animation: bootScannerMove 2.6s cubic-bezier(.42,0,.58,1) forwards;
+    animation: bootScannerMove 2.6s cubic-bezier(.42, 0, .58, 1) forwards;
 
 }
 
@@ -1948,8 +1946,8 @@ body {
 
     box-shadow:
         0 0 10px #FFD700,
-        0 0 22px rgba(255,215,0,.80),
-        0 0 36px rgba(255,215,0,.50);
+        0 0 22px rgba(255, 215, 0, .80),
+        0 0 36px rgba(255, 215, 0, .50);
 
     opacity: 0;
 
@@ -1977,11 +1975,11 @@ body {
 
     100% {
 
-    opacity: 0;
+        opacity: 0;
 
-    transform: translateY(-50%) scaleX(80) scaleY(6);
+        transform: translateY(-50%) scaleX(80) scaleY(6);
 
-}
+    }
 
 }
 
@@ -2013,16 +2011,14 @@ body {
 
     height: 100%;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255,215,0,0),
-        rgba(255,240,180,.95),
-        rgba(255,215,0,0)
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 215, 0, 0),
+            rgba(255, 240, 180, .95),
+            rgba(255, 215, 0, 0));
 
     box-shadow:
         0 0 12px #FFD700,
-        0 0 30px rgba(255,215,0,.75);
+        0 0 30px rgba(255, 215, 0, .75);
 
 }
 
@@ -2044,7 +2040,7 @@ body {
 
     box-shadow:
         0 0 8px #FFD700,
-        0 0 18px rgba(255,215,0,.70);
+        0 0 18px rgba(255, 215, 0, .70);
 
     opacity: 0;
 
@@ -2064,15 +2060,13 @@ body {
 
     height: 1px;
 
-    background: linear-gradient(
-        90deg,
-        #FFD700,
-        #FFF4B0
-    );
+    background: linear-gradient(90deg,
+            #FFD700,
+            #FFF4B0);
 
     box-shadow:
         0 0 4px #FFD700,
-        0 0 10px rgba(255,215,0,.45);
+        0 0 10px rgba(255, 215, 0, .45);
 
     z-index: 1;
 
@@ -2098,7 +2092,7 @@ body {
 
     box-shadow:
         0 0 6px #FFD700,
-        0 0 12px rgba(255,215,0,.60);
+        0 0 12px rgba(255, 215, 0, .60);
 
 }
 
@@ -2114,11 +2108,11 @@ body {
 
     height: 48px;
 
-    border: 1px solid rgba(255,215,0,.45);
+    border: 1px solid rgba(255, 215, 0, .45);
 
     border-radius: 50%;
 
-    background: rgba(0,0,0,.85);
+    background: rgba(0, 0, 0, .85);
 
     color: #FFD700;
 
@@ -2138,7 +2132,7 @@ body {
         border-color .2s ease;
 
     box-shadow:
-        0 0 10px rgba(255,215,0,.20);
+        0 0 10px rgba(255, 215, 0, .20);
 
     z-index: 100000;
 
@@ -2151,6 +2145,6 @@ body {
     border-color: #FFD700;
 
     box-shadow:
-        0 0 16px rgba(255,215,0,.55);
+        0 0 16px rgba(255, 215, 0, .55);
 
 }

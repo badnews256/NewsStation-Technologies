@@ -72,25 +72,68 @@ function openApp(appName) {
 
         <h2>🎬 News Station Cinema</h2>
 
-        <div class="cinema-header">
 
-    <button class="cinema-tab active" disabled>
-    Featured
-</button>
+      <nav class="cinema-nav">
 
-    <button class="cinema-tab">Movies</button>
+    <button class="cinema-nav-item active">
+        Featured
+    </button>
 
-    <button class="cinema-tab">TV Shows</button>
+    <button class="cinema-nav-item">
+        Movies
+    </button>
 
-    <button class="cinema-tab">My List</button>
+    <button class="cinema-nav-item">
+        TV Shows
+    </button>
 
-</div>
+    <button class="cinema-nav-item">
+        Collections
+    </button>
 
-        <p class="cinema-tagline">
-    Movies • TV Shows • Entertainment
-</p>
+    <button class="cinema-nav-item">
+        Search
+    </button>
+
+    <button class="cinema-nav-item">
+        My List
+    </button>
+
+</nav>
 
         <div class="cinema-divider"></div>
+
+        <h1 class="premium-title">
+    Labyrinth
+</h1>
+
+<p class="premium-meta">
+
+    Fantasy • Adventure • 1986 • PG
+
+</p>
+
+<p class="premium-description">
+
+    A young girl embarks on a magical journey through a mysterious labyrinth to rescue her baby brother.
+
+</p>
+
+<div class="premium-actions">
+
+    <button class="cinema-watch-btn">
+
+        ▶ WATCH NOW
+
+    </button>
+
+    <button class="cinema-info-btn">
+
+        ℹ MORE INFO
+
+    </button>
+
+</div>
 
         <div class="hero-banner">
 
@@ -98,18 +141,6 @@ function openApp(appName) {
 
             <div class="hero-overlay">
 
-                <h2 id="featured-title">🎬 Now Premiering</h2>
-
-<p id="featured-tagline">Coming Soon</p>
-
-            <button
-    id="watch-now-btn"
-    class="cinema-watch-btn"
-    type="button">
-
-    ▶ WATCH NOW
-
-</button>
 
             </div>
 
@@ -123,6 +154,27 @@ function openApp(appName) {
 
 </div>
 
+<div class="featured-movie-actions">
+
+    <button
+        id="watch-now-btn"
+        class="cinema-watch-btn"
+        type="button">
+
+        ▶ WATCH NOW
+
+    </button>
+
+    <button
+        class="cinema-info-btn"
+        type="button">
+
+        ℹ MORE INFO
+
+    </button>
+
+</div>
+
       <div class="movie-details">
 
     <p id="movie-description">
@@ -131,7 +183,7 @@ function openApp(appName) {
 
 </div>
 
-           <div id="movie-player-container">
+           <div id="movie-player-container" style="display:none;">
 
     <iframe
         width="100%"
@@ -147,8 +199,8 @@ function openApp(appName) {
 
         </div>
 
-<h3 class="shelf-title">🎬 Featured Collection</h3>
-    🍿 Continue Watching
+<h3 class="shelf-title">🎬 Featured Collection<h3 class="shelf-title">
+    🔥 Trending Now
 </h3>
 
 <div class="content-row">
