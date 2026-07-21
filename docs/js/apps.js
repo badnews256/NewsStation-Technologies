@@ -7,11 +7,11 @@ NewsOS Application Manager
 function openApp(appName) {
     const goodNewsWidget = document.getElementById("good-news-widget");
 
-if (goodNewsWidget) {
-    goodNewsWidget.style.opacity = "0";
-    goodNewsWidget.style.transform = "translateX(420px)";
-}
-console.log("openApp called:", appName);
+    if (goodNewsWidget) {
+        goodNewsWidget.style.opacity = "0";
+        goodNewsWidget.style.transform = "translateX(420px)";
+    }
+    console.log("openApp called:", appName);
     const windowBox = document.getElementById("app-window");
     const title = document.getElementById("app-title");
     const content = document.getElementById("app-content");
@@ -19,30 +19,30 @@ console.log("openApp called:", appName);
     windowBox.style.display = "block";
 
     console.log(windowBox);
-console.log(title);
-console.log(content);
+    console.log(title);
+    console.log(content);
     switch (appName) {
 
 
-           case "tv":
+        case "tv":
 
-    title.textContent = "📺 TV";
+            title.textContent = "📺 TV";
 
-    content.innerHTML = "<h2>Loading TV...</h2>";
+            content.innerHTML = "<h2>Loading TV...</h2>";
 
-    loadTVServices().then(html => {
+            loadTVServices().then(html => {
 
-        content.innerHTML = html;
+                content.innerHTML = html;
 
-    });
+            });
 
-    break;
+            break;
 
-      case "movies":
+        case "movies":
 
-    title.textContent = "🎬 News Station Cinema";
+            title.textContent = "🎬 News Station Cinema";
 
-    content.innerHTML = `
+            content.innerHTML = `
 
         <h2>🎬 News Station Cinema</h2>
 
@@ -60,13 +60,17 @@ console.log(content);
 
                 <p>Coming Soon</p>
 
-                <button class="radio-button">
-
-                    ▶ Watch Trailer
-
-                </button>
-
             </div>
+
+            <iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube.com/embed/lL_Q0VtrTxU"
+    title="News Station Cinema"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
 
         </div>
 
@@ -128,13 +132,13 @@ console.log(content);
 
     `;
 
-    break;  
+            break;
 
         case "media":
 
-    title.textContent = "🎙 NS RADIO";
+            title.textContent = "🎙 NS RADIO";
 
-    content.innerHTML = `
+            content.innerHTML = `
         <h2>🎙 NS Radio</h2>
 
         <p>The Sound of the Grid</p>
@@ -210,7 +214,7 @@ console.log(content);
         <p>Discover DJs from across the Grid.</p>
     `;
 
-    break;
+            break;
 
         case "news":
 
@@ -247,9 +251,9 @@ console.log(content);
 
         case "settings":
 
-    title.textContent = "⚙️ SETTINGS";
+            title.textContent = "⚙️ SETTINGS";
 
-    content.innerHTML = `
+            content.innerHTML = `
 
         <h2>⚙️ Settings</h2>
 
@@ -284,7 +288,7 @@ console.log(content);
 
     `;
 
-    break;
+            break;
 
         default:
 
