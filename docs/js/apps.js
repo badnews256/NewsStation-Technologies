@@ -4,6 +4,24 @@ NewsOS Application Manager
 =========================================
 */
 
+const featuredMovie = {
+
+    title: "Labyrinth",
+
+    genre: "Fantasy",
+
+    runtime: "101 Minutes",
+
+    rating: "PG",
+
+    description:
+        "A teenage girl journeys through a magical labyrinth to rescue her baby brother from the Goblin King.",
+
+    trailer:
+        "https://www.youtube.com/embed/1L_Q0VtrTxU"
+
+};
+
 function openApp(appName) {
     const goodNewsWidget = document.getElementById("good-news-widget");
 
@@ -101,7 +119,6 @@ function openApp(appName) {
 
 </nav>
 
-        <div class="cinema-divider"></div>
 
         <h1 class="premium-title">
     Labyrinth
@@ -121,13 +138,20 @@ function openApp(appName) {
 
 <div class="premium-actions">
 
-    <button class="cinema-watch-btn">
+   <button
+    id="watch-now-btn"
+    class="cinema-watch-btn"
+    type="button"
+    onclick="showCinemaPlayer()">
 
-        ▶ WATCH NOW
+    ▶ WATCH NOW
 
-    </button>
+</button>
 
-    <button class="cinema-info-btn">
+    <button
+    class="cinema-info-btn"
+    type="button"
+    onclick="showMovieInfo()">
 
         ℹ MORE INFO
 
@@ -135,58 +159,13 @@ function openApp(appName) {
 
 </div>
 
-        <div class="hero-banner">
+<div id="premium-player-slot">
 
-            <img src="covers/featured-movie.jpg" class="hero-image">
-
-            <div class="hero-overlay">
-
-
-            </div>
-
-            <div class="featured-movie-info">
-
-    <h3 id="featured-movie-title">Labyrinth</h3>
-
-    <p id="featured-movie-meta">
-        Fantasy • Adventure • 1986 • PG
-    </p>
-
-</div>
-
-<div class="featured-movie-actions">
-
-    <button
-        id="watch-now-btn"
-        class="cinema-watch-btn"
-        type="button">
-
-        ▶ WATCH NOW
-
-    </button>
-
-    <button
-        class="cinema-info-btn"
-        type="button">
-
-        ℹ MORE INFO
-
-    </button>
-
-</div>
-
-      <div class="movie-details">
-
-    <p id="movie-description">
-        A young girl embarks on a magical journey through a mysterious labyrinth to rescue her baby brother.
-    </p>
-
-</div>
-
-           <div id="movie-player-container" style="display:none;">
+    <div id="movie-player-container" class="movie-player-hidden cinema-player-area">
 
     <iframe
-        width="100%"
+    id="cinema-player"
+    width="100%"
         height="500"
         src="https://www.youtube.com/embed/lL_Q0VtrTxU"
         title="News Station Cinema"
@@ -195,11 +174,34 @@ function openApp(appName) {
         allowfullscreen>
     </iframe>
 
+   <button
+    id="back-to-details-btn"
+    class="cinema-info-btn"
+    type="button"
+    onclick="backToDetails()">
+
+    ← BACK TO DETAILS
+
+</button>
+
 </div>
+
+</div>
+
+        <div class="hero-banner">
+        
+        <img src="covers/featured-movie.jpg" class="hero-image">
+
+
+            <div class="hero-overlay">
+
+
+            </div>
+
 
         </div>
 
-<h3 class="shelf-title">🎬 Featured Collection<h3 class="shelf-title">
+<h3 class="shelf-title">
     🔥 Trending Now
 </h3>
 
@@ -440,5 +442,97 @@ function closeApp() {
 function playChannel(channel) {
 
     alert("Loading " + channel + " channel...");
+
+}
+
+function initializeCinemaPlayer() {
+
+    const watchButton = document.getElementById("watch-now-btn");
+
+    const player = document.getElementById("movie-player-container");
+
+    if (!watchButton || !player) return;
+
+    watchButton.addEventListener("click", () => {
+
+        player.style.display = "block";
+
+        player.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    });
+
+}
+
+function showCinemaPlayer() {
+
+    console.log("showCinemaPlayer() fired");
+
+    const player = document.getElementById("movie-player-container");
+
+    const iframe = document.getElementById("cinema-player");
+
+    console.log(player);
+
+    if (!player) return;
+
+    player.classList.remove("movie-player-hidden");
+
+    const heroImage = document.querySelector(".hero-image");
+
+    if (heroImage) heroImage.style.display = "none";
+
+    const heroBanner = document.querySelector(".hero-banner");
+
+    if (heroBanner) heroBanner.style.display = "none";
+
+    console.log("Hidden class removed.");
+
+}
+
+function backToDetails() {
+
+
+
+    const player = document.getElementById("movie-player-container");
+    const heroImage = document.querySelector(".hero-image");
+    const heroBanner = document.querySelector(".hero-banner");
+
+    if (player) {
+        player.classList.add("movie-player-hidden");
+    }
+
+    if (heroImage) {
+        heroImage.style.display = "";
+    }
+
+    if (heroBanner) {
+        heroBanner.style.display = "";
+    }
+
+}
+
+function showMovieInfo() {
+
+    alert(
+        `FEATURED MOVIE
+
+Title: ${featuredMovie.title}
+
+Genre: ${featuredMovie.genre}
+
+Runtime: ${featuredMovie.runtime}
+
+Rating: ${featuredMovie.rating}
+
+Description:
+
+${featuredMovie.description}`
+    );
 
 }
