@@ -120,19 +120,23 @@ function openApp(appName) {
 </nav>
 
 
-        <h1 class="premium-title">
-    Labyrinth
+       <h1
+    class="premium-title"
+    id="featured-movie-title">
+
+    ${featuredMovie.title}
+
 </h1>
 
 <p class="premium-meta">
 
-    Fantasy • Adventure • 1986 • PG
+    ${featuredMovie.genre} • ${featuredMovie.runtime} • ${featuredMovie.rating}
 
 </p>
 
 <p class="premium-description">
 
-    A young girl embarks on a magical journey through a mysterious labyrinth to rescue her baby brother.
+    ${featuredMovie.description}
 
 </p>
 
