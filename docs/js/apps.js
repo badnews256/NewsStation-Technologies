@@ -419,7 +419,15 @@ function openApp(appName) {
 
     `;
 
+
             break;
+
+        case "studio":
+
+            launchStudio();
+
+            break;
+
 
         default:
 
@@ -478,6 +486,16 @@ function showCinemaPlayer() {
     console.log("showCinemaPlayer() fired");
 
     const player = document.getElementById("movie-player-container");
+
+    let playerState = {
+
+        movie: featuredMovie.title,
+
+        playing: true,
+
+        started: new Date().toISOString()
+
+    };
 
     const iframe = document.getElementById("cinema-player");
 
@@ -538,5 +556,13 @@ Description:
 
 ${featuredMovie.description}`
     );
+
+}
+
+async function loadStudio() {
+
+    const response = await fetch("studio/studio.html");
+
+    return await response.text();
 
 }
