@@ -1,3 +1,8 @@
+// ======================================================
+// NEWSOS STUDIO
+// Router v2.0
+// ======================================================
+
 async function loadStudio() {
 
     const response = await fetch("studio/studio.html");
@@ -10,13 +15,7 @@ function initializeStudio() {
 
     console.log("NewsOS Studio initialized.");
 
-    const header = document.querySelector(".studio-header h1");
-
-    if (header) {
-
-        header.textContent = "NEWSOS STUDIO";
-
-    }
+    loadStudioModule("dashboard");
 
 }
 
@@ -44,72 +43,177 @@ function launchStudio() {
 
 }
 
+// ======================================================
+// MODULE LOADER
+// ======================================================
+
+async function loadStudioModule(moduleName) {
+
+    const workspace = document.getElementById("studio-workspace");
+
+    if (!workspace) return;
+
+    try {
+
+        const response = await fetch(`studio/${moduleName}.html`);
+
+        workspace.innerHTML = await response.text();
+
+        addStudioActivity(`Opened ${moduleName}`);
+
+        updateRecentlyUsed(moduleName);
+
+    }
+
+    catch (error) {
+
+        workspace.innerHTML = `
+
+            <h2>Module Error</h2>
+
+            <p>
+
+            Unable to load ${moduleName}.html
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+// ======================================================
+// SIDEBAR ROUTING
+// ======================================================
+
+document.addEventListener("click", function (event) {
+
+    const button = event.target.closest(".studio-nav");
+
+    if (!button) return;
+
+    const text = button.innerText;
+
+    if (text.includes("Dashboard")) {
+
+        loadStudioModule("dashboard");
+
+    }
+
+    else if (text.includes("Community")) {
+
+        loadStudioModule("community");
+
+    }
+
+    else if (text.includes("News")) {
+
+        loadStudioModule("news");
+
+    }
+
+    else if (text.includes("Activity")) {
+
+        loadStudioModule("activity");
+
+    }
+
+    else if (text.includes("System")) {
+
+        loadStudioModule("system");
+
+    }
+
+    else if (text.includes("Cinema")) {
+
+        // Temporary bridge until Cinema
+        // is connected directly.
+
+        openCinemaManager();
+
+    }
+
+});
+
+// ======================================================
+// TEMPORARY CINEMA BRIDGE
+// ======================================================
+
 function openCinemaManager() {
 
-    const content = document.getElementById("app-content");
+    const workspace = document.getElementById("studio-workspace");
 
-    if (!content) return;
+    if (!workspace) return;
 
-    content.innerHTML = `
+    workspace.innerHTML = `
 
         <h2>🎬 Cinema Manager</h2>
 
         <hr>
 
-       <p><strong>Featured Movie</strong></p>
+        <p><strong>Featured Movie</strong></p>
 
-<p><strong>Title:</strong> ${featuredMovie.title}</p>
+        <p><strong>Title:</strong> ${featuredMovie.title}</p>
 
-<p><strong>Genre:</strong> ${featuredMovie.genre}</p>
+        <p><strong>Genre:</strong> ${featuredMovie.genre}</p>
 
-<p><strong>Runtime:</strong> ${featuredMovie.runtime}</p>
+        <p><strong>Runtime:</strong> ${featuredMovie.runtime}</p>
 
-<p><strong>Rating:</strong> ${featuredMovie.rating}</p>
+        <p><strong>Rating:</strong> ${featuredMovie.rating}</p>
 
-<p><strong>Description:</strong></p>
+        <p>${featuredMovie.description}</p>
 
-<p>${featuredMovie.description}</p>
+        <br>
 
-        <hr>
+        <button id="back-dashboard">
 
-        <button id="change-featured-movie">
-
-            Change Featured Movie
-
-        </button>
-
-        <br><br>
-
-        <button id="back-to-studio">
-
-            ← Back to Studio
+            ← Dashboard
 
         </button>
 
     `;
 
-    document
-        .getElementById("back-to-studio")
-        .onclick = launchStudio;
-
     addStudioActivity("Opened Cinema Manager");
 
 }
 
+document.addEventListener("click", function (event) {
+
+    if (event.target.id === "back-dashboard") {
+
+        loadStudioModule("dashboard");
+
+    }
+
+});
+
+// ======================================================
+// DASHBOARD MEMORY
+// ======================================================
+
+const recentlyUsed = [];
+
 const studioActivity = [];
+
+// ======================================================
+// ACTIVITY SYSTEM
+// ======================================================
 
 function addStudioActivity(message) {
 
     const now = new Date();
 
-    const time = now.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit"
-    });
-
     studioActivity.unshift({
 
-        time,
+        time: now.toLocaleTimeString([], {
+
+            hour: "numeric",
+
+            minute: "2-digit"
+
+        }),
+
         message
 
     });
@@ -120,26 +224,97 @@ function addStudioActivity(message) {
 
     }
 
-    renderStudioActivity();
+    renderDashboardActivity();
 
 }
 
-function renderStudioActivity() {
+// ======================================================
+// DASHBOARD ACTIVITY
+// ======================================================
 
-    const list = document.getElementById("activity-log-list");
+function renderDashboardActivity() {
+
+    const list = document.getElementById("dashboard-activity-list");
 
     if (!list) return;
 
     list.innerHTML = "";
 
-    studioActivity.forEach(entry => {
+    studioActivity.slice(0, 5).forEach(entry => {
 
         list.innerHTML += `
-            <div>
-                <strong>${entry.time}</strong> — ${entry.message}
+
+            <div class="task-item">
+
+                <strong>${entry.time}</strong>
+
+                <br>
+
+                ${entry.message}
+
             </div>
+
+        `;
+
+    });
+
+    if (studioActivity.length === 0) {
+
+        list.innerHTML = `
+
+            <div class="task-item">
+
+                No recent activity.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+// ======================================================
+// RECENTLY USED
+// ======================================================
+
+function updateRecentlyUsed(moduleName) {
+
+    const index = recentlyUsed.indexOf(moduleName);
+
+    if (index > -1) {
+
+        recentlyUsed.splice(index, 1);
+
+    }
+
+    recentlyUsed.unshift(moduleName);
+
+    if (recentlyUsed.length > 5) {
+
+        recentlyUsed.pop();
+
+    }
+
+    const list = document.getElementById("recently-used-list");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    recentlyUsed.forEach(module => {
+
+        list.innerHTML += `
+
+            <div class="task-item">
+
+                ${module}
+
+            </div>
+
         `;
 
     });
 
 }
+

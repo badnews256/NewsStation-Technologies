@@ -8,79 +8,225 @@
 
     </div>
 
-    <div class="studio-grid">
+    <div class="studio-shell">
 
-        <button class="studio-card" id="cinema-manager" onclick="openCinemaManager()">
+        <!-- ===========================
+             LEFT NAVIGATION
+        ============================ -->
 
-            🎬
+        <aside class="studio-sidebar">
 
-            <span>Cinema Manager</span>
+            <button class="studio-nav active">
+                🏠 Dashboard
+            </button>
 
-        </button>
+            <button class="studio-nav">
+                📺 Content Management
+            </button>
 
-        <button class="studio-card" id="radio-manager">
-            📻
-            <span>Radio Manager</span>
-        </button>
+            <button class="studio-nav">
+                🎬 Cinema Manager
+            </button>
 
-        <button class="studio-card" id="news-manager">
-            📰
-            <span>News Manager</span>
-        </button>
+            <button class="studio-nav">
+                📻 Radio
+            </button>
 
-        <button class="studio-card" id="events-manager">
-            🗓️
-            <span>Event Manager</span>
-        </button>
+            <button class="studio-nav">
+                📰 News
+            </button>
 
-        <button class="studio-card" id="broadcast-manager">
-            🎤
-            <span>Broadcast Center</span>
-        </button>
+            <button class="studio-nav">
+                👥 Community
+            </button>
 
-        <button class="studio-card" id="settings-manager">
-            ⚙️
-            <span>System Settings</span>
-        </button>
+            <button class="studio-nav">
+                📋 Activity
+            </button>
 
-    </div>
+            <button class="studio-nav">
+                ⚙️ System
+            </button>
 
-    <div class="studio-status">
+        </aside>
 
-        <h2>System Status</h2>
+        <!-- ===========================
+             MISSION CONTROL
+        ============================ -->
 
-        <div class="status-item">
+        <main class="studio-workspace" id="studio-workspace">
 
-            <strong>NewsOS:</strong>
-            <span id="system-status">Online</span>
+            <h2>Mission Control</h2>
 
-        </div>
+            <p>
+                Welcome back to NewsOS Studio.
+            </p>
 
-        <div class="activity-log">
+            <div class="mission-grid">
 
-            <h2>Activity Log</h2>
+                <!-- LEFT COLUMN -->
 
-            <div id="activity-log-list">
+                <div class="mission-column">
 
-                <div>No activity recorded.</div>
+                    <div class="dashboard-widget">
+
+                        <h3>📊 Studio Summary</h3>
+
+                        <p>🟢 NewsOS: Online</p>
+                        <p>🟢 Studio: Operational</p>
+                        <p>Version: 1.0 Foundation</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>📻 NS Radio</h3>
+
+                        <p>Status: Offline</p>
+
+                        <p>Last Broadcast: Coming Soon</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>📺 NSTV ONE</h3>
+
+                        <p>Status: Ready</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>🚨 Grid Watch</h3>
+
+                        <p>No Active Alerts</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>🌟 NS Spotlight</h3>
+
+                        <p>No Featured Spotlight</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>📅 The Lineup</h3>
+
+                        <p>No Scheduled Events</p>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+
+                <div class="mission-column">
+
+                    <div class="dashboard-widget">
+
+                        <h3>📋 Pending Tasks</h3>
+
+                        <ul>
+
+                            <li>Publish Today's Lineup</li>
+
+                            <li>Update Spotlight</li>
+
+                            <li>Review Grid Watch</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>⭐ Recently Used</h3>
+
+                        <p>Cinema Manager</p>
+
+                        <p>Community</p>
+
+                        <p>System</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>📌 Favorites</h3>
+
+                        <p>Cinema Manager</p>
+
+                        <p>Radio</p>
+
+                        <p>System</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>⚡ Quick Actions</h3>
+
+                        <p>+ Create Lineup</p>
+
+                        <p>+ Publish Spotlight</p>
+
+                        <p>+ Add Featured Movie</p>
+
+                        <p>+ Broadcast Alert</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>🎫 Support Queue</h3>
+
+                        <p>No Open Tickets</p>
+
+                    </div>
+
+                    <div class="dashboard-widget">
+
+                        <h3>🛠 Maintenance</h3>
+
+                        <p>No Scheduled Maintenance</p>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+            <!-- Future Expansion -->
 
-        <div class="status-item">
+            <div class="dashboard-widget">
 
-            <strong>Version:</strong>
-            <span>1.0 Foundation</span>
+                <h3>📈 Future Widgets</h3>
 
-        </div>
+                <p>
 
-        <div class="status-item">
+                    Reserved for:
 
-            <strong>Studio:</strong>
-            <span>Operational</span>
+                </p>
 
-        </div>
+                <ul>
+
+                    <li>System Health</li>
+
+                    <li>Analytics</li>
+
+                    <li>Broadcast Metrics</li>
+
+                    <li>Live Monitoring</li>
+
+                </ul>
+
+            </div>
+
+        </main>
 
     </div>
 
