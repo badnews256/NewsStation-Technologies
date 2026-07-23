@@ -3,6 +3,24 @@
 // Router v2.0
 // ======================================================
 
+// ======================================================
+// STUDIO STATE
+// ======================================================
+
+const StudioState = {
+
+    newsOS: "Online",
+
+    studio: "Operational",
+
+    version: "1.0 Foundation",
+
+    currentWorkspace: "Dashboard",
+
+    currentUser: "Bad News"
+
+};
+
 async function loadStudio() {
 
     const response = await fetch("studio/studio.html");
@@ -39,6 +57,8 @@ function launchStudio() {
 
         initializeStudio();
 
+        startStudioClock();
+
     });
 
 }
@@ -58,6 +78,15 @@ async function loadStudioModule(moduleName) {
         const response = await fetch(`studio/${moduleName}.html`);
 
         workspace.innerHTML = await response.text();
+
+        StudioState.currentWorkspace = moduleName;
+
+        renderStudioSummary();
+
+        // ======================================================
+        // LIVE CLOCK
+        // ======================================================
+
 
         addStudioActivity(`Opened ${moduleName}`);
 
@@ -317,4 +346,84 @@ function updateRecentlyUsed(moduleName) {
     });
 
 }
+// ======================================================
+// CURRENT TIME
+// ======================================================
+
+function renderStudioClock() {
+
+    const currentTime = document.getElementById("studio-current-time");
+
+    if (!currentTime) return;
+
+    currentTime.textContent = new Date().toLocaleTimeString([], {
+
+        hour: "numeric",
+
+        minute: "2-digit"
+
+    });
+
+}
+
+// ======================================================
+// LIVE CLOCK
+// ======================================================
+
+function startStudioClock() {
+
+    renderStudioClock();
+
+    setInterval(() => {
+
+        renderStudioClock();
+
+    }, 1000);
+
+}
+
+// ======================================================
+// STUDIO SUMMARY
+// ======================================================
+
+function renderStudioSummary() {
+
+    const newsOS = document.getElementById("studio-newsos-status");
+    const studio = document.getElementById("studio-status");
+    const workspace = document.getElementById("studio-workspace-name");
+    const user = document.getElementById("studio-current-user");
+    const version = document.getElementById("studio-version");
+
+    if (newsOS) {
+
+        newsOS.textContent = "🟢 " + StudioState.newsOS;
+
+    }
+
+    if (studio) {
+
+        studio.textContent = "🟢 " + StudioState.studio;
+
+    }
+
+    if (workspace) {
+
+        workspace.textContent = StudioState.currentWorkspace;
+
+    }
+
+    if (user) {
+
+        user.textContent = StudioState.currentUser;
+
+    }
+
+    if (version) {
+
+        version.textContent = StudioState.version;
+
+    }
+
+}
+
 
