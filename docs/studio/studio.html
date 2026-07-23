@@ -10,17 +10,77 @@
 
     <div class="studio-grid">
 
-        <div class="studio-card">🎬 Cinema</div>
+        <button class="studio-card" id="cinema-manager" onclick="openCinemaManager()">
 
-        <div class="studio-card">📻 Radio</div>
+            🎬
 
-        <div class="studio-card">📰 News</div>
+            <span>Cinema Manager</span>
 
-        <div class="studio-card">📅 Events</div>
+        </button>
 
-        <div class="studio-card">📡 Broadcasts</div>
+        <button class="studio-card" id="radio-manager">
+            📻
+            <span>Radio Manager</span>
+        </button>
 
-        <div class="studio-card">⚙ Settings</div>
+        <button class="studio-card" id="news-manager">
+            📰
+            <span>News Manager</span>
+        </button>
+
+        <button class="studio-card" id="events-manager">
+            🗓️
+            <span>Event Manager</span>
+        </button>
+
+        <button class="studio-card" id="broadcast-manager">
+            🎤
+            <span>Broadcast Center</span>
+        </button>
+
+        <button class="studio-card" id="settings-manager">
+            ⚙️
+            <span>System Settings</span>
+        </button>
+
+    </div>
+
+    <div class="studio-status">
+
+        <h2>System Status</h2>
+
+        <div class="status-item">
+
+            <strong>NewsOS:</strong>
+            <span id="system-status">Online</span>
+
+        </div>
+
+        <div class="activity-log">
+
+            <h2>Activity Log</h2>
+
+            <div id="activity-log-list">
+
+                <div>No activity recorded.</div>
+
+            </div>
+
+        </div>
+
+        <div class="status-item">
+
+            <strong>Version:</strong>
+            <span>1.0 Foundation</span>
+
+        </div>
+
+        <div class="status-item">
+
+            <strong>Studio:</strong>
+            <span>Operational</span>
+
+        </div>
 
     </div>
 
