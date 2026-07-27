@@ -410,6 +410,44 @@ function renderDashboardActivity() {
 
 }
 
+// =====================================================
+// DEVELOPMENT UPDATES
+// =====================================================
+
+function renderDevelopmentUpdates() {
+
+    const container = document.getElementById("development-updates");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const updates = [
+
+        "✔ Dashboard Sprint Completed",
+
+        "🚧 Badge Manager is next.",
+
+        "🎯 Manager Completion Phase begins."
+
+    ];
+
+    updates.forEach(update => {
+
+        container.innerHTML += `
+
+            <div class="task-item">
+
+                ${update}
+
+            </div>
+
+        `;
+
+    });
+
+}
+
 // ======================================================
 // RECENTLY USED
 // ======================================================
@@ -610,6 +648,8 @@ function initializeDashboard() {
         renderStudioActivity();
 
         renderDashboardActivity();
+
+        renderDevelopmentUpdates();
 
         updateRecentlyUsed("Dashboard");
 
