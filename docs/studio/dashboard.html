@@ -128,28 +128,40 @@
 
             <div class="quick-grid">
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('passport')">
+
                     🪪 Passport Manager
+
                 </button>
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('badges')">
+
                     🏅 Badge Manager
+
                 </button>
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('cinema')">
+
                     🎬 Cinema Manager
+
                 </button>
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('radio')">
+
                     📻 Radio Manager
+
                 </button>
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('news')">
+
                     📰 News Manager
+
                 </button>
 
-                <button class="action-btn">
+                <button class="action-btn" onclick="loadStudioModule('community')">
+
                     👥 Community Manager
+
                 </button>
 
             </div>
@@ -216,7 +228,7 @@
 
             <span>Passports</span>
 
-            <strong>0</strong>
+            <strong id="stat-passports">0</strong>
 
         </div>
 
@@ -224,7 +236,7 @@
 
             <span>Badges</span>
 
-            <strong>0</strong>
+            <strong id="stat-badges">0</strong>
 
         </div>
 
@@ -232,7 +244,7 @@
 
             <span>Movies</span>
 
-            <strong>0</strong>
+            <strong id="stat-movies">0</strong>
 
         </div>
 
@@ -240,7 +252,7 @@
 
             <span>Radio Mixes</span>
 
-            <strong>0</strong>
+            <strong id="stat-radio">0</strong>
 
         </div>
 
@@ -248,7 +260,7 @@
 
             <span>News Articles</span>
 
-            <strong>0</strong>
+            <strong id="stat-news">0</strong>
 
         </div>
 
@@ -256,7 +268,7 @@
 
             <span>Community Members</span>
 
-            <strong>0</strong>
+            <strong id="stat-community">0</strong>
 
         </div>
 
@@ -304,7 +316,7 @@
 
             <span>Studio</span>
 
-            <strong>Healthy</strong>
+            <strong id="system-studio-status">Healthy</strong>
 
         </div>
 
@@ -328,7 +340,7 @@
 
             <span>Managers</span>
 
-            <strong>Available</strong>
+            <strong id="system-managers-status">Available</strong>
 
         </div>
 

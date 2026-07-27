@@ -128,7 +128,6 @@ async function loadStudioModule(moduleName) {
 
         addStudioActivity(`Opened ${moduleName}`);
 
-        updateRecentlyUsed(moduleName);
 
         if (moduleName === "dashboard") {
 
@@ -269,6 +268,36 @@ const recentlyUsed = [];
 
 const studioActivity = [];
 
+function renderRecentlyUsed() {
+
+    const container = document.getElementById("recently-used-list");
+
+    if (!container) return;
+
+    if (recentlyUsed.length === 0) {
+
+        container.innerHTML = `
+            <div class="task-item">
+                No recent modules.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML = recentlyUsed.map(module => `
+
+        <div class="task-item">
+
+            ${module}
+
+        </div>
+
+    `).join("");
+
+}
+
 // ======================================================
 // ACTIVITY SYSTEM
 // ======================================================
@@ -403,25 +432,7 @@ function updateRecentlyUsed(moduleName) {
 
     }
 
-    const list = document.getElementById("recently-used-list");
-
-    if (!list) return;
-
-    list.innerHTML = "";
-
-    recentlyUsed.forEach(module => {
-
-        list.innerHTML += `
-
-            <div class="task-item">
-
-                ${module}
-
-            </div>
-
-        `;
-
-    });
+    renderRecentlyUsed();
 
 }
 // ======================================================
@@ -484,6 +495,14 @@ function renderStudioSummary() {
 
     }
 
+    const systemStudio = document.getElementById("system-studio-status");
+
+    if (systemStudio) {
+
+        systemStudio.textContent = StudioState.studio;
+
+    }
+
     if (workspace) {
 
         workspace.textContent = StudioState.currentWorkspace;
@@ -501,6 +520,20 @@ function renderStudioSummary() {
         version.textContent = StudioState.version;
 
     }
+
+    const passports = document.getElementById("stat-passports");
+    const badges = document.getElementById("stat-badges");
+    const movies = document.getElementById("stat-movies");
+    const radio = document.getElementById("stat-radio");
+    const news = document.getElementById("stat-news");
+    const community = document.getElementById("stat-community");
+
+    if (passports) passports.textContent = "0";
+    if (badges) badges.textContent = "0";
+    if (movies) movies.textContent = "0";
+    if (radio) radio.textContent = "0";
+    if (news) news.textContent = "0";
+    if (community) community.textContent = "0";
 
 }
 
@@ -577,6 +610,8 @@ function initializeDashboard() {
         renderStudioActivity();
 
         renderDashboardActivity();
+
+        updateRecentlyUsed("Dashboard");
 
         console.log("Dashboard initialized.");
 
