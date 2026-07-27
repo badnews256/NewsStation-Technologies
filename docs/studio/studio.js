@@ -21,6 +21,30 @@ const StudioState = {
 
 };
 
+const StudioTitles = {
+
+    dashboard: "Dashboard",
+
+    content: "Content Manager",
+
+    cinema: "Cinema Manager",
+
+    radio: "Radio Manager",
+
+    news: "News Manager",
+
+    community: "Community Manager",
+
+    activity: "Activity Manager",
+
+    system: "System Manager",
+
+    passport: "Passport Manager",
+
+    badges: "Badge Manager"
+
+};
+
 async function loadStudio() {
 
     const response = await fetch("studio/studio.html");
@@ -90,6 +114,8 @@ async function loadStudioModule(moduleName) {
         }, 150);
 
         StudioState.currentWorkspace = moduleName;
+
+        updateStudioTitle(moduleName);
 
         renderStudioSummary();
 
@@ -457,5 +483,43 @@ function updateActiveStudioNav(moduleName) {
         }
 
     });
+
+}
+
+// ======================================================
+// STUDIO PAGE TITLES
+// ======================================================
+
+function updateStudioTitle(moduleName) {
+
+    const pageTitle = document.getElementById("studio-page-title");
+
+    if (!pageTitle) return;
+
+    const titles = {
+
+        dashboard: "Dashboard",
+
+        content: "Content Manager",
+
+        cinema: "Cinema Manager",
+
+        radio: "Radio Manager",
+
+        news: "News Manager",
+
+        community: "Community Manager",
+
+        activity: "Activity Manager",
+
+        system: "System Manager",
+
+        passport: "Passport Manager",
+
+        badges: "Badge Manager"
+
+    };
+
+    pageTitle.textContent = titles[moduleName] || moduleName;
 
 }
