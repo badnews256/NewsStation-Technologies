@@ -243,3 +243,21 @@ body {
     transition: all .25s ease;
 
 }
+
+/*=====================================================
+  STUDIO WORKSPACE TRANSITIONS
+=====================================================*/
+
+#studio-workspace {
+
+    opacity: 1;
+
+    transition: opacity .18s ease;
+
+}
+
+#studio-workspace.workspace-loading {
+
+    opacity: 0;
+
+}

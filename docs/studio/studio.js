@@ -77,7 +77,17 @@ async function loadStudioModule(moduleName) {
 
         const response = await fetch(`studio/${moduleName}.html`);
 
-        workspace.innerHTML = await response.text();
+        workspace.classList.add("workspace-loading");
+
+        const html = await response.text();
+
+        setTimeout(() => {
+
+            workspace.innerHTML = html;
+
+            workspace.classList.remove("workspace-loading");
+
+        }, 150);
 
         StudioState.currentWorkspace = moduleName;
 
