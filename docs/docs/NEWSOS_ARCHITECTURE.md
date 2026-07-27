@@ -310,3 +310,47 @@ Potential additions include:
 - Additional Studio tools
 - Theme customization
 - Platform analytics
+
+# Studio Management Layer
+
+The NewsOS Studio serves as the administrative layer for NewsOS applications.
+
+Studio managers configure and manage applications.
+
+Applications provide the end-user experience.
+
+Managers do not replace applications.
+
+Managers administer applications.
+
+## Manager Relationships
+
+Dashboard
+→ Platform Overview
+
+Content Manager
+→ Shared Platform Content
+
+Cinema Manager
+→ Cinema Application
+
+Radio Manager
+→ Radio Application
+
+News Manager
+→ News Application
+
+Community Manager
+→ Community Features
+
+Activity Manager
+→ Audit Log
+
+System Manager
+→ Platform Configuration
+
+Passport Manager
+→ Passport System
+
+Badge Manager
+→ Badge Engine

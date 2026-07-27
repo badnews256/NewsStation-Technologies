@@ -3,17 +3,38 @@
    Studio Shell
 ========================================================== */
 
+:root {
+
+    --ns-black: #0b0b0b;
+    --ns-panel: #171717;
+    --ns-panel-light: #222;
+    --ns-gold: #d4af37;
+    --ns-white: #ffffff;
+    --ns-text: #cfcfcf;
+    --ns-radius: 14px;
+    --ns-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+
+}
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+html,
 body {
 
     margin: 0;
-    background: #0b0b0b;
-    color: #ffffff;
+    padding: 0;
+    background: var(--ns-black);
+    color: var(--ns-white);
     font-family: Arial, Helvetica, sans-serif;
 
 }
 
 /* ==========================================================
-   Container
+   STUDIO CONTAINER
 ========================================================== */
 
 .studio-container {
@@ -31,7 +52,7 @@ body {
 .studio-header h1 {
 
     margin: 0;
-    color: #d4af37;
+    color: var(--ns-gold);
     font-size: 42px;
 
 }
@@ -39,12 +60,12 @@ body {
 .studio-header p {
 
     margin-top: 8px;
-    color: #bfbfbf;
+    color: var(--ns-text);
 
 }
 
 /* ==========================================================
-   Studio Shell
+   STUDIO SHELL
 ========================================================== */
 
 .studio-shell {
@@ -56,7 +77,7 @@ body {
 }
 
 /* ==========================================================
-   Sidebar
+   SIDEBAR
 ========================================================== */
 
 .studio-sidebar {
@@ -64,31 +85,35 @@ body {
     width: 260px;
     min-width: 260px;
 
-    background: #161616;
+    background: var(--ns-panel);
 
-    border: 2px solid #d4af37;
+    border: 2px solid var(--ns-gold);
 
-    border-radius: 14px;
+    border-radius: var(--ns-radius);
 
     padding: 20px;
 
     display: flex;
-
     flex-direction: column;
-
     gap: 15px;
+
+    box-shadow: var(--ns-shadow);
 
 }
 
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
 .studio-nav {
 
-    background: #222;
+    background: var(--ns-panel-light);
 
     color: white;
 
     border: none;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     padding: 15px;
 
@@ -104,44 +129,288 @@ body {
 
 .studio-nav:hover {
 
-    background: #d4af37;
+    background: var(--ns-gold);
 
-    color: black;
+    color: #000;
+
+    transform: translateX(4px);
 
 }
 
 .studio-nav.active {
 
-    background: #d4af37;
+    background: rgba(212, 175, 55, .20);
 
-    color: black;
+    border-left: 4px solid var(--ns-gold);
+
+    color: #fff;
 
     font-weight: bold;
 
 }
 
 /* ==========================================================
-   Workspace
+   WORKSPACE
 ========================================================== */
 
 .studio-workspace {
 
     flex: 1;
 
-    background: #161616;
+    background: var(--ns-panel);
 
-    border: 2px solid #d4af37;
+    border: 2px solid var(--ns-gold);
 
-    border-radius: 14px;
+    border-radius: var(--ns-radius);
 
     padding: 30px;
 
     min-height: 700px;
 
+    box-shadow: var(--ns-shadow);
+
+    overflow: hidden;
+
 }
 
 /* ==========================================================
-   Quick Access
+   DASHBOARD FOUNDATION
+========================================================== */
+
+.dashboard-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    height: 100%;
+
+}
+
+.mission-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 28px;
+
+    background: #202020;
+
+    border: 1px solid rgba(212, 175, 55, .35);
+
+    border-radius: 14px;
+
+}
+
+.mission-header h2 {
+
+    margin: 0;
+
+    color: var(--ns-gold);
+
+    font-size: 34px;
+
+}
+
+.mission-header p {
+
+    margin: 6px 0 0;
+
+    color: #bbbbbb;
+
+}
+
+.mission-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: bold;
+
+}
+
+.status-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+}
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+}
+
+.dashboard-card {
+
+    background: #202020;
+
+    border: 1px solid rgba(212, 175, 55, .30);
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    box-shadow: var(--ns-shadow);
+
+    transition: .25s;
+
+}
+
+.dashboard-card:hover {
+
+    border-color: var(--ns-gold);
+
+    transform: translateY(-3px);
+
+}
+
+.card-header {
+
+    margin-bottom: 18px;
+
+}
+
+.card-header h3 {
+
+    margin: 0;
+
+    color: var(--ns-gold);
+
+    font-size: 20px;
+
+}
+
+.quick-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+}
+
+.action-btn {
+
+    background: #2b2b2b;
+
+    color: #fff;
+
+    border: 1px solid rgba(212, 175, 55, .35);
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    font-size: 15px;
+
+}
+
+.action-btn:hover {
+
+    background: var(--ns-gold);
+
+    color: #000;
+
+}
+
+.task-item {
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+    color: #d8d8d8;
+
+}
+
+.task-item:last-child {
+
+    border-bottom: none;
+
+}
+
+.stats-grid {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+.stat-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.stat-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.support-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+.info-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.info-row:last-child {
+
+    border-bottom: none;
+
+}
+
+/* ==========================================================
+   QUICK ACCESS
 ========================================================== */
 
 .studio-grid {
@@ -162,7 +431,7 @@ body {
 
     color: white;
 
-    border: 2px solid #d4af37;
+    border: 2px solid var(--ns-gold);
 
     border-radius: 12px;
 
@@ -192,9 +461,9 @@ body {
 
     transform: translateY(-5px);
 
-    background: #d4af37;
+    background: var(--ns-gold);
 
-    color: black;
+    color: #000;
 
 }
 
@@ -205,48 +474,8 @@ body {
 }
 
 /* ==========================================================
-   Responsive
+   WORKSPACE TRANSITIONS
 ========================================================== */
-
-@media(max-width:1000px) {
-
-    .studio-shell {
-
-        flex-direction: column;
-
-    }
-
-    .studio-sidebar {
-
-        width: 100%;
-
-        min-width: 100%;
-
-    }
-
-}
-
-/* =====================================================
-   ACTIVE STUDIO NAVIGATION
-===================================================== */
-
-.studio-nav.active {
-
-    background: rgba(212, 175, 55, .20);
-
-    border-left: 4px solid gold;
-
-    color: #ffffff;
-
-    font-weight: bold;
-
-    transition: all .25s ease;
-
-}
-
-/*=====================================================
-  STUDIO WORKSPACE TRANSITIONS
-=====================================================*/
 
 #studio-workspace {
 
@@ -259,5 +488,32 @@ body {
 #studio-workspace.workspace-loading {
 
     opacity: 0;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:1000px) {
+
+    .studio-shell {
+
+        flex-direction: column;
+
+    }
+
+    .studio-sidebar {
+
+        width: 100%;
+        min-width: 100%;
+
+    }
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+    }
 
 }

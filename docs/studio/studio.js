@@ -130,6 +130,12 @@ async function loadStudioModule(moduleName) {
 
         updateRecentlyUsed(moduleName);
 
+        if (moduleName === "dashboard") {
+
+            initializeDashboard();
+
+        }
+
     }
 
     catch (error) {
@@ -269,29 +275,61 @@ const studioActivity = [];
 
 function addStudioActivity(message) {
 
+    if (!message) return;
+
     const now = new Date();
 
     studioActivity.unshift({
 
         time: now.toLocaleTimeString([], {
-
             hour: "numeric",
-
             minute: "2-digit"
-
         }),
 
         message
 
     });
 
-    if (studioActivity.length > 50) {
+    if (studioActivity.length > 10) {
 
         studioActivity.pop();
 
     }
 
+    renderStudioActivity();
+
     renderDashboardActivity();
+
+}
+
+function renderStudioActivity() {
+
+    const container = document.getElementById("recent-activity");
+
+    if (!container) return;
+
+    if (studioActivity.length === 0) {
+
+        container.innerHTML = `
+            <div class="activity-item">
+                <span class="activity-time">--:--</span>
+                <span class="activity-text">No recent activity.</span>
+            </div>
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML = studioActivity.map(item => `
+
+    <div class="task-item">
+
+        <strong>${item.time}</strong> — ${item.message}
+
+    </div>
+
+`).join("");
 
 }
 
@@ -324,6 +362,8 @@ function renderDashboardActivity() {
         `;
 
     });
+
+    console.log("studioActivity =", studioActivity);
 
     if (studioActivity.length === 0) {
 
@@ -521,5 +561,25 @@ function updateStudioTitle(moduleName) {
     };
 
     pageTitle.textContent = titles[moduleName] || moduleName;
+
+}
+
+// ======================================================
+// DASHBOARD INITIALIZATION
+// ======================================================
+
+function initializeDashboard() {
+
+    setTimeout(() => {
+
+        renderStudioSummary();
+
+        renderStudioActivity();
+
+        renderDashboardActivity();
+
+        console.log("Dashboard initialized.");
+
+    }, 200);
 
 }
