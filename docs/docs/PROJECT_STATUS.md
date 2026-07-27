@@ -300,3 +300,41 @@ Implement the NewsOS Studio Framework.
 Status
 
 Ready for Blueprint Review
+
+Current Milestone
+
+Studio Blueprint Review
+
+Next Milestone
+
+NewsOS Studio Framework
+
+Status
+
+Ready for Architecture Review
+
+Current Milestone
+
+🔨 NewsOS Studio Framework
+
+Current Sprint
+
+Sprint 1
+
+Objective
+
+Build the permanent Studio framework.
+
+Status
+
+In Progress
+
+Framework Refinement Sprint 1
+
+Objective
+
+Implement active navigation highlighting throughout NewsOS Studio.
+
+Status
+
+In Progress

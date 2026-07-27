@@ -225,3 +225,21 @@ body {
     }
 
 }
+
+/* =====================================================
+   ACTIVE STUDIO NAVIGATION
+===================================================== */
+
+.studio-nav.active {
+
+    background: rgba(212, 175, 55, .20);
+
+    border-left: 4px solid gold;
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+    transition: all .25s ease;
+
+}

@@ -83,6 +83,8 @@ async function loadStudioModule(moduleName) {
 
         renderStudioSummary();
 
+        updateActiveStudioNav(moduleName);
+
         // ======================================================
         // LIVE CLOCK
         // ======================================================
@@ -426,4 +428,24 @@ function renderStudioSummary() {
 
 }
 
+// ======================================================
+// ACTIVE STUDIO NAVIGATION
+// ======================================================
 
+function updateActiveStudioNav(moduleName) {
+
+    document.querySelectorAll(".studio-nav").forEach(button => {
+
+        button.classList.remove("active");
+
+        const text = button.innerText.toLowerCase();
+
+        if (text.includes(moduleName.toLowerCase())) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+}
