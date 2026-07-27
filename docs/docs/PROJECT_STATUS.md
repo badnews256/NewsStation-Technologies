@@ -288,3 +288,15 @@ Current Milestone
 
 Status:
 In Progress
+
+Current Milestone
+
+✅ Studio Blueprint Complete
+
+Next Milestone
+
+Implement the NewsOS Studio Framework.
+
+Status
+
+Ready for Blueprint Review
