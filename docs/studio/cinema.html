@@ -1,0 +1,606 @@
+<!-- ===================================================== -->
+<!-- NEWSOS STUDIO -->
+<!-- CINEMA MANAGER -->
+<!-- VERSION 2 -->
+<!-- ===================================================== -->
+
+<div id="cinema-manager" class="studio-manager">
+
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
+
+    <section class="manager-header">
+
+        <div class="manager-header-left">
+
+            <h1>🎬 Cinema Manager</h1>
+
+            <p>Manage and organize the complete NewsOS movie library.</p>
+
+            <div class="manager-version">
+
+                <span>Version 1.0</span>
+
+            </div>
+
+        </div>
+
+        <div class="manager-header-right">
+
+            <button id="add-movie-btn" class="primary-button">
+
+                + Add Movie
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- MANAGER TOOLBAR -->
+    <!-- ===================================================== -->
+
+    <section class="manager-toolbar">
+
+        <div class="toolbar-left">
+
+            <div class="toolbar-item">
+
+                <span class="toolbar-label">
+
+                    Location
+
+                </span>
+
+                <strong>
+
+                    Dashboard / Cinema Manager
+
+                </strong>
+
+            </div>
+
+            <div class="toolbar-item">
+
+                <span class="toolbar-label">
+
+                    Library Status
+
+                </span>
+
+                <strong class="status-online">
+
+                    Healthy
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="toolbar-right">
+
+            <div class="toolbar-item">
+
+                <span class="toolbar-label">
+
+                    Last Updated
+
+                </span>
+
+                <strong id="cinema-last-updated">
+
+                    --
+
+                </strong>
+
+            </div>
+
+            <div class="toolbar-item">
+
+                <span class="toolbar-label">
+
+                    Selected Movies
+
+                </span>
+
+                <strong id="selected-movie-count">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- SEARCH & FILTER TOOLBAR -->
+    <!-- ===================================================== -->
+
+    <section class="manager-search-toolbar">
+
+        <div class="search-left">
+
+            <input type="search" id="movie-search" placeholder="Search movies...">
+
+        </div>
+
+        <div class="search-right">
+
+            <select id="genre-filter">
+
+                <option value="">All Genres</option>
+
+            </select>
+
+            <select id="rating-filter">
+
+                <option value="">All Ratings</option>
+
+            </select>
+
+            <select id="status-filter">
+
+                <option value="">All Status</option>
+
+            </select>
+
+            <select id="sort-filter">
+
+                <option value="az">
+
+                    Sort A–Z
+
+                </option>
+
+                <option value="za">
+
+                    Sort Z–A
+
+                </option>
+
+            </select>
+
+            <select id="bulk-actions">
+
+                <option value="">
+
+                    Bulk Actions
+
+                </option>
+
+            </select>
+
+            <select id="view-mode">
+
+                <option value="table">
+
+                    Table View
+
+                </option>
+
+                <option value="grid">
+
+                    Grid View
+
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ===================================================== -->
+
+    <section class="manager-content">
+
+        <!-- ============================== -->
+        <!-- MOVIE TABLE -->
+        <!-- ============================== -->
+
+        <div class="manager-main">
+
+            <table id="movie-library-table" class="manager-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th class="column-poster">Poster</th>
+
+                        <th class="column-title">Title</th>
+
+                        <th class="column-genre">Genre</th>
+
+                        <th class="column-runtime">Runtime</th>
+
+                        <th class="column-rating">Rating</th>
+
+                        <th class="column-status">Status</th>
+
+                        <th class="column-actions">Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="movie-library-body">
+
+                    <tr class="empty-library">
+
+                        <td colspan="7">
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+
+                                    🎬
+
+                                </div>
+
+                                <h2>No Movies Yet</h2>
+
+                                <p>
+
+                                    Build your NewsOS Cinema Library by
+                                    adding your first movie.
+
+                                </p>
+
+                                <button id="empty-add-movie" class="primary-button">
+
+                                    + Add Your First Movie
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- ============================== -->
+        <!-- STICKY SIDEBAR -->
+        <!-- ============================== -->
+
+        <aside class="manager-sidebar">
+
+            <!-- Statistics -->
+
+            <section class="sidebar-card">
+
+                <h2>📊 Statistics</h2>
+
+                <div class="stat-item">
+
+                    <span>Total Movies</span>
+
+                    <strong id="stat-total-movies">0</strong>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <span>Featured Movies</span>
+
+                    <strong id="stat-featured-movies">0</strong>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <span>Genres</span>
+
+                    <strong id="stat-total-genres">0</strong>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <span>Ratings</span>
+
+                    <strong id="stat-total-ratings">0</strong>
+
+                </div>
+
+            </section>
+
+            <!-- Featured Movie -->
+
+            <section class="sidebar-card">
+
+                <h2>⭐ Featured Movie</h2>
+
+                <div class="featured-movie">
+
+                    <div class="featured-poster">
+
+                        No Poster
+
+                    </div>
+
+                    <h3>No Featured Movie</h3>
+
+                    <p>
+
+                        Select a featured movie once your library
+                        contains movies.
+
+                    </p>
+
+                    <button id="change-featured-btn" class="secondary-button">
+
+                        Change Featured
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Quick Information -->
+
+            <section class="sidebar-card">
+
+                <h2>🏷 Quick Information</h2>
+
+                <ul class="quick-info-list">
+
+                    <li>
+
+                        <span class="badge active">
+
+                            Active
+
+                        </span>
+
+                    </li>
+
+                    <li>
+
+                        <span class="badge featured">
+
+                            Featured
+
+                        </span>
+
+                    </li>
+
+                    <li>
+
+                        <span class="badge draft">
+
+                            Draft
+
+                        </span>
+
+                    </li>
+
+                    <li>
+
+                        <span class="badge archived">
+
+                            Archived
+
+                        </span>
+
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </aside>
+
+        <!-- ===================================================== -->
+        <!-- PAGINATION -->
+        <!-- ===================================================== -->
+
+        <footer class="manager-pagination">
+
+            <div class="pagination-left">
+
+                Showing
+
+                <strong id="movie-range">
+
+                    0–0
+
+                </strong>
+
+                of
+
+                <strong id="movie-total">
+
+                    0 Movies
+
+                </strong>
+
+            </div>
+
+            <div class="pagination-center">
+
+                <button id="previous-page" class="pagination-button">
+
+                    ◀ Previous
+
+                </button>
+
+                <span id="current-page">
+
+                    Page 1 of 1
+
+                </span>
+
+                <button id="next-page" class="pagination-button">
+
+                    Next ▶
+
+                </button>
+
+            </div>
+
+            <div class="pagination-right">
+
+                <label for="page-size">
+
+                    Page Size
+
+                </label>
+
+                <select id="page-size">
+
+                    <option value="25" selected>
+
+                        25
+
+                    </option>
+
+                    <option value="50">
+
+                        50
+
+                    </option>
+
+                    <option value="100">
+
+                        100
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </footer>
+
+    </section>
+
+    <!-- ======================================================
+     ADD MOVIE MODAL
+====================================================== -->
+
+    <div id="add-movie-modal" class="studio-modal hidden">
+
+        <div class="studio-modal-window">
+
+            <div class="studio-modal-header">
+
+                <h2>🎬 Add Movie</h2>
+
+                <button id="close-add-movie" class="modal-close">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+            <div class="studio-modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Movie Title</label>
+
+                        <input id="movie-title" type="text">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Movie URL</label>
+
+                        <input id="movie-url" type="url">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Poster URL</label>
+
+                        <input id="movie-poster" type="url">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Genre</label>
+
+                        <input id="movie-genre" type="text">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Runtime</label>
+
+                        <input id="movie-runtime" type="text">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Rating</label>
+
+                        <select id="movie-rating">
+
+                            <option>G</option>
+                            <option>PG</option>
+                            <option>PG-13</option>
+                            <option>R</option>
+                            <option>NR</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label>Description</label>
+
+                        <textarea id="movie-description" rows="5"></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="studio-modal-footer">
+
+                <button id="cancel-add-movie" class="secondary-button">
+
+                    Cancel
+
+                </button>
+
+                <button id="save-movie" class="primary-button">
+
+                    Save Movie
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

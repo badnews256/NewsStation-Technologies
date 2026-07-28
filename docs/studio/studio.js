@@ -99,6 +99,30 @@ async function loadStudioModule(moduleName) {
 
     try {
 
+        // ======================================================
+        // LOAD MANAGER STYLESHEET
+        // ======================================================
+
+        const existingStyle = document.getElementById("studio-manager-css");
+
+        if (existingStyle) {
+
+            existingStyle.remove();
+
+        }
+
+        const stylesheet = document.createElement("link");
+
+        stylesheet.id = "studio-manager-css";
+
+        stylesheet.rel = "stylesheet";
+
+        console.log("Loading CSS:", `css/studio-${moduleName}.css`);
+
+        stylesheet.href = `css/studio-${moduleName}.css?v=${Date.now()}`;
+
+        document.head.appendChild(stylesheet);
+
         const response = await fetch(`studio/${moduleName}.html`);
 
         workspace.classList.add("workspace-loading");
@@ -208,57 +232,13 @@ document.addEventListener("click", function (event) {
 
 });
 
-// ======================================================
-// TEMPORARY CINEMA BRIDGE
-// ======================================================
+async function openCinemaManager() {
 
-function openCinemaManager() {
-
-    const workspace = document.getElementById("studio-workspace");
-
-    if (!workspace) return;
-
-    workspace.innerHTML = `
-
-        <h2>🎬 Cinema Manager</h2>
-
-        <hr>
-
-        <p><strong>Featured Movie</strong></p>
-
-        <p><strong>Title:</strong> ${featuredMovie.title}</p>
-
-        <p><strong>Genre:</strong> ${featuredMovie.genre}</p>
-
-        <p><strong>Runtime:</strong> ${featuredMovie.runtime}</p>
-
-        <p><strong>Rating:</strong> ${featuredMovie.rating}</p>
-
-        <p>${featuredMovie.description}</p>
-
-        <br>
-
-        <button id="back-dashboard">
-
-            ← Dashboard
-
-        </button>
-
-    `;
+    await loadStudioModule("cinema");
 
     addStudioActivity("Opened Cinema Manager");
 
 }
-
-document.addEventListener("click", function (event) {
-
-    if (event.target.id === "back-dashboard") {
-
-        loadStudioModule("dashboard");
-
-    }
-
-});
 
 // ======================================================
 // DASHBOARD MEMORY

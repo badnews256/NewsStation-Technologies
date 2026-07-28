@@ -1,0 +1,593 @@
+/* ==========================================================
+   NEWSOS STUDIO
+   CINEMA MANAGER
+   VERSION 1
+   ========================================================== */
+
+#cinema-manager {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1d1d1d;
+    border: 1px solid #343434;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.manager-header-left h1 {
+    margin: 0;
+    font-size: 38px;
+    color: #d4af37;
+}
+
+.manager-header-left p {
+    margin-top: 10px;
+    color: #bdbdbd;
+}
+
+.manager-version {
+    margin-top: 12px;
+    color: #8b8b8b;
+}
+
+.primary-button {
+    background: #d4af37;
+    color: #111111;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.primary-button:hover {
+    background: #f0c94d;
+}
+
+/* ==========================================================
+   TOOLBAR
+   ========================================================== */
+
+.manager-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1d1d1d;
+    border: 1px solid #343434;
+    border-radius: 10px;
+    padding: 18px 22px;
+}
+
+.toolbar-left,
+.toolbar-right {
+    display: flex;
+    gap: 35px;
+}
+
+.toolbar-label {
+    display: block;
+    color: #8a8a8a;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.status-online {
+    color: #39d86b;
+}
+
+/* ==========================================================
+   MANAGER LAYOUT
+   ========================================================== */
+
+.manager-content {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 280px;
+
+    gap: 24px;
+
+    align-items: start;
+
+}
+
+.manager-main {
+
+    min-width: 0;
+
+    overflow-x: auto;
+
+}
+
+.manager-sidebar {
+
+    position: sticky;
+
+    top: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.sidebar-card {
+
+    background: #1d1d1d;
+
+    border: 1px solid #343434;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+}
+
+.sidebar-card h2 {
+
+    margin: 0 0 18px;
+
+    color: #d4af37;
+
+    font-size: 22px;
+
+}
+
+.stat-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+}
+
+.quick-info-list {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+.quick-info-list li {
+
+    margin-bottom: 12px;
+
+}
+
+/* ==========================================================
+   SEARCH & FILTER TOOLBAR
+   ========================================================== */
+
+.manager-search-toolbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: #1d1d1d;
+
+    border: 1px solid #343434;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    margin-bottom: 24px;
+
+}
+
+.search-left {
+
+    flex: 1;
+
+}
+
+.search-left input {
+
+    width: 100%;
+
+    background: #111111;
+
+    border: 1px solid #444444;
+
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    padding: 12px 14px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+}
+
+.search-left input:focus {
+
+    outline: none;
+
+    border-color: #d4af37;
+
+}
+
+.search-right {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    justify-content: flex-end;
+
+}
+
+.search-right select {
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #444444;
+
+    border-radius: 8px;
+
+    padding: 10px 12px;
+
+    cursor: pointer;
+
+}
+
+.search-right select:focus {
+
+    outline: none;
+
+    border-color: #d4af37;
+
+}
+
+/* ==========================================================
+   MOVIE LIBRARY TABLE
+   ========================================================== */
+
+.manager-table {
+
+    width: 100%;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    background: #1d1d1d;
+
+    border: 1px solid #343434;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+}
+
+.manager-table thead {
+
+    background: #262626;
+
+}
+
+.manager-table th {
+
+    padding: 16px;
+
+    text-align: left;
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid #343434;
+
+    white-space: nowrap;
+
+}
+
+.manager-table td {
+
+    padding: 16px;
+
+    border-bottom: 1px solid #2b2b2b;
+
+    color: #f2f2f2;
+
+    vertical-align: middle;
+
+}
+
+.manager-table tbody tr {
+
+    transition: background .2s;
+
+}
+
+.manager-table tbody tr:hover {
+
+    background: #252525;
+
+}
+
+/* ==========================================================
+   EMPTY STATE
+   ========================================================== */
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    min-height: 420px;
+
+    padding: 60px 30px;
+
+}
+
+.empty-icon {
+
+    font-size: 72px;
+
+    margin-bottom: 24px;
+
+}
+
+.empty-state h2 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+}
+
+.empty-state p {
+
+    max-width: 500px;
+
+    margin: 18px 0 30px;
+
+    color: #b5b5b5;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}
+
+.empty-state .primary-button {
+
+    min-width: 240px;
+
+}
+
+.column-poster {
+
+    width: 110px;
+
+}
+
+.column-actions {
+
+    width: 180px;
+
+}
+
+/* ==========================================================
+   STUDIO MODAL
+   ========================================================== */
+
+.studio-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(0, 0, 0, .75);
+
+    backdrop-filter: blur(6px);
+
+    z-index: 5000;
+
+}
+
+.studio-modal.hidden {
+
+    display: none;
+
+}
+
+.studio-modal-window {
+
+    width: min(900px, 90vw);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #1d1d1d;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 14px;
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+
+}
+
+.studio-modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 24px;
+
+    border-bottom: 1px solid #343434;
+
+}
+
+.studio-modal-header h2 {
+
+    margin: 0;
+
+    color: #d4af37;
+
+}
+
+.modal-close {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2a2a2a;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+}
+
+.modal-close:hover {
+
+    background: #3a3a3a;
+
+}
+
+.studio-modal-body {
+
+    padding: 24px;
+
+}
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.form-group label {
+
+    color: #d4af37;
+
+    font-weight: 600;
+
+}
+
+.form-group input,
+
+.form-group select,
+
+.form-group textarea {
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #444444;
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    font-size: 15px;
+
+}
+
+.form-group textarea {
+
+    resize: vertical;
+
+}
+
+.full-width {
+
+    grid-column: 1 / -1;
+
+}
+
+.studio-modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 15px;
+
+    padding: 24px;
+
+    border-top: 1px solid #343434;
+
+}
