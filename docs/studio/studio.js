@@ -131,37 +131,48 @@ async function loadStudioModule(moduleName) {
 
         setTimeout(() => {
 
+            // Insert the HTML FIRST
             workspace.innerHTML = html;
 
             workspace.classList.remove("workspace-loading");
 
+            // Update Studio AFTER the HTML exists
+            StudioState.currentWorkspace = moduleName;
+
+            updateStudioTitle(moduleName);
+
+            renderStudioSummary();
+
+            updateActiveStudioNav(moduleName);
+
+            addStudioActivity(`Opened ${moduleName}`);
+
+            if (moduleName === "dashboard") {
+
+                initializeDashboard();
+
+            }
+
+            else if (moduleName === "cinema") {
+
+                if (
+                    typeof Cinema !== "undefined" &&
+                    typeof Cinema.initialize === "function"
+                ) {
+
+                    Cinema.initialize();
+
+                }
+
+            }
+
         }, 150);
-
-        StudioState.currentWorkspace = moduleName;
-
-        updateStudioTitle(moduleName);
-
-        renderStudioSummary();
-
-        updateActiveStudioNav(moduleName);
-
-        // ======================================================
-        // LIVE CLOCK
-        // ======================================================
-
-
-        addStudioActivity(`Opened ${moduleName}`);
-
-
-        if (moduleName === "dashboard") {
-
-            initializeDashboard();
-
-        }
 
     }
 
     catch (error) {
+
+        workspace.classList.remove("workspace-loading");
 
         workspace.innerHTML = `
 
@@ -169,16 +180,17 @@ async function loadStudioModule(moduleName) {
 
             <p>
 
-            Unable to load ${moduleName}.html
+                Unable to load ${moduleName}.html
 
             </p>
 
         `;
 
+        console.error(error);
+
     }
 
 }
-
 // ======================================================
 // SIDEBAR ROUTING
 // ======================================================

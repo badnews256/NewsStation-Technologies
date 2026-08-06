@@ -44,76 +44,21 @@
 
     <section class="manager-toolbar">
 
-        <div class="toolbar-left">
+        <div>🏠 Dashboard / Cinema Manager</div>
 
-            <div class="toolbar-item">
-
-                <span class="toolbar-label">
-
-                    Location
-
-                </span>
-
-                <strong>
-
-                    Dashboard / Cinema Manager
-
-                </strong>
-
-            </div>
-
-            <div class="toolbar-item">
-
-                <span class="toolbar-label">
-
-                    Library Status
-
-                </span>
-
-                <strong class="status-online">
-
-                    Healthy
-
-                </strong>
-
-            </div>
-
+        <div>
+            Library Status:
+            <strong>Healthy</strong>
         </div>
 
-        <div class="toolbar-right">
+        <div>
+            Last Updated:
+            <span id="last-updated">--</span>
+        </div>
 
-            <div class="toolbar-item">
-
-                <span class="toolbar-label">
-
-                    Last Updated
-
-                </span>
-
-                <strong id="cinema-last-updated">
-
-                    --
-
-                </strong>
-
-            </div>
-
-            <div class="toolbar-item">
-
-                <span class="toolbar-label">
-
-                    Selected Movies
-
-                </span>
-
-                <strong id="selected-movie-count">
-
-                    0
-
-                </strong>
-
-            </div>
-
+        <div>
+            Selected:
+            <span id="selected-count">0</span>
         </div>
 
     </section>
@@ -123,77 +68,34 @@
     <!-- SEARCH & FILTER TOOLBAR -->
     <!-- ===================================================== -->
 
-    <section class="manager-search-toolbar">
+    <section class="manager-filters">
 
-        <div class="search-left">
+        <input id="movie-search" type="search" placeholder="Search movies...">
 
-            <input type="search" id="movie-search" placeholder="Search movies...">
+        <select id="genre-filter">
+            <option>All Genres</option>
+        </select>
 
-        </div>
+        <select id="rating-filter">
+            <option>All Ratings</option>
+        </select>
 
-        <div class="search-right">
+        <select id="status-filter">
+            <option>All Status</option>
+        </select>
 
-            <select id="genre-filter">
+        <select id="sort-filter">
+            <option>A → Z</option>
+        </select>
 
-                <option value="">All Genres</option>
+        <select id="bulk-actions">
+            <option>Bulk Actions</option>
+        </select>
 
-            </select>
-
-            <select id="rating-filter">
-
-                <option value="">All Ratings</option>
-
-            </select>
-
-            <select id="status-filter">
-
-                <option value="">All Status</option>
-
-            </select>
-
-            <select id="sort-filter">
-
-                <option value="az">
-
-                    Sort A–Z
-
-                </option>
-
-                <option value="za">
-
-                    Sort Z–A
-
-                </option>
-
-            </select>
-
-            <select id="bulk-actions">
-
-                <option value="">
-
-                    Bulk Actions
-
-                </option>
-
-            </select>
-
-            <select id="view-mode">
-
-                <option value="table">
-
-                    Table View
-
-                </option>
-
-                <option value="grid">
-
-                    Grid View
-
-                </option>
-
-            </select>
-
-        </div>
+        <select id="view-mode">
+            <option>Table View</option>
+            <option>Grid View (Future)</option>
+        </select>
 
     </section>
 
@@ -207,27 +109,27 @@
         <!-- MOVIE TABLE -->
         <!-- ============================== -->
 
-        <div class="manager-main">
+        <div class="manager-workspace">
 
-            <table id="movie-library-table" class="manager-table">
+            <table id="movie-library-table" class="studio-table">
 
                 <thead>
 
                     <tr>
 
-                        <th class="column-poster">Poster</th>
+                        <th style="width:70px;">Poster</th>
 
-                        <th class="column-title">Title</th>
+                        <th>Title</th>
 
-                        <th class="column-genre">Genre</th>
+                        <th>Genre</th>
 
-                        <th class="column-runtime">Runtime</th>
+                        <th>Runtime</th>
 
-                        <th class="column-rating">Rating</th>
+                        <th>Rating</th>
 
-                        <th class="column-status">Status</th>
+                        <th>Status</th>
 
-                        <th class="column-actions">Actions</th>
+                        <th style="width:150px;">Actions</th>
 
                     </tr>
 
@@ -235,32 +137,39 @@
 
                 <tbody id="movie-library-body">
 
-                    <tr class="empty-library">
+                    <tr>
 
                         <td colspan="7">
 
-                            <div class="empty-state">
+                            <div class="studio-empty">
 
-                                <div class="empty-icon">
+                                <div class="studio-empty-icon">
 
                                     🎬
 
                                 </div>
 
-                                <h2>No Movies Yet</h2>
+                                <h2 class="studio-empty-title">
 
-                                <p>
+                                    No Movies Yet
 
-                                    Build your NewsOS Cinema Library by
-                                    adding your first movie.
+                                </h2>
+
+                                <p class="studio-empty-description">
+
+                                    Build your NewsOS Cinema Library by adding your first movie.
 
                                 </p>
 
-                                <button id="empty-add-movie" class="primary-button">
+                                <div class="studio-empty-actions">
 
-                                    + Add Your First Movie
+                                    <button id="add-first-movie" class="primary-button">
 
-                                </button>
+                                        + Add Your First Movie
+
+                                    </button>
+
+                                </div>
 
                             </div>
 
@@ -271,7 +180,6 @@
                 </tbody>
 
             </table>
-
         </div>
 
         <!-- ============================== -->
@@ -282,39 +190,47 @@
 
             <!-- Statistics -->
 
-            <section class="sidebar-card">
+            <section class="studio-card">
 
-                <h2>📊 Statistics</h2>
+                <h2 class="studio-card-title">
 
-                <div class="stat-item">
+                    📊 Statistics
 
-                    <span>Total Movies</span>
+                </h2>
 
-                    <strong id="stat-total-movies">0</strong>
+                <div class="studio-card-content">
 
-                </div>
+                    <div class="stat-item">
 
-                <div class="stat-item">
+                        <span>Total Movies</span>
 
-                    <span>Featured Movies</span>
+                        <strong id="stat-total-movies">0</strong>
 
-                    <strong id="stat-featured-movies">0</strong>
+                    </div>
 
-                </div>
+                    <div class="stat-item">
 
-                <div class="stat-item">
+                        <span>Featured Movies</span>
 
-                    <span>Genres</span>
+                        <strong id="stat-featured-movies">0</strong>
 
-                    <strong id="stat-total-genres">0</strong>
+                    </div>
 
-                </div>
+                    <div class="stat-item">
 
-                <div class="stat-item">
+                        <span>Genres</span>
 
-                    <span>Ratings</span>
+                        <strong id="stat-total-genres">0</strong>
 
-                    <strong id="stat-total-ratings">0</strong>
+                    </div>
+
+                    <div class="stat-item">
+
+                        <span>Ratings</span>
+
+                        <strong id="stat-total-ratings">0</strong>
+
+                    </div>
 
                 </div>
 
@@ -322,32 +238,40 @@
 
             <!-- Featured Movie -->
 
-            <section class="sidebar-card">
+            <section class="studio-card">
 
-                <h2>⭐ Featured Movie</h2>
+                <h2 class="studio-card-title">
 
-                <div class="featured-movie">
+                    ⭐ Featured Movie
 
-                    <div class="featured-poster">
+                </h2>
 
-                        No Poster
+                <div class="studio-card-content">
+
+                    <div class="featured-movie">
+
+                        <div class="featured-poster">
+
+                            No Poster
+
+                        </div>
+
+                        <h3>No Featured Movie</h3>
+
+                        <p>
+
+                            Select a featured movie once your library
+                            contains movies.
+
+                        </p>
+
+                        <button id="change-featured-btn" class="secondary-button">
+
+                            Change Featured
+
+                        </button>
 
                     </div>
-
-                    <h3>No Featured Movie</h3>
-
-                    <p>
-
-                        Select a featured movie once your library
-                        contains movies.
-
-                    </p>
-
-                    <button id="change-featured-btn" class="secondary-button">
-
-                        Change Featured
-
-                    </button>
 
                 </div>
 
@@ -355,53 +279,41 @@
 
             <!-- Quick Information -->
 
-            <section class="sidebar-card">
+            <section class="studio-card">
 
-                <h2>🏷 Quick Information</h2>
+                <h2 class="studio-card-title">
 
-                <ul class="quick-info-list">
+                    🏷 Quick Information
 
-                    <li>
+                </h2>
 
-                        <span class="badge active">
+                <div class="studio-card-content">
 
-                            Active
+                    <div class="studio-badge studio-badge-success">
 
-                        </span>
+                        Active
 
-                    </li>
+                    </div>
 
-                    <li>
+                    <div class="studio-badge studio-badge-warning">
 
-                        <span class="badge featured">
+                        Featured
 
-                            Featured
+                    </div>
 
-                        </span>
+                    <div class="studio-badge studio-badge-neutral">
 
-                    </li>
+                        Draft
 
-                    <li>
+                    </div>
 
-                        <span class="badge draft">
+                    <div class="studio-badge studio-badge-danger">
 
-                            Draft
+                        Archived
 
-                        </span>
+                    </div>
 
-                    </li>
-
-                    <li>
-
-                        <span class="badge archived">
-
-                            Archived
-
-                        </span>
-
-                    </li>
-
-                </ul>
+                </div>
 
             </section>
 
@@ -411,43 +323,32 @@
         <!-- PAGINATION -->
         <!-- ===================================================== -->
 
-        <footer class="manager-pagination">
+        <footer class="studio-pagination">
 
-            <div class="pagination-left">
+            <div class="studio-pagination-left">
 
                 Showing
-
-                <strong id="movie-range">
-
-                    0–0
-
-                </strong>
-
+                <strong>0–0</strong>
                 of
-
-                <strong id="movie-total">
-
-                    0 Movies
-
-                </strong>
+                <strong>0 Movies</strong>
 
             </div>
 
-            <div class="pagination-center">
+            <div class="studio-pagination-center">
 
-                <button id="previous-page" class="pagination-button">
+                <button class="primary-button">
 
                     ◀ Previous
 
                 </button>
 
-                <span id="current-page">
+                <span class="studio-pagination-info">
 
                     Page 1 of 1
 
                 </span>
 
-                <button id="next-page" class="pagination-button">
+                <button class="primary-button">
 
                     Next ▶
 
@@ -455,7 +356,7 @@
 
             </div>
 
-            <div class="pagination-right">
+            <div class="studio-pagination-right">
 
                 <label for="page-size">
 
@@ -463,25 +364,13 @@
 
                 </label>
 
-                <select id="page-size">
+                <select id="page-size" class="studio-dropdown">
 
-                    <option value="25" selected>
+                    <option selected>25</option>
 
-                        25
+                    <option>50</option>
 
-                    </option>
-
-                    <option value="50">
-
-                        50
-
-                    </option>
-
-                    <option value="100">
-
-                        100
-
-                    </option>
+                    <option>100</option>
 
                 </select>
 

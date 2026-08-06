@@ -237,3 +237,215 @@
     display: block;
 
 }
+
+/* ==========================================================
+   BUTTONS & FORM CONTROLS
+   ========================================================== */
+
+.primary-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    background: linear-gradient(180deg, #f3cc45 0%, #d4a91f 100%);
+    color: #111;
+
+    border: 1px solid #e3bf3b;
+    border-radius: 10px;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+
+}
+
+.primary-button:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 6px 18px rgba(212, 169, 31, .35);
+
+}
+
+.manager-filters input,
+.manager-filters select {
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--studio-border);
+
+    border-radius: 8px;
+
+    background: #1b1b1b;
+
+    color: var(--studio-text);
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+.manager-filters select {
+
+    cursor: pointer;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+/* ==========================================================
+   CINEMA TABLE LAYOUT FIX
+   ========================================================== */
+
+.movie-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+}
+
+.movie-table thead th {
+
+    padding: 16px;
+
+    text-align: left;
+
+    color: #d4af37;
+
+    border-bottom: 1px solid #333;
+
+}
+
+.movie-table tbody td {
+
+    padding: 16px;
+
+    border-bottom: 1px solid #222;
+
+}
+
+.empty-library {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 320px;
+
+    text-align: center;
+
+    gap: 18px;
+
+}
+
+.empty-library h2 {
+
+    font-size: 48px;
+
+    margin: 0;
+
+}
+
+.empty-library p {
+
+    color: #bdbdbd;
+
+    max-width: 500px;
+
+}
+
+.manager-pagination {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 24px;
+
+}
+
+/* ==========================================================
+   CONTENT GRID FIX
+   ========================================================== */
+
+.cinema-content {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 320px;
+
+    gap: 28px;
+
+    align-items: start;
+
+}
+
+.cinema-main {
+
+    width: 100%;
+
+    min-width: 0;
+
+}
+
+.cinema-sidebar {
+
+    width: 320px;
+
+}
+
+.manager-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 24px;
+
+}
+
+.manager-toolbar {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+.manager-filters {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr repeat(6, 1fr);
+
+    gap: 12px;
+
+    margin: 24px 0;
+
+}

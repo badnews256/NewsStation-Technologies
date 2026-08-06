@@ -1,16 +1,23 @@
 /* ==========================================================
    NEWSOS STUDIO
    CINEMA MANAGER
-   VERSION 1
+   VERSION 2
+STATUS: LOCKED
+   ========================================================== */
+
+/* ==========================================================
+   ROOT
    ========================================================== */
 
 #cinema-manager {
+
     display: flex;
     flex-direction: column;
     gap: 24px;
     padding: 24px;
-    color: #ffffff;
+    color: var(--studio-text);
     box-sizing: border-box;
+
 }
 
 /* ==========================================================
@@ -18,45 +25,36 @@
    ========================================================== */
 
 .manager-header {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1d1d1d;
-    border: 1px solid #343434;
-    border-radius: 12px;
-    padding: 24px;
+    gap: 24px;
+
 }
 
-.manager-header-left h1 {
-    margin: 0;
-    font-size: 38px;
-    color: #d4af37;
+.manager-header-left {
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
 }
 
-.manager-header-left p {
-    margin-top: 10px;
-    color: #bdbdbd;
+.manager-header-right {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
 }
 
 .manager-version {
-    margin-top: 12px;
-    color: #8b8b8b;
-}
 
-.primary-button {
-    background: #d4af37;
-    color: #111111;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 22px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .2s;
-}
+    font-size: 13px;
+    color: var(--studio-muted);
+    font-weight: 600;
 
-.primary-button:hover {
-    background: #f0c94d;
 }
 
 /* ==========================================================
@@ -64,41 +62,54 @@
    ========================================================== */
 
 .manager-toolbar {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+}
+
+.manager-toolbar>div {
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: #1d1d1d;
-    border: 1px solid #343434;
-    border-radius: 10px;
-    padding: 18px 22px;
-}
 
-.toolbar-left,
-.toolbar-right {
-    display: flex;
-    gap: 35px;
-}
-
-.toolbar-label {
-    display: block;
-    color: #8a8a8a;
-    font-size: 12px;
-    margin-bottom: 4px;
-}
-
-.status-online {
-    color: #39d86b;
 }
 
 /* ==========================================================
-   MANAGER LAYOUT
+   SEARCH FILTERS
+   ========================================================== */
+
+.manager-filters {
+
+    display: grid;
+
+    grid-template-columns: 2fr repeat(6, minmax(120px, 1fr));
+
+    gap: 12px;
+
+    align-items: center;
+
+}
+
+.manager-filters input,
+.manager-filters select {
+
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+
+/* ==========================================================
+   MAIN CONTENT
    ========================================================== */
 
 .manager-content {
 
     display: grid;
 
-    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-columns: minmax(0, 1fr) 300px;
 
     gap: 24px;
 
@@ -106,365 +117,187 @@
 
 }
 
-.manager-main {
-
-    min-width: 0;
-
-    overflow-x: auto;
-
-}
-
-.manager-sidebar {
-
-    position: sticky;
-
-    top: 20px;
+.manager-workspace {
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 20px;
+    gap: 24px;
 
-}
+    min-width: 0;
 
-.sidebar-card {
+    width: 100%;
 
-    background: #1d1d1d;
-
-    border: 1px solid #343434;
-
-    border-radius: 12px;
-
-    padding: 20px;
-
-}
-
-.sidebar-card h2 {
-
-    margin: 0 0 18px;
-
-    color: #d4af37;
-
-    font-size: 22px;
-
-}
-
-.stat-item {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 12px;
-
-}
-
-.quick-info-list {
-
-    list-style: none;
-
-    margin: 0;
-
-    padding: 0;
-
-}
-
-.quick-info-list li {
-
-    margin-bottom: 12px;
-
-}
-
-/* ==========================================================
-   SEARCH & FILTER TOOLBAR
-   ========================================================== */
-
-.manager-search-toolbar {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 18px;
-
-    background: #1d1d1d;
-
-    border: 1px solid #343434;
-
-    border-radius: 12px;
-
-    padding: 18px;
-
-    margin-bottom: 24px;
-
-}
-
-.search-left {
+    overflow: hidden;
 
     flex: 1;
 
 }
 
-.search-left input {
-
-    width: 100%;
-
-    background: #111111;
-
-    border: 1px solid #444444;
-
-    border-radius: 8px;
-
-    color: #ffffff;
-
-    padding: 12px 14px;
-
-    font-size: 15px;
-
-    box-sizing: border-box;
-
-}
-
-.search-left input:focus {
-
-    outline: none;
-
-    border-color: #d4af37;
-
-}
-
-.search-right {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    justify-content: flex-end;
-
-}
-
-.search-right select {
-
-    background: #111111;
-
-    color: #ffffff;
-
-    border: 1px solid #444444;
-
-    border-radius: 8px;
-
-    padding: 10px 12px;
-
-    cursor: pointer;
-
-}
-
-.search-right select:focus {
-
-    outline: none;
-
-    border-color: #d4af37;
-
-}
-
-/* ==========================================================
-   MOVIE LIBRARY TABLE
-   ========================================================== */
-
-.manager-table {
-
-    width: 100%;
-
-    table-layout: fixed;
-
-    border-collapse: collapse;
-
-    background: #1d1d1d;
-
-    border: 1px solid #343434;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-}
-
-.manager-table thead {
-
-    background: #262626;
-
-}
-
-.manager-table th {
-
-    padding: 16px;
-
-    text-align: left;
-
-    color: #d4af37;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    border-bottom: 1px solid #343434;
-
-    white-space: nowrap;
-
-}
-
-.manager-table td {
-
-    padding: 16px;
-
-    border-bottom: 1px solid #2b2b2b;
-
-    color: #f2f2f2;
-
-    vertical-align: middle;
-
-}
-
-.manager-table tbody tr {
-
-    transition: background .2s;
-
-}
-
-.manager-table tbody tr:hover {
-
-    background: #252525;
-
-}
-
-/* ==========================================================
-   EMPTY STATE
-   ========================================================== */
-
-.empty-state {
+.manager-sidebar {
 
     display: flex;
 
     flex-direction: column;
 
-    justify-content: center;
+    gap: 24px;
 
+    position: sticky;
+
+    top: 24px;
+
+}
+
+/* ==========================================================
+   SIDEBAR CARDS
+   ========================================================== */
+
+.sidebar-card {
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.sidebar-card h3 {
+
+    margin: 0;
+    color: var(--studio-gold);
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+.sidebar-card ul {
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.sidebar-card li {
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+
+}
+
+
+/* ==========================================================
+   FEATURED MOVIE
+   ========================================================== */
+
+.featured-placeholder {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 
     text-align: center;
 
-    min-height: 420px;
+}
 
-    padding: 60px 30px;
+.poster-placeholder {
+
+    width: 180px;
+    aspect-ratio: 2 / 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px dashed var(--studio-border);
+    border-radius: var(--radius-md);
+
+    background: rgba(255, 255, 255, .03);
+
+    color: var(--studio-muted);
+    font-weight: 600;
 
 }
 
-.empty-icon {
+/* ==========================================================
+   STATISTICS
+   ========================================================== */
 
-    font-size: 72px;
+.stat-item {
 
-    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 0;
+
+    gap: 16px;
 
 }
 
-.empty-state h2 {
+.stat-item+.stat-item {
 
-    margin: 0;
+    border-top: 1px solid var(--studio-border);
 
-    color: #ffffff;
+}
 
-    font-size: 42px;
+.stat-item span {
+
+    color: var(--studio-muted);
+
+    font-size: 14px;
+
+}
+
+.stat-item strong {
+
+    color: var(--studio-text);
+
+    font-size: 15px;
 
     font-weight: 700;
 
 }
 
-.empty-state p {
-
-    max-width: 500px;
-
-    margin: 18px 0 30px;
-
-    color: #b5b5b5;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-}
-
-.empty-state .primary-button {
-
-    min-width: 240px;
-
-}
-
-.column-poster {
-
-    width: 110px;
-
-}
-
-.column-actions {
-
-    width: 180px;
-
-}
 
 /* ==========================================================
-   STUDIO MODAL
+   MOVIE STATUS
    ========================================================== */
 
-.studio-modal {
+.status-online {
 
-    position: fixed;
-
-    inset: 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background: rgba(0, 0, 0, .75);
-
-    backdrop-filter: blur(6px);
-
-    z-index: 5000;
+    color: var(--studio-success);
+    font-weight: 600;
 
 }
 
-.studio-modal.hidden {
+.status-offline {
 
-    display: none;
-
-}
-
-.studio-modal-window {
-
-    width: min(900px, 90vw);
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    background: #1d1d1d;
-
-    border: 1px solid #3a3a3a;
-
-    border-radius: 14px;
-
-    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+    color: var(--studio-danger);
+    font-weight: 600;
 
 }
 
-.studio-modal-header {
+.status-coming-soon {
+
+    color: var(--studio-gold);
+    font-weight: 600;
+
+}
+
+
+/* ==========================================================
+   PAGINATION
+   ========================================================== */
+
+.manager-pagination {
 
     display: flex;
 
@@ -472,122 +305,124 @@
 
     align-items: center;
 
-    padding: 24px;
+    flex-wrap: wrap;
 
-    border-bottom: 1px solid #343434;
+    gap: 16px;
 
-}
-
-.studio-modal-header h2 {
-
-    margin: 0;
-
-    color: #d4af37;
+    margin-top: 24px;
 
 }
 
-.modal-close {
-
-    width: 42px;
-
-    height: 42px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #2a2a2a;
-
-    color: #ffffff;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-}
-
-.modal-close:hover {
-
-    background: #3a3a3a;
-
-}
-
-.studio-modal-body {
-
-    padding: 24px;
-
-}
-
-.form-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
-
-}
-
-.form-group {
+.manager-pagination>div {
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
 
-    gap: 8px;
+    gap: 12px;
 
 }
 
-.form-group label {
+.manager-pagination label {
 
-    color: #d4af37;
+    font-size: 13px;
 
     font-weight: 600;
 
-}
-
-.form-group input,
-
-.form-group select,
-
-.form-group textarea {
-
-    background: #111111;
-
-    color: #ffffff;
-
-    border: 1px solid #444444;
-
-    border-radius: 8px;
-
-    padding: 12px;
-
-    font-size: 15px;
+    color: var(--studio-muted);
 
 }
 
-.form-group textarea {
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
 
-    resize: vertical;
+@media (max-width: 1200px) {
+
+    .manager-body {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .manager-sidebar {
+
+        position: static;
+
+    }
 
 }
 
-.full-width {
+@media (max-width: 768px) {
 
-    grid-column: 1 / -1;
+    .manager-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .manager-toolbar {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .manager-filters {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .manager-pagination {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .manager-pagination>div {
+
+        justify-content: center;
+
+    }
 
 }
 
-.studio-modal-footer {
+/* ==========================================================
+   VERSION 2 COMPATIBILITY
+   Matches current cinema.html
+   ========================================================== */
 
+.studio-search-toolbar {
+    display: grid;
+    grid-template-columns: 2fr repeat(6, minmax(120px, 1fr));
+    gap: 12px;
+    align-items: center;
+}
+
+.studio-search-left {
+    display: contents;
+}
+
+.studio-search-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.studio-pagination {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
 
-    justify-content: flex-end;
-
-    gap: 15px;
-
-    padding: 24px;
-
-    border-top: 1px solid #343434;
-
+.studio-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

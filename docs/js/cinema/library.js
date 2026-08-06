@@ -1,30 +1,30 @@
 // =====================================================
-// NEWSOS CINEMA
-// MOVIE LIBRARY
+// NEWSOS CINEMA LIBRARY
+// Movie Data Manager
 // =====================================================
 
-const MovieLibrary = [
+const CinemaLibrary = {
 
-    {
+    movies: [],
 
-        id: 1,
+    initialize() {
 
-        title: "",
+        console.log("Cinema Library Initialized");
 
-        description: "",
+    },
 
-        genre: "",
+    getMovies() {
 
-        runtime: "",
+        return this.movies;
 
-        rating: "",
+    },
 
-        poster: "",
+    addMovie(movie) {
 
-        streamUrl: "",
+        this.movies.push(movie);
 
-        featured: false
+        console.log("Movie Added:", movie.title);
 
     }
 
-];
+};
