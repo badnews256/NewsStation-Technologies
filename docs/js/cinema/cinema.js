@@ -9,19 +9,19 @@ const Cinema = {
 
     initialized: false,
 
-  initialize() {
+    initialize() {
 
-    console.log("Initializing Cinema Manager...");
+        console.log("Initializing Cinema Manager...");
 
-    this.initializeModules();
+        this.initializeModules();
 
-    this.bindEvents();
+        this.bindEvents();
 
-    this.initialized = true;
+        this.initialized = true;
 
-    console.log("Cinema Manager Ready");
+        console.log("Cinema Manager Ready");
 
-},
+    },
 
     initializeModules() {
 
@@ -104,7 +104,43 @@ const Cinema = {
             });
 
         }
+
+        document.addEventListener("click", (event) => {
+
+            const deleteButton = event.target.closest(".delete-movie-btn");
+
+            if (deleteButton) {
+
+                const index = Number(deleteButton.dataset.index);
+
+                if (confirm("Delete this movie?")) {
+
+                    CinemaLibrary.deleteMovie(index);
+
+                }
+
+                return;
+
+            }
+
+            const editButton = event.target.closest(".edit-movie-btn");
+
+            if (editButton) {
+
+                console.log("Edit button clicked.");
+
+                const index = Number(editButton.dataset.index);
+
+                console.log("Movie Index:", index);
+
+                Cinema.editMovie(index);
+
+            }
+
+        });
     },
+
+
 
     openAddMovieModal() {
 
@@ -152,12 +188,44 @@ const Cinema = {
 
         }
 
-       console.log("CinemaLibrary:", CinemaLibrary);
+        console.log("CinemaLibrary:", CinemaLibrary);
 
-CinemaLibrary.addMovie(movie);
+        console.log("Movie being saved:", movie);
+
+        if (this.editingMovieIndex !== undefined) {
+
+            CinemaLibrary.updateMovie(this.editingMovieIndex, movie);
+
+            this.editingMovieIndex = undefined;
+
+        } else {
+
+            CinemaLibrary.addMovie(movie);
+
+        }
 
         document.getElementById("add-movie-modal")?.classList.add("hidden");
+    },
 
-    }
+
+    editMovie(index) {
+
+        const movie = CinemaLibrary.movies[index];
+
+        if (!movie) return;
+
+        document.getElementById("movie-title").value = movie.title || "";
+        document.getElementById("movie-url").value = movie.url || "";
+        document.getElementById("movie-poster").value = movie.poster || "";
+        document.getElementById("movie-genre").value = movie.genre || "";
+        document.getElementById("movie-runtime").value = movie.runtime || "";
+        document.getElementById("movie-rating").value = movie.rating || "PG";
+        document.getElementById("movie-description").value = movie.description || "";
+
+        this.editingMovieIndex = index;
+
+        this.openAddMovieModal();
+
+    },
 
 };

@@ -25,19 +25,31 @@ const CinemaLibrary = {
 
     },
 
-    addMovie(movie) {
+   addMovie(movie) {
 
-        this.movies.push(movie);
+    this.movies.push(movie);
 
-        this.saveLibrary();
+    this.saveLibrary();
 
-        this.render();
+    this.render();
 
-        console.log("Movie Added:", movie.title);
+    console.log("Movie Added:", movie.title);
 
-    },
+},
 
-    saveLibrary() {
+updateMovie(index, movie) {
+
+    this.movies[index] = movie;
+
+    this.saveLibrary();
+
+    this.render();
+
+    console.log("Movie Updated:", movie.title);
+
+},
+
+saveLibrary() {
 
         localStorage.setItem(
 
@@ -119,7 +131,7 @@ const CinemaLibrary = {
 
             body.innerHTML = "";
 
-            this.movies.forEach(movie => {
+            this.movies.forEach((movie, index) => {
 
                 body.innerHTML += `
 
@@ -137,19 +149,30 @@ const CinemaLibrary = {
 
                         <td>Active</td>
 
-                        <td>
+                       <td>
 
-                            <button class="secondary-button">
+    <button
+        class="secondary-button edit-movie-btn"
+        data-index="${index}">
 
-                                Edit
+        Edit
 
-                            </button>
+    </button>
 
-                        </td>
+    <button
+        class="secondary-button delete-movie-btn"
+        data-index="${index}">
 
-                    </tr>
+        Delete
 
-                `;
+    </button>
+
+</td>
+
+</tr>
+
+`;
+
 
             });
 
@@ -201,6 +224,18 @@ const CinemaLibrary = {
             ratings.textContent = uniqueRatings.size;
 
         }
+
+       },
+
+    deleteMovie(index) {
+
+        this.movies.splice(index, 1);
+
+        this.saveLibrary();
+
+        this.render();
+
+        console.log("Movie Deleted:", index);
 
     }
 
