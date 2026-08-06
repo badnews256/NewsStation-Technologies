@@ -47,25 +47,65 @@ const Cinema = {
         console.log("Binding Cinema Events...");
 
         const addButton = document.getElementById("add-movie-btn");
+        const firstMovieButton = document.getElementById("add-first-movie-btn");
+        const closeButton = document.getElementById("close-add-movie");
+        const cancelButton = document.getElementById("cancel-add-movie");
+        const saveButton = document.getElementById("save-movie");
+        const modal = document.getElementById("add-movie-modal");
 
-        console.log("Button:", addButton);
+        if (addButton) {
 
-        if (!addButton) {
+            addButton.addEventListener("click", () => {
 
-            console.error("add-movie-btn was not found.");
+                console.log("Add Movie button clicked.");
 
-            return;
+                this.openAddMovieModal();
+
+            });
 
         }
 
-        addButton.addEventListener("click", () => {
+        if (firstMovieButton) {
 
-            console.log("Add Movie button clicked.");
+            firstMovieButton.addEventListener("click", () => {
 
-            this.openAddMovieModal();
+                this.openAddMovieModal();
 
-        });
+            });
 
+        }
+
+        const closeModal = () => {
+
+            if (modal) {
+
+                modal.classList.add("hidden");
+
+            }
+
+        };
+
+        if (closeButton) {
+
+            closeButton.addEventListener("click", closeModal);
+
+        }
+
+        if (cancelButton) {
+
+            cancelButton.addEventListener("click", closeModal);
+
+        }
+
+        if (saveButton) {
+
+            saveButton.addEventListener("click", () => {
+
+                this.saveMovie();
+
+            });
+
+        }
     },
 
     openAddMovieModal() {
@@ -81,6 +121,44 @@ const Cinema = {
         }
 
         modal.classList.remove("hidden");
+
+    },
+
+    saveMovie() {
+
+        console.log("Saving movie...");
+
+        const movie = {
+
+            title: document.getElementById("movie-title")?.value.trim(),
+
+            url: document.getElementById("movie-url")?.value.trim(),
+
+            poster: document.getElementById("movie-poster")?.value.trim(),
+
+            genre: document.getElementById("movie-genre")?.value.trim(),
+
+            runtime: document.getElementById("movie-runtime")?.value.trim(),
+
+            rating: document.getElementById("movie-rating")?.value,
+
+            description: document.getElementById("movie-description")?.value.trim()
+
+        };
+
+        if (!movie.title) {
+
+            alert("Movie title is required.");
+
+            return;
+
+        }
+
+        console.log("CinemaLibrary:", CinemaLibrary);
+
+        CinemaLibrary.addMovie(movie);
+
+        document.getElementById("add-movie-modal")?.classList.add("hidden");
 
     }
 
