@@ -153,47 +153,44 @@ STATUS: LOCKED
    SIDEBAR CARDS
    ========================================================== */
 
-.sidebar-card {
+.studio-card {
 
     display: flex;
     flex-direction: column;
+
     gap: 16px;
+
+    background: #1b1b1b;
+
+    border: 1px solid var(--studio-border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 20px;
 
 }
 
-.sidebar-card h3 {
+.studio-card-title {
 
     margin: 0;
+
     color: var(--studio-gold);
+
     font-size: 18px;
+
     font-weight: 700;
 
 }
 
-.sidebar-card ul {
-
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.studio-card-content {
 
     display: flex;
+
     flex-direction: column;
-    gap: 10px;
+
+    gap: 14px;
 
 }
-
-.sidebar-card li {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-
-/* ==========================================================
-   FEATURED MOVIE
-   ========================================================== */
 
 .featured-placeholder {
 

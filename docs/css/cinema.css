@@ -449,3 +449,352 @@
     margin: 24px 0;
 
 }
+
+/* ==========================================================
+   CINEMA INFORMATION BAR
+   ========================================================== */
+
+.manager-status {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 24px;
+
+    margin: 28px 0;
+
+}
+
+.manager-status-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+.manager-status-label {
+
+    color: #9b9b9b;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+
+}
+
+.manager-status-value {
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+.manager-status-value.healthy {
+
+    color: #49d17d;
+
+}
+
+/* ==========================================================
+   SIDEBAR PANELS
+   ========================================================== */
+
+.stats-card,
+.featured-card,
+.quick-info-card {
+
+    background: #222;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    margin-bottom: 24px;
+
+}
+
+.stats-card h2,
+.featured-card h2,
+.quick-info-card h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 24px;
+
+}
+
+.stats-card ul,
+.quick-info-card ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+.stats-card li,
+.quick-info-card li {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #333;
+
+}
+
+.stats-card li:last-child,
+.quick-info-card li:last-child {
+
+    border-bottom: none;
+
+}
+
+.featured-card img {
+
+    width: 100%;
+
+    border-radius: 12px;
+
+    margin-bottom: 18px;
+
+}
+
+/* ==========================================================
+   MANAGER CONTENT LAYOUT FIX
+   ========================================================== */
+
+.manager-content {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 24px;
+
+    align-items: start;
+
+    min-height: 900px;
+
+}
+
+.manager-workspace {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 900px;
+
+    width: 100%;
+
+}
+
+.manager-sidebar {
+
+    width: 340px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    position: sticky;
+
+    top: 24px;
+
+}
+
+.studio-pagination {
+
+    grid-column: 1 / -1;
+
+    margin-top: 30px;
+
+}
+
+/* ==========================================================
+   MISSING CINEMA MANAGER COMPONENTS
+   ========================================================== */
+
+.studio-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: #181818;
+
+    border: 1px solid var(--studio-border);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+}
+
+.studio-table th {
+
+    padding: 16px;
+
+    text-align: left;
+
+    color: var(--studio-gold);
+
+    border-bottom: 1px solid var(--studio-border);
+
+}
+
+.studio-table td {
+
+    padding: 16px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+
+}
+
+.studio-empty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 80px 24px;
+
+    text-align: center;
+
+}
+
+.studio-empty-icon {
+
+    font-size: 64px;
+
+}
+
+.studio-empty-title {
+
+    margin: 0;
+
+    font-size: 34px;
+
+    color: var(--studio-text);
+
+}
+
+.studio-empty-description {
+
+    max-width: 520px;
+
+    color: var(--studio-muted);
+
+}
+
+.studio-empty-actions {
+
+    margin-top: 12px;
+
+}
+
+.featured-movie {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 16px;
+
+    text-align: center;
+
+}
+
+.featured-poster {
+
+    width: 180px;
+
+    aspect-ratio: 2 / 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px dashed var(--studio-border);
+
+    border-radius: var(--radius-md);
+
+    background: rgba(255, 255, 255, .04);
+
+}
+
+.studio-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0, 0, 0, .65);
+
+    z-index: 9999;
+
+}
+
+.studio-modal.hidden {
+
+    display: none;
+
+}
+
+.studio-modal-window {
+
+    width: min(900px, 95vw);
+
+    background: #1b1b1b;
+
+    border: 1px solid var(--studio-border);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+}
