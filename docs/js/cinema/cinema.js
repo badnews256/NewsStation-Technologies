@@ -9,21 +9,19 @@ const Cinema = {
 
     initialized: false,
 
-    initialize() {
+  initialize() {
 
-        if (this.initialized) return;
+    console.log("Initializing Cinema Manager...");
 
-        console.log("Initializing Cinema Manager...");
+    this.initializeModules();
 
-        this.initialized = true;
+    this.bindEvents();
 
-        this.initializeModules();
+    this.initialized = true;
 
-        this.bindEvents();
+    console.log("Cinema Manager Ready");
 
-        console.log("Cinema Manager Ready");
-
-    },
+},
 
     initializeModules() {
 
@@ -154,9 +152,9 @@ const Cinema = {
 
         }
 
-        console.log("CinemaLibrary:", CinemaLibrary);
+       console.log("CinemaLibrary:", CinemaLibrary);
 
-        CinemaLibrary.addMovie(movie);
+CinemaLibrary.addMovie(movie);
 
         document.getElementById("add-movie-modal")?.classList.add("hidden");
 

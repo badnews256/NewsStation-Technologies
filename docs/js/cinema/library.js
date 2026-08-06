@@ -5,11 +5,15 @@
 
 const CinemaLibrary = {
 
+    STORAGE_KEY: "newsos-cinema-library",
+
     movies: [],
 
     initialize() {
 
         console.log("Cinema Library Initialized");
+
+        this.loadLibrary();
 
         this.render();
 
@@ -25,9 +29,51 @@ const CinemaLibrary = {
 
         this.movies.push(movie);
 
-        console.log("Movie Added:", movie.title);
+        this.saveLibrary();
 
         this.render();
+
+        console.log("Movie Added:", movie.title);
+
+    },
+
+    saveLibrary() {
+
+        localStorage.setItem(
+
+            this.STORAGE_KEY,
+
+            JSON.stringify(this.movies)
+
+        );
+
+    },
+
+    loadLibrary() {
+
+        const saved = localStorage.getItem(this.STORAGE_KEY);
+
+        if (!saved) {
+
+            this.movies = [];
+
+            return;
+
+        }
+
+        try {
+
+            this.movies = JSON.parse(saved);
+
+        }
+
+        catch (error) {
+
+            console.error("Unable to load movie library.", error);
+
+            this.movies = [];
+
+        }
 
     },
 
@@ -69,53 +115,92 @@ const CinemaLibrary = {
 
             `;
 
-            return;
+        } else {
+
+            body.innerHTML = "";
+
+            this.movies.forEach(movie => {
+
+                body.innerHTML += `
+
+                    <tr>
+
+                        <td>${movie.poster ? `<img src="${movie.poster}" style="width:60px;border-radius:6px;">` : "—"}</td>
+
+                        <td>${movie.title}</td>
+
+                        <td>${movie.genre}</td>
+
+                        <td>${movie.runtime}</td>
+
+                        <td>${movie.rating}</td>
+
+                        <td>Active</td>
+
+                        <td>
+
+                            <button class="secondary-button">
+
+                                Edit
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
 
         }
 
-        body.innerHTML = "";
+        const totalMovies = document.getElementById("stat-total-movies");
+        const featuredMovies = document.getElementById("stat-featured-movies");
+        const genres = document.getElementById("stat-total-genres");
+        const ratings = document.getElementById("stat-total-ratings");
 
-        this.movies.forEach((movie) => {
+        if (totalMovies) {
 
-            body.innerHTML += `
+            totalMovies.textContent = this.movies.length;
 
-                <tr>
+        }
 
-                    <td>
+        if (featuredMovies) {
 
-                        ${movie.poster
-                    ? `<img src="${movie.poster}" style="width:60px;border-radius:6px;">`
-                    : "—"}
+            const featuredCount = this.movies.filter(movie => movie.featured === true).length;
 
-                    </td>
+            featuredMovies.textContent = featuredCount;
 
-                    <td>${movie.title}</td>
+        }
 
-                    <td>${movie.genre}</td>
+        if (genres) {
 
-                    <td>${movie.runtime}</td>
+            const uniqueGenres = new Set(
 
-                    <td>${movie.rating}</td>
+                this.movies
+                    .map(movie => movie.genre?.trim())
+                    .filter(Boolean)
 
-                    <td>Active</td>
+            );
 
-                    <td>
+            genres.textContent = uniqueGenres.size;
 
-                        <button class="secondary-button">
+        }
 
-                            Edit
+        if (ratings) {
 
-                        </button>
+            const uniqueRatings = new Set(
 
-                    </td>
+                this.movies
+                    .map(movie => movie.rating?.trim())
+                    .filter(Boolean)
 
-                </tr>
+            );
 
-            `;
+            ratings.textContent = uniqueRatings.size;
 
-        });
-
-        document.getElementById("stat-total-movies").textContent = this.movies.length;
+        }
 
     }
 
