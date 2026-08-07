@@ -138,6 +138,122 @@ const Cinema = {
             }
 
         });
+
+        const searchBox = document.getElementById("movie-search");
+
+        if (searchBox) {
+
+            searchBox.addEventListener("input", () => {
+
+                CinemaLibrary.render();
+
+            });
+
+        }
+
+
+
+        const genreFilter = document.getElementById("genre-filter");
+
+        if (genreFilter) {
+
+            genreFilter.addEventListener("change", () => {
+
+                CinemaLibrary.render();
+
+            });
+
+        }
+
+        const ratingFilter = document.getElementById("rating-filter");
+
+        if (ratingFilter) {
+            ratingFilter.addEventListener("change", () => {
+
+                console.log("Rating changed:", ratingFilter.value);
+
+                CinemaLibrary.render();
+
+            });
+
+        }
+
+        const statusFilter = document.getElementById("status-filter");
+
+        if (statusFilter) {
+
+            statusFilter.addEventListener("change", () => {
+
+                console.log("Status changed:", statusFilter.value);
+
+                CinemaLibrary.render();
+
+            });
+
+        }
+
+        const sortFilter = document.getElementById("sort-filter");
+
+        if (sortFilter) {
+
+            sortFilter.addEventListener("change", () => {
+
+                console.log("Sort changed:", sortFilter.value);
+
+                CinemaLibrary.render();
+
+            });
+
+        }
+
+        const selectAll = document.getElementById("select-all-movies");
+
+        if (selectAll) {
+
+            selectAll.addEventListener("change", () => {
+
+                document.querySelectorAll(".movie-select").forEach(box => {
+
+                    box.checked = selectAll.checked;
+
+                });
+
+                const selectedCount =
+                    document.querySelectorAll(".movie-select:checked").length;
+
+                const counter =
+                    document.getElementById("selected-count");
+
+                if (counter) {
+
+                    counter.textContent = selectedCount;
+
+                }
+
+            });
+
+        }
+
+        document.addEventListener("change", (event) => {
+
+            if (!event.target.classList.contains("movie-select")) {
+
+                return;
+
+            }
+
+            const counter = document.getElementById("selected-count");
+
+            if (counter) {
+
+                counter.textContent =
+                    document.querySelectorAll(".movie-select:checked").length;
+
+            }
+
+        });
+
+
     },
 
 

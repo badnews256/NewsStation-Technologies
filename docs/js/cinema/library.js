@@ -25,31 +25,31 @@ const CinemaLibrary = {
 
     },
 
-   addMovie(movie) {
+    addMovie(movie) {
 
-    this.movies.push(movie);
+        this.movies.push(movie);
 
-    this.saveLibrary();
+        this.saveLibrary();
 
-    this.render();
+        this.render();
 
-    console.log("Movie Added:", movie.title);
+        console.log("Movie Added:", movie.title);
 
-},
+    },
 
-updateMovie(index, movie) {
+    updateMovie(index, movie) {
 
-    this.movies[index] = movie;
+        this.movies[index] = movie;
 
-    this.saveLibrary();
+        this.saveLibrary();
 
-    this.render();
+        this.render();
 
-    console.log("Movie Updated:", movie.title);
+        console.log("Movie Updated:", movie.title);
 
-},
+    },
 
-saveLibrary() {
+    saveLibrary() {
 
         localStorage.setItem(
 
@@ -95,7 +95,75 @@ saveLibrary() {
 
         if (!body) return;
 
-        if (this.movies.length === 0) {
+        const searchBox = document.getElementById("movie-search");
+
+        const searchText = searchBox
+            ? searchBox.value.trim().toLowerCase()
+            : "";
+
+        const genreFilter = document.getElementById("genre-filter");
+
+        const selectedGenre = genreFilter
+            ? genreFilter.value
+            : "All Genres";
+
+        const ratingFilter = document.getElementById("rating-filter");
+
+        const selectedRating = ratingFilter
+            ? ratingFilter.value
+            : "All Ratings";
+
+        const statusFilter = document.getElementById("status-filter");
+
+        const selectedStatus = statusFilter
+            ? statusFilter.value
+            : "All Status";
+
+        const filteredMovies = this.movies.filter(movie => {
+
+            const matchesSearch =
+                movie.title.toLowerCase().includes(searchText) ||
+                movie.genre.toLowerCase().includes(searchText) ||
+                movie.rating.toLowerCase().includes(searchText);
+
+            const matchesGenre =
+                selectedGenre === "All Genres" ||
+                movie.genre === selectedGenre;
+
+            const matchesRating =
+                selectedRating === "All Ratings" ||
+                movie.rating === selectedRating;
+
+            const matchesStatus =
+                selectedStatus === "All Status" ||
+                "Active" === selectedStatus;
+
+            return matchesSearch &&
+                matchesGenre &&
+                matchesRating &&
+                matchesStatus;
+
+        });
+
+        const sortFilter = document.getElementById("sort-filter");
+
+        const sortOption = sortFilter
+            ? sortFilter.value
+            : "A → Z";
+
+        filteredMovies.sort((a, b) => {
+
+            if (sortOption === "Z → A") {
+
+                return b.title.localeCompare(a.title);
+
+            }
+
+            return a.title.localeCompare(b.title);
+
+        });
+
+        if (filteredMovies.length === 0) {
 
             body.innerHTML = `
 
@@ -131,11 +199,22 @@ saveLibrary() {
 
             body.innerHTML = "";
 
-            this.movies.forEach((movie, index) => {
+            filteredMovies.forEach((movie) => {
+
+                const index = this.movies.indexOf(movie);
 
                 body.innerHTML += `
 
                     <tr>
+
+    <td>
+
+        <input
+            type="checkbox"
+            class="movie-select"
+            data-index="${index}">
+
+    </td>
 
                         <td>${movie.poster ? `<img src="${movie.poster}" style="width:60px;border-radius:6px;">` : "—"}</td>
 
@@ -225,7 +304,79 @@ saveLibrary() {
 
         }
 
-       },
+        if (genreFilter) {
+
+            const currentValue = genreFilter.value;
+
+            const genreList = [...new Set(
+                this.movies
+                    .map(movie => movie.genre?.trim())
+                    .filter(Boolean)
+            )].sort();
+
+            genreFilter.innerHTML = `<option>All Genres</option>`;
+
+            genreList.forEach(genre => {
+
+                genreFilter.innerHTML += `<option>${genre}</option>`;
+
+            });
+
+            genreFilter.value = genreList.includes(currentValue)
+                ? currentValue
+                : "All Genres";
+
+        }
+
+        if (ratingFilter) {
+
+            const currentValue = ratingFilter.value;
+
+            const ratingList = [...new Set(
+                this.movies
+                    .map(movie => movie.rating?.trim())
+                    .filter(Boolean)
+            )].sort();
+
+            ratingFilter.innerHTML = `<option>All Ratings</option>`;
+
+            ratingList.forEach(rating => {
+
+                ratingFilter.innerHTML += `<option>${rating}</option>`;
+
+            });
+
+            ratingFilter.value = ratingList.includes(currentValue)
+                ? currentValue
+                : "All Ratings";
+
+            const statusFilter = document.getElementById("status-filter");
+
+            if (statusFilter) {
+
+                const currentValue = statusFilter.value;
+
+                const statusList = ["Active"];
+
+                statusFilter.innerHTML = `<option>All Status</option>`;
+
+                statusList.forEach(status => {
+
+                    statusFilter.innerHTML += `<option>${status}</option>`;
+
+                });
+
+                statusFilter.value = statusList.includes(currentValue)
+                    ? currentValue
+                    : "All Status";
+
+            }
+
+        }
+
+
+
+    },
 
     deleteMovie(index) {
 
