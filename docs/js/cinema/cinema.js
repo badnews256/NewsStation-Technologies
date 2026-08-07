@@ -253,6 +253,63 @@ const Cinema = {
 
         });
 
+        const bulkActions = document.getElementById("bulk-actions");
+
+        if (bulkActions) {
+
+            bulkActions.addEventListener("change", () => {
+
+                console.log("Bulk Action:", bulkActions.value);
+
+                if (bulkActions.value !== "Delete Selected") {
+
+                    return;
+
+                }
+
+                const selectedMovies = document.querySelectorAll(
+                    ".movie-select:checked"
+                );
+
+                if (selectedMovies.length === 0) {
+
+                    alert("Please select at least one movie.");
+
+                    bulkActions.value = "Bulk Actions";
+
+                    return;
+
+                }
+
+                if (!confirm(`Delete ${selectedMovies.length} selected movie(s)?`)) {
+
+                    bulkActions.value = "Bulk Actions";
+
+                    return;
+
+                }
+
+                const indexes = [];
+
+                selectedMovies.forEach(box => {
+
+                    indexes.push(Number(box.dataset.index));
+
+                });
+
+                indexes.sort((a, b) => b - a);
+
+                indexes.forEach(index => {
+
+                    CinemaLibrary.deleteMovie(index);
+
+                });
+
+                bulkActions.value = "Bulk Actions";
+
+            });
+
+        }
 
     },
 
