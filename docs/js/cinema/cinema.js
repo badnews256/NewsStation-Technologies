@@ -111,14 +111,25 @@ const Cinema = {
 
             importTMDbButton.addEventListener("click", async () => {
 
-                const tmdbId =
+                const tmdbInput =
                     document.getElementById("movie-tmdb-id")?.value.trim();
 
-                if (!tmdbId) {
+                if (!tmdbInput) {
 
-                    alert("Please enter a TMDb ID.");
+                    alert("Please enter a TMDb ID or TMDb movie link.");
 
                     return;
+
+                }
+
+                let tmdbId = tmdbInput;
+
+                const tmdbUrlMatch =
+                    tmdbInput.match(/themoviedb\.org\/movie\/(\d+)/i);
+
+                if (tmdbUrlMatch) {
+
+                    tmdbId = tmdbUrlMatch[1];
 
                 }
 
