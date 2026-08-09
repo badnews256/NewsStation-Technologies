@@ -105,6 +105,61 @@ const Cinema = {
 
         }
 
+        const importTMDbButton = document.getElementById("import-tmdb-btn");
+
+        if (importTMDbButton) {
+
+            importTMDbButton.addEventListener("click", async () => {
+
+                const tmdbId =
+                    document.getElementById("movie-tmdb-id")?.value.trim();
+
+                if (!tmdbId) {
+
+                    alert("Please enter a TMDb ID.");
+
+                    return;
+
+                }
+
+                const movie = await TMDB.importMovie(tmdbId);
+
+                if (!movie) {
+
+                    alert("Unable to import movie from TMDb.");
+
+                    return;
+
+                }
+
+                document.getElementById("movie-title").value =
+                    movie.title || "";
+
+                document.getElementById("movie-poster").value =
+                    movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : "";
+
+                document.getElementById("movie-genre").value =
+                    movie.genres?.map(genre => genre.name).join(", ") || "";
+
+                document.getElementById("movie-runtime").value =
+                    movie.runtime
+                        ? `${movie.runtime} min`
+                        : "";
+
+                document.getElementById("movie-rating").value =
+                    movie.adult ? "R" : "PG-13";
+
+                document.getElementById("movie-description").value =
+                    movie.overview || "";
+
+                console.log(movie);
+
+            });
+
+        }
+
         document.addEventListener("click", (event) => {
 
             const deleteButton = event.target.closest(".delete-movie-btn");
@@ -118,6 +173,18 @@ const Cinema = {
                     CinemaLibrary.deleteMovie(index);
 
                 }
+
+                return;
+
+            }
+
+            const featureButton = event.target.closest(".feature-movie-btn");
+
+            if (featureButton) {
+
+                const index = Number(featureButton.dataset.index);
+
+                CinemaLibrary.setFeaturedMovie(index);
 
                 return;
 
@@ -337,6 +404,8 @@ const Cinema = {
 
         const movie = {
 
+            tmdbId: document.getElementById("movie-tmdb-id")?.value.trim(),
+
             title: document.getElementById("movie-title")?.value.trim(),
 
             url: document.getElementById("movie-url")?.value.trim(),
@@ -387,6 +456,7 @@ const Cinema = {
 
         if (!movie) return;
 
+        document.getElementById("movie-tmdb-id").value = movie.tmdbId || "";
         document.getElementById("movie-title").value = movie.title || "";
         document.getElementById("movie-url").value = movie.url || "";
         document.getElementById("movie-poster").value = movie.poster || "";

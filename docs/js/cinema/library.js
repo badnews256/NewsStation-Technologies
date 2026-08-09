@@ -27,6 +27,8 @@ const CinemaLibrary = {
 
     addMovie(movie) {
 
+        movie.featured = false;
+
         this.movies.push(movie);
 
         this.saveLibrary();
@@ -39,6 +41,16 @@ const CinemaLibrary = {
 
     updateMovie(index, movie) {
 
+        if (movie.featured === true) {
+
+            this.movies.forEach(existingMovie => {
+
+                existingMovie.featured = false;
+
+            });
+
+        }
+
         this.movies[index] = movie;
 
         this.saveLibrary();
@@ -46,6 +58,31 @@ const CinemaLibrary = {
         this.render();
 
         console.log("Movie Updated:", movie.title);
+
+    },
+
+    setFeaturedMovie(index) {
+
+        this.movies.forEach(movie => {
+
+            movie.featured = false;
+
+        });
+
+        if (this.movies[index]) {
+
+            this.movies[index].featured = true;
+
+        }
+
+        this.saveLibrary();
+
+        this.render();
+
+        console.log(
+            "Featured Movie:",
+            this.movies[index]?.title
+        );
 
     },
 
@@ -228,7 +265,16 @@ const CinemaLibrary = {
 
                         <td>Active</td>
 
-                       <td>
+            <td>
+
+    <button
+    class="secondary-button feature-movie-btn"
+    data-index="${index}"
+    ${movie.featured ? "disabled" : ""}>
+
+    ${movie.featured ? "⭐ Featured" : "⭐ Feature"}
+
+</button>
 
     <button
         class="secondary-button edit-movie-btn"
@@ -374,7 +420,46 @@ const CinemaLibrary = {
 
         }
 
+        const featuredCard = document.getElementById("featured-movie-card");
 
+        if (featuredCard) {
+
+            const featuredMovie = this.movies.find(movie => movie.featured);
+
+            if (featuredMovie) {
+
+                featuredCard.innerHTML = `
+
+            <div class="featured-poster">
+
+                ${featuredMovie.poster
+                        ? `<img src="${featuredMovie.poster}" style="width:100%;border-radius:8px;">`
+                        : "No Poster"
+                    }
+
+            </div>
+
+            <h3>${featuredMovie.title}</h3>
+
+            <p>${featuredMovie.genre}</p>
+
+            <p>${featuredMovie.runtime}</p>
+
+            <p>${featuredMovie.rating}</p>
+
+            <button
+                id="change-featured-btn"
+                class="secondary-button">
+
+                Change Featured
+
+            </button>
+
+        `;
+
+            }
+
+        }
 
     },
 
