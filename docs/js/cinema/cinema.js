@@ -162,6 +162,9 @@ const Cinema = {
                 document.getElementById("movie-rating").value =
                     movie.adult ? "R" : "PG-13";
 
+                document.getElementById("movie-status").value =
+                    movie.status || "Active";
+
                 document.getElementById("movie-description").value =
                     movie.overview || "";
 
@@ -216,17 +219,30 @@ const Cinema = {
             }
 
         });
-
         const searchBox = document.getElementById("movie-search");
 
         if (searchBox) {
-
             searchBox.addEventListener("input", () => {
+
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
 
                 CinemaLibrary.render();
 
             });
-
         }
 
 
@@ -234,13 +250,27 @@ const Cinema = {
         const genreFilter = document.getElementById("genre-filter");
 
         if (genreFilter) {
-
             genreFilter.addEventListener("change", () => {
+
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
 
                 CinemaLibrary.render();
 
             });
-
         }
 
         const ratingFilter = document.getElementById("rating-filter");
@@ -249,39 +279,79 @@ const Cinema = {
             ratingFilter.addEventListener("change", () => {
 
                 console.log("Rating changed:", ratingFilter.value);
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
 
                 CinemaLibrary.render();
 
             });
-
         }
 
         const statusFilter = document.getElementById("status-filter");
 
         if (statusFilter) {
-
             statusFilter.addEventListener("change", () => {
 
                 console.log("Status changed:", statusFilter.value);
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
 
                 CinemaLibrary.render();
 
             });
-
         }
 
         const sortFilter = document.getElementById("sort-filter");
 
         if (sortFilter) {
-
             sortFilter.addEventListener("change", () => {
 
                 console.log("Sort changed:", sortFilter.value);
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
 
                 CinemaLibrary.render();
 
             });
-
         }
 
         const selectAll = document.getElementById("select-all-movies");
@@ -320,12 +390,29 @@ const Cinema = {
 
             }
 
-            const counter = document.getElementById("selected-count");
+            const selectedMovies =
+                document.querySelectorAll(".movie-select:checked");
+
+            const allMovies =
+                document.querySelectorAll(".movie-select");
+
+            const counter =
+                document.getElementById("selected-count");
 
             if (counter) {
 
-                counter.textContent =
-                    document.querySelectorAll(".movie-select:checked").length;
+                counter.textContent = selectedMovies.length;
+
+            }
+
+            const selectAll =
+                document.getElementById("select-all-movies");
+
+            if (selectAll) {
+
+                selectAll.checked =
+                    allMovies.length > 0 &&
+                    selectedMovies.length === allMovies.length;
 
             }
 
@@ -339,10 +426,10 @@ const Cinema = {
 
                 console.log("Bulk Action:", bulkActions.value);
 
-                if (bulkActions.value !== "Delete Selected") {
+                const action = bulkActions.value;
 
+                if (action === "Bulk Actions") {
                     return;
-
                 }
 
                 const selectedMovies = document.querySelectorAll(
@@ -352,17 +439,7 @@ const Cinema = {
                 if (selectedMovies.length === 0) {
 
                     alert("Please select at least one movie.");
-
                     bulkActions.value = "Bulk Actions";
-
-                    return;
-
-                }
-
-                if (!confirm(`Delete ${selectedMovies.length} selected movie(s)?`)) {
-
-                    bulkActions.value = "Bulk Actions";
-
                     return;
 
                 }
@@ -375,18 +452,170 @@ const Cinema = {
 
                 });
 
-                indexes.sort((a, b) => b - a);
+                if (action === "Delete Selected") {
 
-                indexes.forEach(index => {
+                    if (!confirm(
+                        `Delete ${selectedMovies.length} selected movie(s)?`
+                    )) {
 
-                    CinemaLibrary.deleteMovie(index);
+                        bulkActions.value = "Bulk Actions";
+                        return;
 
-                });
+                    }
+
+                    indexes
+                        .sort((a, b) => b - a)
+                        .forEach(index => {
+                            CinemaLibrary.deleteMovie(index);
+                        });
+
+                } else if (action === "Mark Active") {
+
+                    indexes.forEach(index => {
+
+                        const movie = CinemaLibrary.movies[index];
+
+                        if (movie) {
+                            movie.status = "Active";
+                        }
+
+                    });
+
+                    CinemaLibrary.saveLibrary();
+                    CinemaLibrary.resetPagination();
+                    CinemaLibrary.render();
+
+                } else if (action === "Mark Draft") {
+
+                    indexes.forEach(index => {
+
+                        const movie = CinemaLibrary.movies[index];
+
+                        if (movie) {
+                            movie.status = "Draft";
+                        }
+
+                    });
+
+                    CinemaLibrary.saveLibrary();
+                    CinemaLibrary.resetPagination();
+                    CinemaLibrary.render();
+
+                } else if (action === "Archive") {
+
+                    indexes.forEach(index => {
+
+                        const movie = CinemaLibrary.movies[index];
+
+                        if (movie) {
+                            movie.status = "Archived";
+                        }
+
+                    });
+
+                    CinemaLibrary.saveLibrary();
+                    CinemaLibrary.resetPagination();
+                    CinemaLibrary.render();
+
+                }
 
                 bulkActions.value = "Bulk Actions";
 
+                const selectAll = document.getElementById("select-all-movies");
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount = document.getElementById("selected-count");
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
+
+            });
+        }
+
+        const previousPage =
+            document.getElementById("previous-page");
+
+        if (previousPage) {
+
+            previousPage.addEventListener("click", () => {
+
+                CinemaLibrary.goToPreviousPage();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
+
             });
 
+        }
+
+        const nextPage =
+            document.getElementById("next-page");
+
+        if (nextPage) {
+
+            nextPage.addEventListener("click", () => {
+
+                CinemaLibrary.goToNextPage();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
+
+            });
+
+        }
+
+        const pageSize = document.getElementById("page-size");
+
+        if (pageSize) {
+            pageSize.addEventListener("change", () => {
+
+                CinemaLibrary.setPageSize(
+                    parseInt(pageSize.value, 10)
+                );
+
+                CinemaLibrary.resetPagination();
+
+                const selectAll =
+                    document.getElementById("select-all-movies");
+
+                if (selectAll) {
+                    selectAll.checked = false;
+                }
+
+                const selectedCount =
+                    document.getElementById("selected-count");
+
+                if (selectedCount) {
+                    selectedCount.textContent = "0";
+                }
+
+                CinemaLibrary.render();
+
+            });
         }
 
     },
@@ -428,6 +657,8 @@ const Cinema = {
             runtime: document.getElementById("movie-runtime")?.value.trim(),
 
             rating: document.getElementById("movie-rating")?.value,
+
+            status: document.getElementById("movie-status")?.value || "Active",
 
             description: document.getElementById("movie-description")?.value.trim()
 
@@ -474,6 +705,8 @@ const Cinema = {
         document.getElementById("movie-genre").value = movie.genre || "";
         document.getElementById("movie-runtime").value = movie.runtime || "";
         document.getElementById("movie-rating").value = movie.rating || "PG";
+        document.getElementById("movie-status").value =
+            movie.status || "Active";
         document.getElementById("movie-description").value = movie.description || "";
 
         this.editingMovieIndex = index;

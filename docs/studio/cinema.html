@@ -110,11 +110,6 @@
 
         </select>
 
-        <select id="view-mode">
-            <option>Table View</option>
-            <option>Grid View (Future)</option>
-        </select>
-
     </section>
 
     <!-- ===================================================== -->
@@ -350,10 +345,13 @@
         <!-- ===================================================== -->
         <!-- PAGINATION -->
         <!-- ===================================================== -->
+        <!-- ===================================================== -->
+        <!-- PAGINATION -->
+        <!-- ===================================================== -->
 
         <footer class="studio-pagination">
 
-            <div class="studio-pagination-left">
+            <div id="page-info" class="studio-pagination-left">
 
                 Showing
                 <strong>0–0</strong>
@@ -364,19 +362,19 @@
 
             <div class="studio-pagination-center">
 
-                <button class="primary-button">
+                <button id="previous-page" class="primary-button">
 
                     ◀ Previous
 
                 </button>
 
-                <span class="studio-pagination-info">
+                <span id="page-number" class="studio-pagination-info">
 
                     Page 1 of 1
 
                 </span>
 
-                <button class="primary-button">
+                <button id="next-page" class="primary-button">
 
                     Next ▶
 
@@ -406,136 +404,148 @@
 
         </footer>
 
-    </section>
-
-    <!-- ======================================================
+        <!-- ======================================================
      ADD MOVIE MODAL
 ====================================================== -->
 
-    <div id="add-movie-modal" class="studio-modal hidden">
+        <div id="add-movie-modal" class="studio-modal hidden">
 
-        <div class="studio-modal-window">
+            <div class="studio-modal-window">
 
-            <div class="studio-modal-header">
+                <div class="studio-modal-header">
 
-                <h2>🎬 Add Movie</h2>
+                    <h2>🎬 Add Movie</h2>
 
-                <button id="close-add-movie" class="modal-close">
+                    <button id="close-add-movie" class="modal-close">
 
-                    ✕
+                        ✕
 
-                </button>
+                    </button>
 
-            </div>
+                </div>
 
-            <div class="studio-modal-body">
+                <div class="studio-modal-body">
 
-                <div class="form-grid">
+                    <div class="form-grid">
 
-                    <div class="form-group">
+                        <div class="form-group">
 
-                        <label>TMDb ID</label>
+                            <label>TMDb ID</label>
 
-                        <div class="tmdb-import-row">
+                            <div class="tmdb-import-row">
 
-                            <input id="movie-tmdb-id" type="text" placeholder="Optional">
+                                <input id="movie-tmdb-id" type="text" placeholder="Optional">
 
-                            <button id="import-tmdb-btn" type="button" class="secondary-button">
+                                <button id="import-tmdb-btn" type="button" class="secondary-button">
 
-                                Import
+                                    Import
 
-                            </button>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Movie Title</label>
+
+                            <input id="movie-title" type="text">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Movie URL</label>
+
+                            <input id="movie-url" type="url">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Poster URL</label>
+
+                            <input id="movie-poster" type="url">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Genre</label>
+
+                            <input id="movie-genre" type="text">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Runtime</label>
+
+                            <input id="movie-runtime" type="text">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Rating</label>
+
+                            <select id="movie-rating">
+
+                                <option>G</option>
+                                <option>PG</option>
+                                <option>PG-13</option>
+                                <option>R</option>
+                                <option>NR</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Status</label>
+
+                            <select id="movie-status">
+
+                                <option selected>Active</option>
+                                <option>Draft</option>
+                                <option>Archived</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group full-width">
+
+                            <label>Description</label>
+
+                            <textarea id="movie-description" rows="5"></textarea>
 
                         </div>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label>Movie Title</label>
+                <div class="studio-modal-footer">
 
-                        <input id="movie-title" type="text">
+                    <button id="cancel-add-movie" class="secondary-button">
 
-                    </div>
+                        Cancel
 
-                    <div class="form-group">
+                    </button>
 
-                        <label>Movie URL</label>
+                    <button id="save-movie" class="primary-button">
 
-                        <input id="movie-url" type="url">
+                        Save Movie
 
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>Poster URL</label>
-
-                        <input id="movie-poster" type="url">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>Genre</label>
-
-                        <input id="movie-genre" type="text">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>Runtime</label>
-
-                        <input id="movie-runtime" type="text">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>Rating</label>
-
-                        <select id="movie-rating">
-
-                            <option>G</option>
-                            <option>PG</option>
-                            <option>PG-13</option>
-                            <option>R</option>
-                            <option>NR</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group full-width">
-
-                        <label>Description</label>
-
-                        <textarea id="movie-description" rows="5"></textarea>
-
-                    </div>
+                    </button>
 
                 </div>
 
             </div>
 
-            <div class="studio-modal-footer">
-
-                <button id="cancel-add-movie" class="secondary-button">
-
-                    Cancel
-
-                </button>
-
-                <button id="save-movie" class="primary-button">
-
-                    Save Movie
-
-                </button>
-
-            </div>
-
         </div>
-
-    </div>
 
 </div>

@@ -442,6 +442,12 @@ function closeApp() {
 
     document.getElementById("app-window").style.display = "none";
 
+    const miniPlayer = document.getElementById("mini-player");
+
+    if (miniPlayer) {
+        miniPlayer.style.display = "block";
+    }
+
     const goodNewsWidget = document.getElementById("good-news-widget");
 
     if (goodNewsWidget) {

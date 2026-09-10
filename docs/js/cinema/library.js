@@ -9,6 +9,10 @@ const CinemaLibrary = {
 
     movies: [],
 
+    currentPage: 1,
+
+    pageSize: 25,
+
     initialize() {
 
         console.log("Cinema Library Initialized");
@@ -25,6 +29,12 @@ const CinemaLibrary = {
 
     },
 
+    resetPagination() {
+
+        this.currentPage = 1;
+
+    },
+
     addMovie(movie) {
 
         movie.featured = false;
@@ -32,6 +42,8 @@ const CinemaLibrary = {
         this.movies.push(movie);
 
         this.saveLibrary();
+
+        this.resetPagination();
 
         this.render();
 
@@ -54,6 +66,8 @@ const CinemaLibrary = {
         this.movies[index] = movie;
 
         this.saveLibrary();
+
+        this.resetPagination();
 
         this.render();
 
@@ -158,10 +172,19 @@ const CinemaLibrary = {
 
         const filteredMovies = this.movies.filter(movie => {
 
+            const title =
+                String(movie.title || "").toLowerCase();
+
+            const genre =
+                String(movie.genre || "").toLowerCase();
+
+            const rating =
+                String(movie.rating || "").toLowerCase();
+
             const matchesSearch =
-                movie.title.toLowerCase().includes(searchText) ||
-                movie.genre.toLowerCase().includes(searchText) ||
-                movie.rating.toLowerCase().includes(searchText);
+                title.includes(searchText) ||
+                genre.includes(searchText) ||
+                rating.includes(searchText);
 
             const matchesGenre =
                 selectedGenre === "All Genres" ||
@@ -173,7 +196,7 @@ const CinemaLibrary = {
 
             const matchesStatus =
                 selectedStatus === "All Status" ||
-                "Active" === selectedStatus;
+                (movie.status || "Active") === selectedStatus;
 
             return matchesSearch &&
                 matchesGenre &&
@@ -190,23 +213,81 @@ const CinemaLibrary = {
 
         filteredMovies.sort((a, b) => {
 
+            const titleA = String(a.title || "");
+
+            const titleB = String(b.title || "");
+
             if (sortOption === "Z → A") {
 
-                return b.title.localeCompare(a.title);
+                return titleB.localeCompare(titleA);
 
             }
 
-            return a.title.localeCompare(b.title);
+            return titleA.localeCompare(titleB);
 
         });
 
-        if (filteredMovies.length === 0) {
+        const pageSizeSelect =
+            document.getElementById("page-size");
+
+        if (pageSizeSelect) {
+
+            const selectedPageSize =
+                Number(pageSizeSelect.value);
+
+            if ([25, 50, 100].includes(selectedPageSize)) {
+
+                this.pageSize = selectedPageSize;
+
+            }
+
+        }
+
+        const totalFilteredMovies =
+            filteredMovies.length;
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    totalFilteredMovies / this.pageSize
+                )
+            );
+
+        if (this.currentPage > totalPages) {
+
+            this.currentPage = totalPages;
+
+        }
+
+        if (this.currentPage < 1) {
+
+            this.currentPage = 1;
+
+        }
+
+        const startIndex =
+            (this.currentPage - 1) * this.pageSize;
+
+        const endIndex =
+            Math.min(
+                startIndex + this.pageSize,
+                totalFilteredMovies
+            );
+
+        const paginatedMovies =
+            filteredMovies.slice(
+                startIndex,
+                endIndex
+            );
+
+        if (paginatedMovies.length === 0) {
 
             body.innerHTML = `
 
                 <tr>
 
-                    <td colspan="7">
+                    <td colspan="8">
 
                         <div class="studio-empty">
 
@@ -236,230 +317,446 @@ const CinemaLibrary = {
 
             body.innerHTML = "";
 
-            filteredMovies.forEach((movie) => {
+            paginatedMovies.forEach((movie) => {
 
-                const index = this.movies.indexOf(movie);
+                const index =
+                    this.movies.indexOf(movie);
 
                 body.innerHTML += `
 
                     <tr>
 
-    <td>
+                        <td>
 
-        <input
-            type="checkbox"
-            class="movie-select"
-            data-index="${index}">
+                            <input
+                                type="checkbox"
+                                class="movie-select"
+                                data-index="${index}">
 
-    </td>
+                        </td>
 
-                        <td>${movie.poster ? `<img src="${movie.poster}" style="width:60px;border-radius:6px;">` : "—"}</td>
+                        <td>
 
-                        <td>${movie.title}</td>
+                            ${movie.poster
+                        ? `<img src="${movie.poster}" style="width:60px;border-radius:6px;">`
+                        : "—"
+                    }
 
-                        <td>${movie.genre}</td>
+                        </td>
 
-                        <td>${movie.runtime}</td>
+                        <td>${movie.title || ""}</td>
 
-                        <td>${movie.rating}</td>
+                        <td>${movie.genre || ""}</td>
 
-                        <td>Active</td>
+                        <td>${movie.runtime || ""}</td>
 
-            <td>
+                        <td>${movie.rating || ""}</td>
 
-    <button
-    class="secondary-button feature-movie-btn"
-    data-index="${index}"
-    ${movie.featured ? "disabled" : ""}>
+                        <td>${movie.status || "Active"}</td>
 
-    ${movie.featured ? "⭐ Featured" : "⭐ Feature"}
+                        <td>
 
-</button>
+                            <button
+                                class="secondary-button feature-movie-btn"
+                                data-index="${index}"
+                                ${movie.featured ? "disabled" : ""}>
 
-    <button
-        class="secondary-button edit-movie-btn"
-        data-index="${index}">
+                                ${movie.featured
+                        ? "⭐ Featured"
+                        : "⭐ Feature"
+                    }
 
-        Edit
+                            </button>
 
-    </button>
+                            <button
+                                class="secondary-button edit-movie-btn"
+                                data-index="${index}">
 
-    <button
-        class="secondary-button delete-movie-btn"
-        data-index="${index}">
+                                Edit
 
-        Delete
+                            </button>
 
-    </button>
+                            <button
+                                class="secondary-button delete-movie-btn"
+                                data-index="${index}">
 
-</td>
+                                Delete
 
-</tr>
+                            </button>
 
-`;
+                        </td>
 
+                    </tr>
+
+                `;
 
             });
 
         }
 
-        const totalMovies = document.getElementById("stat-total-movies");
-        const featuredMovies = document.getElementById("stat-featured-movies");
-        const genres = document.getElementById("stat-total-genres");
-        const ratings = document.getElementById("stat-total-ratings");
+        this.updatePagination(
+            totalFilteredMovies,
+            totalPages,
+            startIndex,
+            endIndex
+        );
+
+        const totalMovies =
+            document.getElementById("stat-total-movies");
+
+        const featuredMovies =
+            document.getElementById("stat-featured-movies");
+
+        const genres =
+            document.getElementById("stat-total-genres");
+
+        const ratings =
+            document.getElementById("stat-total-ratings");
 
         if (totalMovies) {
 
-            totalMovies.textContent = this.movies.length;
+            totalMovies.textContent =
+                this.movies.length;
 
         }
 
         if (featuredMovies) {
 
-            const featuredCount = this.movies.filter(movie => movie.featured === true).length;
+            const featuredCount =
+                this.movies.filter(
+                    movie => movie.featured === true
+                ).length;
 
-            featuredMovies.textContent = featuredCount;
+            featuredMovies.textContent =
+                featuredCount;
 
         }
 
         if (genres) {
 
-            const uniqueGenres = new Set(
+            const uniqueGenres =
+                new Set(
 
-                this.movies
-                    .map(movie => movie.genre?.trim())
-                    .filter(Boolean)
+                    this.movies
+                        .map(movie => movie.genre?.trim())
+                        .filter(Boolean)
 
-            );
+                );
 
-            genres.textContent = uniqueGenres.size;
+            genres.textContent =
+                uniqueGenres.size;
 
         }
 
         if (ratings) {
 
-            const uniqueRatings = new Set(
+            const uniqueRatings =
+                new Set(
 
-                this.movies
-                    .map(movie => movie.rating?.trim())
-                    .filter(Boolean)
+                    this.movies
+                        .map(movie => movie.rating?.trim())
+                        .filter(Boolean)
 
-            );
+                );
 
-            ratings.textContent = uniqueRatings.size;
+            ratings.textContent =
+                uniqueRatings.size;
 
         }
 
         if (genreFilter) {
 
-            const currentValue = genreFilter.value;
+            const currentValue =
+                genreFilter.value;
 
-            const genreList = [...new Set(
-                this.movies
-                    .map(movie => movie.genre?.trim())
-                    .filter(Boolean)
-            )].sort();
+            const genreList =
+                [
+                    ...new Set(
+                        this.movies
+                            .map(movie => movie.genre?.trim())
+                            .filter(Boolean)
+                    )
+                ].sort();
 
-            genreFilter.innerHTML = `<option>All Genres</option>`;
+            genreFilter.innerHTML =
+                `<option>All Genres</option>`;
 
             genreList.forEach(genre => {
 
-                genreFilter.innerHTML += `<option>${genre}</option>`;
+                genreFilter.innerHTML +=
+                    `<option>${genre}</option>`;
 
             });
 
-            genreFilter.value = genreList.includes(currentValue)
-                ? currentValue
-                : "All Genres";
+            genreFilter.value =
+                genreList.includes(currentValue)
+                    ? currentValue
+                    : "All Genres";
 
         }
 
         if (ratingFilter) {
 
-            const currentValue = ratingFilter.value;
+            const currentValue =
+                ratingFilter.value;
 
-            const ratingList = [...new Set(
-                this.movies
-                    .map(movie => movie.rating?.trim())
-                    .filter(Boolean)
-            )].sort();
+            const ratingList =
+                [
+                    ...new Set(
+                        this.movies
+                            .map(movie => movie.rating?.trim())
+                            .filter(Boolean)
+                    )
+                ].sort();
 
-            ratingFilter.innerHTML = `<option>All Ratings</option>`;
+            ratingFilter.innerHTML =
+                `<option>All Ratings</option>`;
 
             ratingList.forEach(rating => {
 
-                ratingFilter.innerHTML += `<option>${rating}</option>`;
+                ratingFilter.innerHTML +=
+                    `<option>${rating}</option>`;
 
             });
 
-            ratingFilter.value = ratingList.includes(currentValue)
-                ? currentValue
-                : "All Ratings";
-
-            const statusFilter = document.getElementById("status-filter");
-
-            if (statusFilter) {
-
-                const currentValue = statusFilter.value;
-
-                const statusList = ["Active"];
-
-                statusFilter.innerHTML = `<option>All Status</option>`;
-
-                statusList.forEach(status => {
-
-                    statusFilter.innerHTML += `<option>${status}</option>`;
-
-                });
-
-                statusFilter.value = statusList.includes(currentValue)
+            ratingFilter.value =
+                ratingList.includes(currentValue)
                     ? currentValue
-                    : "All Status";
-
-            }
+                    : "All Ratings";
 
         }
 
-        const featuredCard = document.getElementById("featured-movie-card");
+        if (statusFilter) {
+
+            const currentValue =
+                statusFilter.value;
+
+            const statusList =
+                ["Active", "Draft", "Archived"];
+
+            statusFilter.innerHTML =
+                `<option>All Status</option>`;
+
+            statusList.forEach(status => {
+
+                statusFilter.innerHTML +=
+                    `<option>${status}</option>`;
+
+            });
+
+            statusFilter.value =
+                statusList.includes(currentValue)
+                    ? currentValue
+                    : "All Status";
+
+        }
+
+        const featuredCard =
+            document.getElementById("featured-movie-card");
 
         if (featuredCard) {
 
-            const featuredMovie = this.movies.find(movie => movie.featured);
+            const featuredMovie =
+                this.movies.find(
+                    movie => movie.featured
+                );
 
             if (featuredMovie) {
 
                 featuredCard.innerHTML = `
 
-            <div class="featured-poster">
+                    <div class="featured-poster">
 
-                ${featuredMovie.poster
+                        ${featuredMovie.poster
                         ? `<img src="${featuredMovie.poster}" style="width:100%;border-radius:8px;">`
                         : "No Poster"
                     }
 
-            </div>
+                    </div>
 
-            <h3>${featuredMovie.title}</h3>
+                    <h3>${featuredMovie.title || ""}</h3>
 
-            <p>${featuredMovie.genre}</p>
+                    <p>${featuredMovie.genre || ""}</p>
 
-            <p>${featuredMovie.runtime}</p>
+                    <p>${featuredMovie.runtime || ""}</p>
 
-            <p>${featuredMovie.rating}</p>
+                    <p>${featuredMovie.rating || ""}</p>
 
-            <button
-                id="change-featured-btn"
-                class="secondary-button">
+                    <button
+                        id="change-featured-btn"
+                        class="secondary-button">
 
-                Change Featured
+                        Change Featured
 
-            </button>
+                    </button>
 
-        `;
+                `;
 
             }
 
         }
+
+    },
+
+    updatePagination(
+        totalMovies,
+        totalPages,
+        startIndex,
+        endIndex
+    ) {
+
+        const previousButton =
+            document.getElementById("previous-page");
+
+        const nextButton =
+            document.getElementById("next-page");
+
+        const pageNumber =
+            document.getElementById("page-number");
+
+        const pageInfo =
+            document.getElementById("page-info");
+
+        if (previousButton) {
+
+            previousButton.disabled =
+                this.currentPage <= 1;
+
+        }
+
+        if (nextButton) {
+
+            nextButton.disabled =
+                this.currentPage >= totalPages;
+
+        }
+
+        if (pageNumber) {
+
+            pageNumber.textContent =
+                `Page ${this.currentPage} of ${totalPages}`;
+
+        }
+
+        if (pageInfo) {
+
+            if (totalMovies === 0) {
+
+                pageInfo.textContent =
+                    "Showing 0–0 of 0 Movies";
+
+            } else {
+
+                pageInfo.textContent =
+                    `Showing ${startIndex + 1}–${endIndex} of ${totalMovies} Movies`;
+
+            }
+
+        }
+
+    },
+
+    goToPreviousPage() {
+
+        if (this.currentPage <= 1) {
+
+            return;
+
+        }
+
+        this.currentPage--;
+
+        this.render();
+
+    },
+
+    goToNextPage() {
+
+        const searchBox =
+            document.getElementById("movie-search");
+
+        const genreFilter =
+            document.getElementById("genre-filter");
+
+        const ratingFilter =
+            document.getElementById("rating-filter");
+
+        const statusFilter =
+            document.getElementById("status-filter");
+
+        const searchText =
+            searchBox
+                ? searchBox.value.trim().toLowerCase()
+                : "";
+
+        const selectedGenre =
+            genreFilter
+                ? genreFilter.value
+                : "All Genres";
+
+        const selectedRating =
+            ratingFilter
+                ? ratingFilter.value
+                : "All Ratings";
+
+        const selectedStatus =
+            statusFilter
+                ? statusFilter.value
+                : "All Status";
+
+        const filteredCount =
+            this.movies.filter(movie => {
+
+                const title =
+                    String(movie.title || "").toLowerCase();
+
+                const genre =
+                    String(movie.genre || "").toLowerCase();
+
+                const rating =
+                    String(movie.rating || "").toLowerCase();
+
+                const matchesSearch =
+                    title.includes(searchText) ||
+                    genre.includes(searchText) ||
+                    rating.includes(searchText);
+
+                const matchesGenre =
+                    selectedGenre === "All Genres" ||
+                    movie.genre === selectedGenre;
+
+                const matchesRating =
+                    selectedRating === "All Ratings" ||
+                    movie.rating === selectedRating;
+
+                const matchesStatus =
+                    selectedStatus === "All Status" ||
+                    (movie.status || "Active") === selectedStatus;
+
+                return matchesSearch &&
+                    matchesGenre &&
+                    matchesRating &&
+                    matchesStatus;
+
+            }).length;
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    filteredCount / this.pageSize
+                )
+            );
+
+        if (this.currentPage >= totalPages) {
+
+            return;
+
+        }
+
+        this.currentPage++;
+
+        this.render();
 
     },
 

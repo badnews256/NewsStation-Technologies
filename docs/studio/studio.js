@@ -63,6 +63,14 @@ function initializeStudio() {
 
 function launchStudio() {
 
+    const miniPlayer = document.getElementById("mini-player");
+
+    if (miniPlayer) {
+
+        miniPlayer.style.display = "none";
+
+    }
+
     loadStudio().then(html => {
 
         const title = document.getElementById("app-title");
