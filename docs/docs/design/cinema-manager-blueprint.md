@@ -100,14 +100,28 @@ Columns:
 Features:
 
 - Alphabetical sorting
+
 - Searchable
+
 - Sortable
+
 - Column resizing
+
 - Bulk selection
 
-Future Enhancement:
+- Select All synchronization
 
-Grid View
+- Accurate selected-record count
+
+- Selection clears when filters change
+
+- Selection clears when sorting changes
+
+- Selection clears when page size changes
+
+- Selection clears when changing pages
+
+- Selection clears after bulk actions
 
 ---
 
