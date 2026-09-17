@@ -252,17 +252,20 @@ Requires confirmation before deleting.
 ---
 
 # Audit Log
-
-Every movie action records an Audit Log entry.
+Every movie management action records an Audit Log entry through the central NewsOS Audit Log Engine.
 
 Examples:
-
 Movie Added
-
 Movie Updated
-
 Movie Deleted
+Movie Imported
+Featured Movie Changed
+Movies Deleted
+Movies Marked Active
+Movies Marked Draft
+Movies Archived
 
+Audit Log is the single source of truth for Cinema Manager activity.
 Featured Movie Changed
 
 ---
