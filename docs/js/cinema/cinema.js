@@ -135,6 +135,12 @@ const Cinema = {
 
                 const movie = await TMDB.importMovie(tmdbId);
 
+                AuditLog.record(
+                    "Movie Imported",
+                    movie?.title || "Unknown Movie",
+                    "Cinema"
+                );
+
                 if (!movie) {
 
                     alert("Unable to import movie from TMDb.");
@@ -176,46 +182,67 @@ const Cinema = {
 
         document.addEventListener("click", (event) => {
 
-            const deleteButton = event.target.closest(".delete-movie-btn");
+            const deleteButton =
+                event.target.closest(".delete-movie-btn");
 
             if (deleteButton) {
 
-                const index = Number(deleteButton.dataset.index);
+                const index =
+                    Number(deleteButton.dataset.index);
+
+                const movie =
+                    CinemaLibrary.movies[index];
 
                 if (confirm("Delete this movie?")) {
 
                     CinemaLibrary.deleteMovie(index);
 
+                    AuditLog.record(
+                        "Movie Deleted",
+                        movie?.title || "Unknown Movie",
+                        "Cinema"
+                    );
+
                 }
 
                 return;
-
             }
 
-            const featureButton = event.target.closest(".feature-movie-btn");
+            const featureButton =
+                event.target.closest(".feature-movie-btn");
 
             if (featureButton) {
 
                 const index = Number(featureButton.dataset.index);
 
+                const movie = CinemaLibrary.movies[index];
+
                 CinemaLibrary.setFeaturedMovie(index);
 
-                return;
+                AuditLog.record(
+                    "Featured Movie Changed",
+                    movie?.title || "Unknown Movie",
+                    "Cinema"
+                );
 
+                return;
             }
 
-            const editButton = event.target.closest(".edit-movie-btn");
+            const editButton =
+                event.target.closest(".edit-movie-btn");
 
             if (editButton) {
 
                 console.log("Edit button clicked.");
 
-                const index = Number(editButton.dataset.index);
+                const index =
+                    Number(editButton.dataset.index);
 
                 console.log("Movie Index:", index);
 
                 Cinema.editMovie(index);
 
+                return;
             }
 
         });
@@ -463,11 +490,19 @@ const Cinema = {
 
                     }
 
+                    const deletedCount = selectedMovies.length;
+
                     indexes
                         .sort((a, b) => b - a)
                         .forEach(index => {
                             CinemaLibrary.deleteMovie(index);
                         });
+
+                    AuditLog.record(
+                        "Movies Deleted",
+                        `${deletedCount} movie(s)`,
+                        "Cinema"
+                    );
 
                 } else if (action === "Mark Active") {
 
@@ -482,6 +517,13 @@ const Cinema = {
                     });
 
                     CinemaLibrary.saveLibrary();
+
+                    AuditLog.record(
+                        "Movies Marked Active",
+                        `${selectedMovies.length} movie(s)`,
+                        "Cinema"
+                    );
+
                     CinemaLibrary.resetPagination();
                     CinemaLibrary.render();
 
@@ -498,6 +540,13 @@ const Cinema = {
                     });
 
                     CinemaLibrary.saveLibrary();
+
+                    AuditLog.record(
+                        "Movies Marked Draft",
+                        `${selectedMovies.length} movie(s)`,
+                        "Cinema"
+                    );
+
                     CinemaLibrary.resetPagination();
                     CinemaLibrary.render();
 
@@ -514,9 +563,15 @@ const Cinema = {
                     });
 
                     CinemaLibrary.saveLibrary();
+
+                    AuditLog.record(
+                        "Movies Archived",
+                        `${selectedMovies.length} movie(s)`,
+                        "Cinema"
+                    );
+
                     CinemaLibrary.resetPagination();
                     CinemaLibrary.render();
-
                 }
 
                 bulkActions.value = "Bulk Actions";
@@ -643,25 +698,15 @@ const Cinema = {
         console.log("Saving movie...");
 
         const movie = {
-
             tmdbId: document.getElementById("movie-tmdb-id")?.value.trim(),
-
             title: document.getElementById("movie-title")?.value.trim(),
-
             url: document.getElementById("movie-url")?.value.trim(),
-
             poster: document.getElementById("movie-poster")?.value.trim(),
-
             genre: document.getElementById("movie-genre")?.value.trim(),
-
             runtime: document.getElementById("movie-runtime")?.value.trim(),
-
             rating: document.getElementById("movie-rating")?.value,
-
             status: document.getElementById("movie-status")?.value || "Active",
-
             description: document.getElementById("movie-description")?.value.trim()
-
         };
 
         if (!movie.title) {
@@ -673,12 +718,17 @@ const Cinema = {
         }
 
         console.log("CinemaLibrary:", CinemaLibrary);
-
         console.log("Movie being saved:", movie);
 
-        if (this.editingMovieIndex !== undefined) {
+        const wasEditing =
+            this.editingMovieIndex !== undefined;
 
-            CinemaLibrary.updateMovie(this.editingMovieIndex, movie);
+        if (wasEditing) {
+
+            CinemaLibrary.updateMovie(
+                this.editingMovieIndex,
+                movie
+            );
 
             this.editingMovieIndex = undefined;
 
@@ -688,7 +738,15 @@ const Cinema = {
 
         }
 
-        document.getElementById("add-movie-modal")?.classList.add("hidden");
+        AuditLog.record(
+            wasEditing ? "Movie Updated" : "Movie Added",
+            movie.title,
+            "Cinema"
+        );
+
+        document
+            .getElementById("add-movie-modal")
+            ?.classList.add("hidden");
     },
 
 

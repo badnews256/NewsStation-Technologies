@@ -306,29 +306,22 @@ function addStudioActivity(message) {
 
     if (!message) return;
 
-    const now = new Date();
-
-    studioActivity.unshift({
-
-        time: now.toLocaleTimeString([], {
-            hour: "numeric",
-            minute: "2-digit"
-        }),
-
-        message
-
-    });
-
-    if (studioActivity.length > 10) {
-
-        studioActivity.pop();
-
+    if (
+        typeof AuditLog === "undefined" ||
+        typeof AuditLog.record !== "function"
+    ) {
+        console.warn("Audit Log Engine unavailable.");
+        return;
     }
 
+    AuditLog.record(
+        message,
+        "",
+        "Studio"
+    );
+
     renderStudioActivity();
-
     renderDashboardActivity();
-
 }
 
 function renderStudioActivity() {
@@ -337,29 +330,41 @@ function renderStudioActivity() {
 
     if (!container) return;
 
-    if (studioActivity.length === 0) {
+    const activities =
+        typeof AuditLog !== "undefined"
+            ? AuditLog.getRecent(10)
+            : [];
+
+    if (activities.length === 0) {
 
         container.innerHTML = `
             <div class="activity-item">
                 <span class="activity-time">--:--</span>
-                <span class="activity-text">No recent activity.</span>
+                <span class="activity-text">
+                    No recent activity.
+                </span>
             </div>
         `;
 
         return;
-
     }
 
-    container.innerHTML = studioActivity.map(item => `
+    container.innerHTML = activities.map(entry => {
 
-    <div class="task-item">
+        const time = new Date(
+            entry.timestamp
+        ).toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit"
+        });
 
-        <strong>${item.time}</strong> — ${item.message}
+        return `
+            <div class="task-item">
+                <strong>${time}</strong> — ${entry.action}
+            </div>
+        `;
 
-    </div>
-
-`).join("");
-
+    }).join("");
 }
 
 // ======================================================
@@ -368,46 +373,45 @@ function renderStudioActivity() {
 
 function renderDashboardActivity() {
 
-    const list = document.getElementById("dashboard-activity-list");
+    const list =
+        document.getElementById("dashboard-activity-list");
 
     if (!list) return;
 
-    list.innerHTML = "";
+    const activities =
+        typeof AuditLog !== "undefined"
+            ? AuditLog.getRecent(5)
+            : [];
 
-    studioActivity.slice(0, 5).forEach(entry => {
-
-        list.innerHTML += `
-
-            <div class="task-item">
-
-                <strong>${entry.time}</strong>
-
-                <br>
-
-                ${entry.message}
-
-            </div>
-
-        `;
-
-    });
-
-    console.log("studioActivity =", studioActivity);
-
-    if (studioActivity.length === 0) {
+    if (activities.length === 0) {
 
         list.innerHTML = `
-
             <div class="task-item">
-
                 No recent activity.
-
             </div>
-
         `;
 
+        return;
     }
 
+    list.innerHTML = activities.map(entry => {
+
+        const time = new Date(
+            entry.timestamp
+        ).toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit"
+        });
+
+        return `
+            <div class="task-item">
+                <strong>${time}</strong>
+                <br>
+                ${entry.action}
+            </div>
+        `;
+
+    }).join("");
 }
 
 // =====================================================
